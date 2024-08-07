@@ -886,17 +886,3 @@ function _cloudy_validate_command_arguments() {
 
   return $status
 }
-
-##
-# Validate command input against the script's schema.
-#
-function _cloudy_validate_input_against_schema() {
-  local config_path_to_schema=$1
-  local name=$2
-  local value=$3
-
-  local errors
-  # TODO Rewrite using $PHP_FILE_RUNNER
-  echo $("$CLOUDY_PHP" $CLOUDY_CORE_DIR/php/validate_against_schema.php "$CLOUDY_CONFIG_JSON" "$config_path_to_schema" "$name" "$value")
-  return $?
-}

@@ -1,0 +1,173 @@
+title: 'Cloudy Tools'
+version: 1.7.12
+additional_config:
+  - cloudy_tools.additional.yml
+default_command: help
+commands:
+  pm-show:
+    help: 'Display detailed information about a package, or list all packages available.'
+    aliases:
+      - pms
+  pm-clear-cache:
+    help: 'Flush locally cached package info and refresh from remote registry.'
+    aliases:
+      - pmcc
+      - pmclearcache
+  pm-install:
+    help: 'Install a Cloudy package from the Cloudy Package Registry.'
+    aliases:
+      - pmi
+      - pminstall
+    arguments:
+      package_name:
+        help: 'The name of the package, e.g. aklump/install'
+        required: true
+    options:
+      'yes':
+        help: 'Answer yes to all confirmation questions.'
+        type: boolean
+        aliases:
+          - 'y'
+  pm-update:
+    help: 'Update an installed Cloudy package from the Cloudy Package Registry.'
+    aliases:
+      - pmu
+      - pmupdate
+    arguments:
+      package_name:
+        help: 'The name of the installed package, e.g. aklump/install'
+        required: false
+    options:
+      'yes':
+        help: 'Answer yes to all confirmation questions.'
+        type: boolean
+        aliases:
+          - 'y'
+  version:
+    help: Display the local Cloudy version, which is also used for pm-update.
+  core:
+    help: 'Install cloudy core only, in the current directory.  This is similar to "new" but it does not create the script and configuration files.'
+  help:
+    help: 'Show this help screen.'
+    options:
+      version:
+        help: 'Display the current version'
+        type: boolean
+  clear-cache:
+    aliases:
+      - clearcache
+      - cc
+    help: 'Clear the Cloudy Tools caches.'
+  flush:
+    help: 'Flush all cached data for the current directory''s cloudy scripts.'
+  install:
+    help: 'Install existing ./cloudy/ based on ./cloudy/version.sh'
+  update:
+    help: 'Update ./cloudy/ to the latest version.  The latest version as shown by `cloudy version`, which comes from your local installation.'
+    options:
+      'yes':
+        help: 'Answer yes to all confirmation questions.'
+        type: boolean
+        aliases:
+          - 'y'
+      force:
+        help: 'Force an update, even if the version doesn''t show it''s needed.'
+        type: boolean
+        aliases:
+          - f
+      dry-run:
+        help: 'Show what will be happen, but don''t do anything.'
+        type: boolean
+  new:
+    help: 'Create a new script using Cloudy.'
+    arguments:
+      basename:
+        required: true
+        help: 'The basename of the script to create.'
+    options:
+      config:
+        help: 'The filename of the configuration file; omit the extension.'
+        type: string
+      'yes':
+        help: 'Answer yes to all confirmation questions.'
+        type: boolean
+        aliases:
+          - 'y'
+      force:
+        type: boolean
+        aliases:
+          - f
+        help: 'Overwrite an existing script.'
+      examples:
+        type: boolean
+        aliases:
+          - e
+        help: 'Create a demo as script.example.sh'
+      help:
+        type: boolean
+        help: 'Show help for command "new".'
+        aliases:
+          - h
+  tests:
+    help: 'Run Cloudy''s core unit tests.'
+translate:
+  ids:
+    - 'Completed successfully.'
+    - Failed.
+  strings:
+    en: null
+tests:
+  string: 'Adam ate apples at Andrew''s abode.'
+  indexed_array:
+    - alpha
+    - bravo
+    - charlie
+  associative_array:
+    do: alpha
+    re: bravo
+    mi: charlie
+  filepaths:
+    install: cloudy
+    cache: cloudy/dist/cache
+    cloudy: cloudy/dist/..
+    absolute: /dev/null
+    token_cloudy_basepath: '$CLOUDY_BASEPATH/.project/config.yml'
+    token_cloudy_core_directory: '$CLOUDY_CORE_DIR/cloudy'
+  globtest: 'tests/stubs/*.txt'
+  paths_indexed:
+    - tests/stubs/alpha.txt
+    - tests/stubs/bravo.txt
+    - tests/stubs/charlie.md
+    - tests/stubs/bogus.md
+    - /an/absolute/bogus/path
+    - ~/.trash
+  paths_associative:
+    alpha: tests/stubs/alpha.txt
+    all: 'tests/stubs/*.txt'
+    trash: ~/.trash
+  user:
+    images:
+      tags:
+        - literature
+        - nature
+        - space
+        - religion
+      types:
+        bitmap:
+          - jpg
+          - png
+          - gif
+  prod:
+    db:
+      name: db
+      pass: 2394873910
+  empty_array: null
+  config:
+    fruit: apple
+    merge_test:
+      - uno
+      - dos
+      - tres
+    associative_merge_test:
+      z: zebra
+      'y': yak

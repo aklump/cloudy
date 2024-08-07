@@ -20,8 +20,7 @@ if [[ "$CLOUDY_COMPOSER_VENDOR" ]]; then
   # script as relative to that script.  We look to see if it needs to be
   # resolved to an absolute path and then exit.
   if ! path_is_absolute "$CLOUDY_COMPOSER_VENDOR"; then
-    # TODO Change this to _resolve()?
-    CLOUDY_COMPOSER_VENDOR="$(cd $(dirname "$r/$CLOUDY_COMPOSER_VENDOR") && pwd)/$(basename $CLOUDY_COMPOSER_VENDOR)"
+    CLOUDY_COMPOSER_VENDOR="$(path_make_absolute "$CLOUDY_COMPOSER_VENDOR" "$r")"
   fi
 else
   CLOUDY_COMPOSER_VENDOR=$(_cloudy_detect_composer_vendor_by_installation "$CLOUDY_INSTALLED_AS")

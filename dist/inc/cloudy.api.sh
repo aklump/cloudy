@@ -268,9 +268,9 @@ function date8601() {
     return 0
 }
 
-# Validate the CLI input arguments and options.
+# Validate the CLI input arguments and options and exit if invalid.
 #
-# @return 0 if all input is valid; 1 otherwise.
+# @return 0 if all input is valid
 function validate_input() {
     local command
     local assume_command
@@ -299,17 +299,10 @@ function validate_input() {
        array_has_value__array=(${_cloudy_get_valid_operations_by_command__array[@]})
        array_has_value $name || fail_because "Invalid option: $name"
        eval "value=\"\$CLOUDY_OPTION__$(md5_string $name)\""
-
-       # Assert the provided value matches schema.
-       eval $(_cloudy_validate_input_against_schema "commands.$command.options.$name" "$name" "$value")
-       if [[ "$schema_errors" ]]; then
-            for error in "${schema_errors[@]}"; do
-               fail_because "$error"
-            done
-       fi
+       . "$PHP_FILE_RUNNER" "$CLOUDY_CORE_DIR/php/validate_against_schema.php" "commands.$command.options.$name" "$name" "$value"
     done
 
-    has_failed && return 1
+    has_failed && exit_with_failure "Input validation failed."
     return 0
 }
 

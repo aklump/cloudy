@@ -1,0 +1,14 @@
+tests:
+  config:
+    child_only_key:
+      - mike
+      - joe
+    fruit: banana
+    vegetable: artichoke
+    meat: ardvaark
+    merge_test:
+      - quatro
+      - cinco
+    associative_merge_test:
+      x: xylitol
+      w: whisky

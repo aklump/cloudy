@@ -36,7 +36,7 @@ s="${BASH_SOURCE[0]}";while [ -h "$s" ];do dir="$(cd -P "$(dirname "$s")" && pwd
 # End Cloudy Bootstrap
 
 # Input validation.
-validate_input || exit_with_failure "Input validation failed."
+validate_input
 
 # Cloudy basic is a bare-bones set of command command that you may want to
 # share across all your scripts.  This line can be removed.  See the function

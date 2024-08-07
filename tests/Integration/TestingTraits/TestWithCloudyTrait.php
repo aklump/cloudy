@@ -103,6 +103,39 @@ trait TestWithCloudyTrait {
   }
 
   /**
+   * Test cloudy tools with a CLI expression.
+   *
+   * This function will self-boot; no need to call ::bootCloudy()
+   *
+   * @param string $cli_command e.g. 'cloudy new bla --yes=foo'
+   *
+   * @code
+   * $this->execCloudyTools('cloudy new bla --yes=foo');
+   * @endcode
+   *
+   * @return void
+   */
+  protected function execCloudyTools(string $cli_command) {
+    preg_match_all('/\S+|".*?"/', $cli_command, $matches);
+
+    // Remove double quotes from matched elements
+    $args = array_map(function ($element) {
+      return trim($element, '"');
+    }, $matches[0]);
+    $command = array_shift($args);
+
+    if ('cloudy' !== $command) {
+      throw new InvalidArgumentException(sprintf('%s only supports `cloudy...`', __FUNCTION__));
+    }
+    $replacement = realpath(__DIR__ . '/../cloudy_bridge/test_runner.cli.sh');
+
+    $this->bootCloudy(__DIR__ . '/../t/CLI/cloudy_tools.yml');
+    $replacement .= ' "' . $this->getCloudyPackageConfig() . '" ';
+    $command = preg_replace("#^$command\s+#", $replacement, $cli_command);
+    exec($command, $this->cloudyOutput, $this->cloudyResultCode);
+  }
+
+  /**
    * Execute a script in a fully booted cloudy environment.
    *
    * @param string $test_script Path to the bash test file to execute; it must

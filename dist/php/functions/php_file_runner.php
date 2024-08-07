@@ -71,6 +71,7 @@ try {
   // exit status, their choice is to use fail_because() or exit_with_failure()
   // provided the exit status as a function argument.
   require $path_to_php_file;
+  unset($error);
 }
 catch (Exception $exception) {
   $error = $exception;
