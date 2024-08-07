@@ -83,6 +83,10 @@ function _cloudy_detect_installation_type() {
   check_cloudy="$(path_make_canonical "$base/../../../cloudypm.lock")"
   [ -f "$check_composer" ] && [ -f "$check_cloudy" ] && echo $CLOUDY_INSTALL_TYPE_PM && return 0
 
+  check_composer="$(path_make_canonical "$base/composer.json")"
+  check_cloudy="$(path_make_canonical "$base/cloudy/dist/cloudy.sh")"
+  [ -f "$check_composer" ] && [ -f "$check_cloudy" ]  && echo $CLOUDY_INSTALL_TYPE_COMPOSER_CREATE_PROJECT && return 0
+
   # This is a fallback and means we can't figure it out.
   echo $CLOUDY_INSTALL_TYPE_CUSTOM && return 0
 }
@@ -125,6 +129,9 @@ function _cloudy_detect_composer_vendor_by_installation() {
       ;;
     "$CLOUDY_INSTALL_TYPE_COMPOSER")
       vendor="$base/../../../vendor"
+      ;;
+    "$CLOUDY_INSTALL_TYPE_COMPOSER_CREATE_PROJECT")
+      vendor="$CLOUDY_CORE_DIR/../vendor"
       ;;
     "$CLOUDY_INSTALL_TYPE_CORE")
       # Does the app have a vendor directory, which cloudy should leverage?
