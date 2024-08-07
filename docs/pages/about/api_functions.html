@@ -1356,7 +1356,7 @@
         <hr/>
       <a name="json_set"></a>
     <h2>json_set()</h2>
-    <p class="summary">Set a JSON string to be later read by json_get_value().</p>
+    <p class="summary">SPDX-License-Identifier: BSD-3-Clause</p>
     
               Parameters:
       <ul class="function-list__parameters">
@@ -1367,7 +1367,7 @@
                   <li><code>0</code> if the JSON is valid; 1 otherwise.</li>
               </ul>
         
-          <pre><code>Call this once to put your json string into memory, then make unlimited calls to json_get_value as necessary.  You may check the return code to ensure JSON syntax is valid.  If your string contains single quotes, you will need to escape them.
+          <pre><code>Set a JSON string to be later read by json_get_value(). Call this once to put your json string into memory, then make unlimited calls to json_get_value as necessary.  You may check the return code to ensure JSON syntax is valid.  If your string contains single quotes, you will need to escape them.
 
 @code
   json_set &#039;{&quot;foo&quot;:{&quot;bar&quot;:&quot;baz et al&quot;}}&#039;
