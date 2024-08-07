@@ -1,0 +1,12 @@
+title: "Cloudy Realtime Docs"
+default_command: help
+commands:
+  help:
+    help: Show this help screen.
+    options:
+      version:
+        help: "Display the current version"
+        type: boolean
+  clear-cache:
+    aliases: [ clearcache, cc ]
+    help: Clear all cached data.

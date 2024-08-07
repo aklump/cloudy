@@ -1,0 +1,1202 @@
+<!doctype html>
+<html lang="en" data-knowledge-id="c5ab2da9-a1c7-4eeb-9bd1-bf3a085fc27f">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="../../dist/node_modules/bootstrap/dist/css/bootstrap.css">
+      <link rel="stylesheet" href="../../dist/bootstrap_theme.css">
+      <link rel="stylesheet" href="../../dist/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+      <link rel="stylesheet" href="../../dist/style.css">
+    <title>Cloudy API: BASH Test Functions | Cloudy BASH Framework</title>
+</head>
+<body class="my-5">
+
+<header class="header bg-light fixed-top p-2 pt-1">
+  <div class="container-md">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="header__breadcrumbs flex-shrink-0 flex-grow-1 me-3">
+        <nav aria-label="breadcrumb">
+  <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item">
+      <a class="fw-bold" href="../../index.html">Cloudy BASH Framework</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a class="fw-bold" href="#" data-bs-toggle="offcanvas"
+         data-bs-target="#table-of-contents"
+         aria-controls="table-of-contents">TOC</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a href="readme.html">About</a></li>
+  </ol>
+</nav>
+
+      </div>
+      <div class="header__tags me-3">  </div>
+      <div class="header__page-numbers flex-shrink-1">9
+        / 51</div>
+    </div>
+  </div>
+</header>
+
+<main class="container-md flex-column">
+  <div class="row mb-5 pt-5">
+    <article class="col">
+      <h1 class="mb-4 text-primary">Cloudy API: BASH Test Functions</h1>
+      <div class="function-index">
+      <a href="#assert_contains">assert_contains</a>
+      <a href="#assert_count">assert_count</a>
+      <a href="#assert_empty">assert_empty</a>
+      <a href="#assert_equals">assert_equals</a>
+      <a href="#assert_exit_status">assert_exit_status</a>
+      <a href="#assert_false">assert_false</a>
+      <a href="#assert_file_exists">assert_file_exists</a>
+      <a href="#assert_file_not_exists">assert_file_not_exists</a>
+      <a href="#assert_greater_than">assert_greater_than</a>
+      <a href="#assert_internal_type">assert_internal_type</a>
+      <a href="#assert_less_than">assert_less_than</a>
+      <a href="#assert_not_contains">assert_not_contains</a>
+      <a href="#assert_not_empty">assert_not_empty</a>
+      <a href="#assert_not_equals">assert_not_equals</a>
+      <a href="#assert_not_internal_type">assert_not_internal_type</a>
+      <a href="#assert_reg_exp">assert_reg_exp</a>
+      <a href="#assert_same">assert_same</a>
+      <a href="#assert_true">assert_true</a>
+      <a href="#create_test_sandbox">create_test_sandbox</a>
+      <a href="#delete_test_sandbox">delete_test_sandbox</a>
+      <a href="#do_tests_in">do_tests_in</a>
+      <a href="#exit_with_test_results">exit_with_test_results</a>
+      <a href="#is_being_tested">is_being_tested</a>
+      <a href="#mark_test_skipped">mark_test_skipped</a>
+      <a href="#test_fail_because">test_fail_because</a>
+  </div>
+
+<div class="function-list">
+      <a name="assert_contains"></a>
+    <h2>assert_contains()</h2>
+    <p class="summary">Assert that an array contains a value.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>mixed</em> The value to search for.</li>
+                  <li><code></code> <em>string</em> The name of a global variable.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if assertion is true.</li>
+                  <li><code>1</code> if assertion fails.</li>
+              </ul>
+        
+        <hr/>
+      <a name="assert_count"></a>
+    <h2>assert_count()</h2>
+    <p class="summary">Assert that an array has a given number of elements.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>int</em> The expected length.</li>
+                  <li><code></code> <em>string</em> The name of a global array.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if assertion is true.</li>
+                  <li><code>1</code> if assertion fails.</li>
+              </ul>
+        
+        <hr/>
+      <a name="assert_empty"></a>
+    <h2>assert_empty()</h2>
+    <p class="summary">Assert that variable by name is empty.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The name of a global variable.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if assertion is true.</li>
+                  <li><code>1</code> if assertion fails.</li>
+              </ul>
+        
+        <hr/>
+      <a name="assert_equals"></a>
+    <h2>assert_equals()</h2>
+    <p class="summary">Assert that two values are equal in value but not necessarily type.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>mixed</em> The expected value.</li>
+                  <li><code></code> <em>mixed</em> The value to test.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if assertion is true.</li>
+                  <li><code>1</code> if assertion fails.</li>
+              </ul>
+        
+        <hr/>
+      <a name="assert_exit_status"></a>
+    <h2>assert_exit_status()</h2>
+    <p class="summary">$1 The expected exit code of the previous command.</p>
+    
+                        
+          <pre><code>Here are three examples of how to call...
+
+@code
+  array_sort; assert_exit_status 0
+  $(has_option &#039;name&#039;); assert_exit_status 0
+  has_option &#039;name&#039; &gt; /dev/null; assert_exit_status 0
+@endcode</code></pre>
+        <hr/>
+      <a name="assert_false"></a>
+    <h2>assert_false()</h2>
+    <p class="summary">Assert that a value equals &quot;false&quot; or &quot;FALSE&quot;.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>mixed</em> The value to test.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if assertion is true.</li>
+                  <li><code>1</code> if assertion fails.</li>
+              </ul>
+        
+        <hr/>
+      <a name="assert_file_exists"></a>
+    <h2>assert_file_exists()</h2>
+    <p class="summary">Assert that a file exists by path.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The filepath of the expected file.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if assertion is true.</li>
+                  <li><code>1</code> if assertion fails.</li>
+              </ul>
+        
+        <hr/>
+      <a name="assert_file_not_exists"></a>
+    <h2>assert_file_not_exists()</h2>
+    <p class="summary">Assert that a file does not exist at path.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The filepath to ensure does not exist.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if assertion is true.</li>
+                  <li><code>1</code> if assertion fails.</li>
+              </ul>
+        
+        <hr/>
+      <a name="assert_greater_than"></a>
+    <h2>assert_greater_than()</h2>
+    <p class="summary">Asset one number is greater than another.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>mixed</em> The target value.</li>
+                  <li><code></code> <em>number</em> The number than should be greater than the target.</li>
+              </ul>
+                    
+          <pre><code>Returns 0 if  $2 is &gt; $1</code></pre>
+        <hr/>
+      <a name="assert_internal_type"></a>
+    <h2>assert_internal_type()</h2>
+    <p class="summary">Assert that an global variable is of a given type.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> stringThe expected type.</li>
+                  <li><code></code> <em>string</em> The name of a global variable.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if assertion is true.</li>
+                  <li><code>1</code> if assertion fails.</li>
+              </ul>
+        
+        <hr/>
+      <a name="assert_less_than"></a>
+    <h2>assert_less_than()</h2>
+    <p class="summary">Asset one number is less than another.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>mixed</em> The target value.</li>
+                  <li><code></code> <em>number</em> The number than should be less than the target.</li>
+              </ul>
+                    
+          <pre><code>Returns 0 if  $2 is &lt; $1</code></pre>
+        <hr/>
+      <a name="assert_not_contains"></a>
+    <h2>assert_not_contains()</h2>
+    <p class="summary">Assert that an array does not contain a value.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>mixed</em> The value to search for.</li>
+                  <li><code></code> <em>string</em> The name of a global variable.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if assertion is true.</li>
+                  <li><code>1</code> if assertion fails.</li>
+              </ul>
+        
+        <hr/>
+      <a name="assert_not_empty"></a>
+    <h2>assert_not_empty()</h2>
+    <p class="summary">Assert that variable by name is not empty.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>mixed</em> The actual value</li>
+                  <li><code></code> <em>string</em> A custom message on failure.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if assertion is true.</li>
+                  <li><code>1</code> if assertion fails.</li>
+              </ul>
+        
+        <hr/>
+      <a name="assert_not_equals"></a>
+    <h2>assert_not_equals()</h2>
+    <p class="summary">Assert that two values are not the same.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>mixed</em> The expected value.</li>
+                  <li><code></code> <em>mixed</em> The value to test.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if assertion is true.</li>
+                  <li><code>1</code> if assertion fails.</li>
+              </ul>
+        
+        <hr/>
+      <a name="assert_not_internal_type"></a>
+    <h2>assert_not_internal_type()</h2>
+    <p class="summary">Assert that an global variable is not of a given type.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> stringThe expected type.</li>
+                  <li><code></code> <em>string</em> The name of a global variable.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if assertion is true.</li>
+                  <li><code>1</code> if assertion fails.</li>
+              </ul>
+        
+        <hr/>
+      <a name="assert_reg_exp"></a>
+    <h2>assert_reg_exp()</h2>
+    <p class="summary">Assert that a value matches a regular expression.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The regular expression.</li>
+                  <li><code></code> <em>mixed</em> The value to match against the regexp.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if assertion is true.</li>
+                  <li><code>1</code> if assertion fails.</li>
+              </ul>
+        
+        <hr/>
+      <a name="assert_same"></a>
+    <h2>assert_same()</h2>
+    <p class="summary">Assert that two values are equal and of the same type.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>mixed</em> The expected value.</li>
+                  <li><code></code> <em>mixed</em> The value to test.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if assertion is true.</li>
+                  <li><code>1</code> if assertion fails.</li>
+              </ul>
+        
+          <pre><code>@todo is this needed, since bash is untyped?</code></pre>
+        <hr/>
+      <a name="assert_true"></a>
+    <h2>assert_true()</h2>
+    <p class="summary">Assert that a value equals &quot;true&quot; or &quot;TRUE&quot;.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>mixed</em> The value to test.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if assertion is true.</li>
+                  <li><code>1</code> if assertion fails.</li>
+              </ul>
+        
+        <hr/>
+      <a name="create_test_sandbox"></a>
+    <h2>create_test_sandbox()</h2>
+    <p class="summary">Create a sandbox for testing.</p>
+    
+                        
+          <pre><code>Some global variables need to be stashed during testing, such as those to do with the exit system.@see delete_test_sandbox Returns nothing.</code></pre>
+        <hr/>
+      <a name="delete_test_sandbox"></a>
+    <h2>delete_test_sandbox()</h2>
+    <p class="summary">Remove the sandboxed variables.</p>
+    
+                        
+          <pre><code>@see create_test_sandbox Returns nothing.</code></pre>
+        <hr/>
+      <a name="do_tests_in"></a>
+    <h2>do_tests_in()</h2>
+    <p class="summary">Perform all tests in a file.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The path to a test file.</li>
+              </ul>
+              Options:
+      <ul class="function-list__options">
+                  <li><code>--continue</code> Use this for subsequent calls to this function where you</li>
+              </ul>
+                
+          <pre><code>want the results to be added together; that is to say, use this so as NOT to reset the test count, failure count, etc. Returns 0 if all tests pass; 1 otherwise.</code></pre>
+        <hr/>
+      <a name="exit_with_test_results"></a>
+    <h2>exit_with_test_results()</h2>
+    <p class="summary">Echo test results and exit.</p>
+    
+                        
+          <pre><code>Returns 0 if all tests pass; 1 otherwise.</code></pre>
+        <hr/>
+      <a name="is_being_tested"></a>
+    <h2>is_being_tested()</h2>
+    <p class="summary">Determine if code is being run from inside a test.</p>
+    
+                        
+          <pre><code>Returns 0 if inside test; 1 if not.</code></pre>
+        <hr/>
+      <a name="mark_test_skipped"></a>
+    <h2>mark_test_skipped()</h2>
+    <p class="summary">Mark a single test as skipped</p>
+    
+                        
+          <pre><code>Returns nothing.</code></pre>
+        <hr/>
+      <a name="test_fail_because"></a>
+    <h2>test_fail_because()</h2>
+    <p class="summary">#actual} -eq 0 ] &amp;&amp; actual=&#039;&quot;&quot;&#039;</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The reason for the failure.</li>
+                  <li><code></code> <em>string</em> A default value if $1 is empty.</li>
+              </ul>
+                    
+          <pre><code>-gt 2 ]] &amp;&amp; expected=&quot;$(echo_green &quot;$3&quot;)&quot;-gt 2 ]] &amp;&amp; because=&quot;$because expected $expected&quot; Add a failure message to be shown on exit.
+
+@code
+  test_fail_because &quot;$reason&quot; &quot;Some default if $reason is empty&quot;
+@endcode Returns 1 if both $message and $default are empty.</code></pre>
+        <hr/>
+  </div>
+    </article>
+  </div>
+</main>
+
+  <footer class="footer d-flex justify-content-center">
+    <div class="flex-column justify-content-center">
+            Last Update: <strong>8/7/2024</strong>
+    </div>
+  </footer>
+
+
+<nav class="nav d-flex justify-content-center align-items-center
+  fixed-bottom">
+  <div class="btn-group flex-fill">
+              <a href="readme.html" class="btn nav__prev-chapter btn-secondary"><i class="bi
+      bi-caret-left-fill"></i> Cloudy</a>
+  
+    
+              <a href="api_functions.html" class="btn nav__prev-page js-nav__prev-page
+    btn-primary"><i class="bi
+      bi-caret-left-fill"></i></a>
+  
+    
+    <a class="nav__toc btn btn-light" href="#"
+       data-bs-toggle="offcanvas"
+       data-bs-target="#table-of-contents"
+       aria-controls="table-of-contents"><i class="bi
+           bi-list-ol"></i></a>
+    
+              <a href="api_functions_php.html" class="btn nav__next-page js-nav__next-page
+    btn-primary"><i class="bi bi-file-earmark"></i> Cloudy API: PHP Functions <i class="bi
+       bi-caret-right-fill"></i></a>
+  
+    
+              <span class="btn nav__next-chapter btn-secondary "></span>
+  
+  </div>
+</nav>
+
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="table-of-contents"
+     aria-labelledby="table-of-contents__title" data-bs-keyboard="true">
+  <div class="offcanvas-header">
+    <h1 class="h6 offcanvas-title js-chapter-list-title"
+        id="table-of-contents__title">All
+      Chapters
+      &amp; Pages</h1>
+    <h1 class="d-none h6 offcanvas-title js-search-results-title"
+        id="table-of-contents__title">Search Results</h1>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+          <input class="js-search form-control mb-4" type="search"
+             placeholder="Search docs..."
+             aria-label="Search">
+      <div class="js-search-results d-none">
+        <h2 class="h4 mt-4">Matched Pages</h2>
+        <ol class="list-unstyled">
+                                              <li data-page="readme" value="1">
+      <a class="js-page-link" href="readme.html">Cloudy<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="lexicon" value="2">
+      <a class="js-page-link" href="lexicon.html">Cloudy Lexicon<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="globals" value="3">
+      <a class="js-page-link" href="globals.html">Global Variables<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="filepaths" value="4">
+      <a class="js-page-link" href="filepaths.html">Filepaths<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="cloudy_core_testing" value="5">
+      <a class="js-page-link" href="cloudy_core_testing.html">Cloudy Core Testing<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="changelog" value="6">
+      <a class="js-page-link" href="changelog.html">Cloudy Changelog<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="cloudy_basepath" value="7">
+      <a class="js-page-link" href="cloudy_basepath.html">Cloudy Basepath<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="api_functions" value="8">
+      <a class="js-page-link" href="api_functions.html">Cloudy API: BASH Functions<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="test_functions" value="9">
+      <a class="js-page-link" href="test_functions.html">Cloudy API: BASH Test Functions<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="api_functions_php" value="10">
+      <a class="js-page-link" href="api_functions_php.html">Cloudy API: PHP Functions<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                                          <li data-page="php_bash_side" value="11">
+      <a class="js-page-link" href="../php/php_bash_side.html">Writing Cloudy PHP: BASH Perspective<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="php_php_side" value="12">
+      <a class="js-page-link" href="../php/php_php_side.html">Writing Cloudy PHP: PHP Perspective<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="php_envvars" value="13">
+      <a class="js-page-link" href="../php/php_envvars.html">Sharing Data Between BASH and PHP<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="php_errors" value="14">
+      <a class="js-page-link" href="../php/php_errors.html">Error Handling in Cloudy PHP<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="php_example" value="15">
+      <a class="js-page-link" href="../php/php_example.html">Writing Cloudy PHP (Complete Example)<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="php_version" value="16">
+      <a class="js-page-link" href="../php/php_version.html">Setting the PHP Version Used by Cloudy<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="composer" value="17">
+      <a class="js-page-link" href="../php/composer.html">Building a Cloudy-based App w/ Composer<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                                          <li data-page="arrays" value="18">
+      <a class="js-page-link" href="../bash/arrays.html">Arrays<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="strings" value="19">
+      <a class="js-page-link" href="../bash/strings.html">String Manipulation<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                                          <li data-page="functions" value="20">
+      <a class="js-page-link" href="../examples/functions.html">Functions<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="menus_input" value="21">
+      <a class="js-page-link" href="../examples/menus_input.html">User Input and Menus<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="plugins" value="22">
+      <a class="js-page-link" href="../examples/plugins.html">Single File Plugins Pattern<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="route_access" value="23">
+      <a class="js-page-link" href="../examples/route_access.html">Command Access<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                                          <li data-page="app_root" value="24">
+      <a class="js-page-link" href="../usage/app_root.html">Application Root<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="arguments" value="25">
+      <a class="js-page-link" href="../usage/arguments.html">This script "arguments"<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="command" value="26">
+      <a class="js-page-link" href="../usage/command.html">The Script "Command"<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="configuration" value="27">
+      <a class="js-page-link" href="../usage/configuration.html">Configuration<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="conventions" value="28">
+      <a class="js-page-link" href="../usage/conventions.html">Cloudy Conventions<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="development" value="29">
+      <a class="js-page-link" href="../usage/development.html">Development Tools<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="documenting" value="30">
+      <a class="js-page-link" href="../usage/documenting.html">Documenting Code<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="error_handling" value="31">
+      <a class="js-page-link" href="../usage/error_handling.html">Exit Status<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="events" value="32">
+      <a class="js-page-link" href="../usage/events.html">Events (Hooks)<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="installer" value="33">
+      <a class="js-page-link" href="../usage/installer.html">The Initialize API<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="lists" value="34">
+      <a class="js-page-link" href="../usage/lists.html">Lists<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="localize" value="35">
+      <a class="js-page-link" href="../usage/localize.html">Localization/Translation<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="logging" value="36">
+      <a class="js-page-link" href="../usage/logging.html">Logging to File<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="menus" value="37">
+      <a class="js-page-link" href="../usage/menus.html">Menus<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="options" value="38">
+      <a class="js-page-link" href="../usage/options.html">The Script "Options"<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="packages" value="39">
+      <a class="js-page-link" href="../usage/packages.html">Cloudy Packages<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="tables" value="40">
+      <a class="js-page-link" href="../usage/tables.html">Tables (Tabular Output)<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="tempdir" value="41">
+      <a class="js-page-link" href="../usage/tempdir.html">Using a Temporary Directory<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="testing" value="42">
+      <a class="js-page-link" href="../usage/testing.html">Unit Testing<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="version" value="43">
+      <a class="js-page-link" href="../usage/version.html">Script Version<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="yaml" value="44">
+      <a class="js-page-link" href="../usage/yaml.html">YAML in BASH<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                                          <li data-page="empty_config" value="45">
+      <a class="js-page-link" href="../trouble/empty_config.html">`$CLOUDY_CONFIG_JSON cannot be empty...`<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="autoloader" value="46">
+      <a class="js-page-link" href="../trouble/autoloader.html">Composer autoloader not found<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                                          <li data-page="upgrade_v2" value="47">
+      <a class="js-page-link" href="../developers/upgrade_v2.html">Upgrade Path to Cloudy 2.0.0<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="variable_scopes" value="48">
+      <a class="js-page-link" href="../developers/variable_scopes.html">Sourcing Scripts<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="dev_configuration" value="49">
+      <a class="js-page-link" href="../developers/dev_configuration.html">Understanding Configuration<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="relocating_cloudy" value="50">
+      <a class="js-page-link" href="../developers/relocating_cloudy.html">Relocating Cloudy<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                                          <li data-page="writing_scripts" value="51">
+      <a class="js-page-link" href="../quick_start/writing_scripts.html">Writing Your First Cloudy Script<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                              </ol>
+      </div>
+        
+    <div class="js-chapter-list">
+              <h2 class="h4 mt-4">About</h2>
+        <ol>
+                                <li data-page="readme" value="1">
+      <a class="js-page-link" href="readme.html">Cloudy</a>
+    </li>
+  
+                                <li data-page="lexicon" value="2">
+      <a class="js-page-link" href="lexicon.html">Cloudy Lexicon</a>
+    </li>
+  
+                                <li data-page="globals" value="3">
+      <a class="js-page-link" href="globals.html">Global Variables</a>
+    </li>
+  
+                                <li data-page="filepaths" value="4">
+      <a class="js-page-link" href="filepaths.html">Filepaths</a>
+    </li>
+  
+                                <li data-page="cloudy_core_testing" value="5">
+      <a class="js-page-link" href="cloudy_core_testing.html">Cloudy Core Testing</a>
+    </li>
+  
+                                <li data-page="changelog" value="6">
+      <a class="js-page-link" href="changelog.html">Cloudy Changelog</a>
+    </li>
+  
+                                <li data-page="cloudy_basepath" value="7">
+      <a class="js-page-link" href="cloudy_basepath.html">Cloudy Basepath</a>
+    </li>
+  
+                                <li data-page="api_functions" value="8">
+      <a class="js-page-link" href="api_functions.html">Cloudy API: BASH Functions</a>
+    </li>
+  
+                                <li data-page="test_functions" value="9">
+      <a class="js-page-link" href="test_functions.html">Cloudy API: BASH Test Functions</a>
+    </li>
+  
+                                <li data-page="api_functions_php" value="10">
+      <a class="js-page-link" href="api_functions_php.html">Cloudy API: PHP Functions</a>
+    </li>
+  
+                  </ol>
+              <h2 class="h4 mt-4">PHP in Cloudy</h2>
+        <ol>
+                                <li data-page="php_bash_side" value="11">
+      <a class="js-page-link" href="../php/php_bash_side.html">Writing Cloudy PHP: BASH Perspective</a>
+    </li>
+  
+                                <li data-page="php_php_side" value="12">
+      <a class="js-page-link" href="../php/php_php_side.html">Writing Cloudy PHP: PHP Perspective</a>
+    </li>
+  
+                                <li data-page="php_envvars" value="13">
+      <a class="js-page-link" href="../php/php_envvars.html">Sharing Data Between BASH and PHP</a>
+    </li>
+  
+                                <li data-page="php_errors" value="14">
+      <a class="js-page-link" href="../php/php_errors.html">Error Handling in Cloudy PHP</a>
+    </li>
+  
+                                <li data-page="php_example" value="15">
+      <a class="js-page-link" href="../php/php_example.html">Writing Cloudy PHP (Complete Example)</a>
+    </li>
+  
+                                <li data-page="php_version" value="16">
+      <a class="js-page-link" href="../php/php_version.html">Setting the PHP Version Used by Cloudy</a>
+    </li>
+  
+                                <li data-page="composer" value="17">
+      <a class="js-page-link" href="../php/composer.html">Building a Cloudy-based App w/ Composer</a>
+    </li>
+  
+                  </ol>
+              <h2 class="h4 mt-4">BASH</h2>
+        <ol>
+                                <li data-page="arrays" value="18">
+      <a class="js-page-link" href="../bash/arrays.html">Arrays</a>
+    </li>
+  
+                                <li data-page="strings" value="19">
+      <a class="js-page-link" href="../bash/strings.html">String Manipulation</a>
+    </li>
+  
+                  </ol>
+              <h2 class="h4 mt-4">Code Examples</h2>
+        <ol>
+                                <li data-page="functions" value="20">
+      <a class="js-page-link" href="../examples/functions.html">Functions</a>
+    </li>
+  
+                                <li data-page="menus_input" value="21">
+      <a class="js-page-link" href="../examples/menus_input.html">User Input and Menus</a>
+    </li>
+  
+                                <li data-page="plugins" value="22">
+      <a class="js-page-link" href="../examples/plugins.html">Single File Plugins Pattern</a>
+    </li>
+  
+                                <li data-page="route_access" value="23">
+      <a class="js-page-link" href="../examples/route_access.html">Command Access</a>
+    </li>
+  
+                  </ol>
+              <h2 class="h4 mt-4">Usage</h2>
+        <ol>
+                                <li data-page="app_root" value="24">
+      <a class="js-page-link" href="../usage/app_root.html">Application Root</a>
+    </li>
+  
+                                <li data-page="arguments" value="25">
+      <a class="js-page-link" href="../usage/arguments.html">This script "arguments"</a>
+    </li>
+  
+                                <li data-page="command" value="26">
+      <a class="js-page-link" href="../usage/command.html">The Script "Command"</a>
+    </li>
+  
+                                <li data-page="configuration" value="27">
+      <a class="js-page-link" href="../usage/configuration.html">Configuration</a>
+    </li>
+  
+                                <li data-page="conventions" value="28">
+      <a class="js-page-link" href="../usage/conventions.html">Cloudy Conventions</a>
+    </li>
+  
+                                <li data-page="development" value="29">
+      <a class="js-page-link" href="../usage/development.html">Development Tools</a>
+    </li>
+  
+                                <li data-page="documenting" value="30">
+      <a class="js-page-link" href="../usage/documenting.html">Documenting Code</a>
+    </li>
+  
+                                <li data-page="error_handling" value="31">
+      <a class="js-page-link" href="../usage/error_handling.html">Exit Status</a>
+    </li>
+  
+                                <li data-page="events" value="32">
+      <a class="js-page-link" href="../usage/events.html">Events (Hooks)</a>
+    </li>
+  
+                                <li data-page="installer" value="33">
+      <a class="js-page-link" href="../usage/installer.html">The Initialize API</a>
+    </li>
+  
+                                <li data-page="lists" value="34">
+      <a class="js-page-link" href="../usage/lists.html">Lists</a>
+    </li>
+  
+                                <li data-page="localize" value="35">
+      <a class="js-page-link" href="../usage/localize.html">Localization/Translation</a>
+    </li>
+  
+                                <li data-page="logging" value="36">
+      <a class="js-page-link" href="../usage/logging.html">Logging to File</a>
+    </li>
+  
+                                <li data-page="menus" value="37">
+      <a class="js-page-link" href="../usage/menus.html">Menus</a>
+    </li>
+  
+                                <li data-page="options" value="38">
+      <a class="js-page-link" href="../usage/options.html">The Script "Options"</a>
+    </li>
+  
+                                <li data-page="packages" value="39">
+      <a class="js-page-link" href="../usage/packages.html">Cloudy Packages</a>
+    </li>
+  
+                                <li data-page="tables" value="40">
+      <a class="js-page-link" href="../usage/tables.html">Tables (Tabular Output)</a>
+    </li>
+  
+                                <li data-page="tempdir" value="41">
+      <a class="js-page-link" href="../usage/tempdir.html">Using a Temporary Directory</a>
+    </li>
+  
+                                <li data-page="testing" value="42">
+      <a class="js-page-link" href="../usage/testing.html">Unit Testing</a>
+    </li>
+  
+                                <li data-page="version" value="43">
+      <a class="js-page-link" href="../usage/version.html">Script Version</a>
+    </li>
+  
+                                <li data-page="yaml" value="44">
+      <a class="js-page-link" href="../usage/yaml.html">YAML in BASH</a>
+    </li>
+  
+                  </ol>
+              <h2 class="h4 mt-4">Troubleshooting</h2>
+        <ol>
+                                <li data-page="empty_config" value="45">
+      <a class="js-page-link" href="../trouble/empty_config.html">`$CLOUDY_CONFIG_JSON cannot be empty...`</a>
+    </li>
+  
+                                <li data-page="autoloader" value="46">
+      <a class="js-page-link" href="../trouble/autoloader.html">Composer autoloader not found</a>
+    </li>
+  
+                  </ol>
+              <h2 class="h4 mt-4">Developers</h2>
+        <ol>
+                                <li data-page="upgrade_v2" value="47">
+      <a class="js-page-link" href="../developers/upgrade_v2.html">Upgrade Path to Cloudy 2.0.0</a>
+    </li>
+  
+                                <li data-page="variable_scopes" value="48">
+      <a class="js-page-link" href="../developers/variable_scopes.html">Sourcing Scripts</a>
+    </li>
+  
+                                <li data-page="dev_configuration" value="49">
+      <a class="js-page-link" href="../developers/dev_configuration.html">Understanding Configuration</a>
+    </li>
+  
+                                <li data-page="relocating_cloudy" value="50">
+      <a class="js-page-link" href="../developers/relocating_cloudy.html">Relocating Cloudy</a>
+    </li>
+  
+                  </ol>
+              <h2 class="h4 mt-4">Quick Start</h2>
+        <ol>
+                                <li data-page="writing_scripts" value="51">
+      <a class="js-page-link" href="../quick_start/writing_scripts.html">Writing Your First Cloudy Script</a>
+    </li>
+  
+                  </ol>
+          </div>
+  </div>
+</div>
+<div class="modal fade" id="modal" tabindex="-1"
+     aria-labelledby="modal-title" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="js-modal-title modal-title" id="modal-title"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="mt-1 mb-4">
+                                  <span type="button" class="js-tag-filter badge rounded-pill" data-tag="ABOUT" aria-pressed="false">ABOUT</span>
+                                  <span type="button" class="js-tag-filter badge rounded-pill" data-tag="BASH" aria-pressed="false">BASH</span>
+                                  <span type="button" class="js-tag-filter badge rounded-pill" data-tag="COMPOSER" aria-pressed="false">COMPOSER</span>
+                                  <span type="button" class="js-tag-filter badge rounded-pill" data-tag="CONFIG" aria-pressed="false">CONFIG</span>
+                                  <span type="button" class="js-tag-filter badge rounded-pill" data-tag="DEPENDENCIES" aria-pressed="false">DEPENDENCIES</span>
+                                  <span type="button" class="js-tag-filter badge rounded-pill" data-tag="EXAMPLES" aria-pressed="false">EXAMPLES</span>
+                                  <span type="button" class="js-tag-filter badge rounded-pill" data-tag="INSTALLATION" aria-pressed="false">INSTALLATION</span>
+                                  <span type="button" class="js-tag-filter badge rounded-pill" data-tag="PHP" aria-pressed="false">PHP</span>
+                                  <span type="button" class="js-tag-filter badge rounded-pill" data-tag="QUICK_START" aria-pressed="false">QUICK_START</span>
+                                  <span type="button" class="js-tag-filter badge rounded-pill" data-tag="USAGE" aria-pressed="false">USAGE</span>
+                  </p>
+        
+                
+        <ul class="list-group list-group-flush">
+                                    <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;ABOUT&quot;]" href="readme.html">Cloudy</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="lexicon.html">Cloudy Lexicon</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;CONFIG&quot;,&quot;INSTALLATION&quot;]" href="globals.html">Global Variables</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="filepaths.html">Filepaths</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="cloudy_core_testing.html">Cloudy Core Testing</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;ABOUT&quot;]" href="changelog.html">Cloudy Changelog</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="cloudy_basepath.html">Cloudy Basepath</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="api_functions.html">Cloudy API: BASH Functions</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="test_functions.html">Cloudy API: BASH Test Functions</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="api_functions_php.html">Cloudy API: PHP Functions</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../php/php_bash_side.html">Writing Cloudy PHP: BASH Perspective</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../php/php_php_side.html">Writing Cloudy PHP: PHP Perspective</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../php/php_envvars.html">Sharing Data Between BASH and PHP</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../php/php_errors.html">Error Handling in Cloudy PHP</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../php/php_example.html">Writing Cloudy PHP (Complete Example)</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../php/php_version.html">Setting the PHP Version Used by Cloudy</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;COMPOSER&quot;,&quot;DEPENDENCIES&quot;,&quot;PHP&quot;,&quot;USAGE&quot;]" href="../php/composer.html">Building a Cloudy-based App w/ Composer</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;BASH&quot;]" href="../bash/arrays.html">Arrays</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;BASH&quot;]" href="../bash/strings.html">String Manipulation</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;EXAMPLES&quot;]" href="../examples/functions.html">Functions</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;EXAMPLES&quot;]" href="../examples/menus_input.html">User Input and Menus</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;EXAMPLES&quot;]" href="../examples/plugins.html">Single File Plugins Pattern</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;EXAMPLES&quot;]" href="../examples/route_access.html">Command Access</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/app_root.html">Application Root</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/arguments.html">This script &quot;arguments&quot;</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/command.html">The Script &quot;Command&quot;</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/configuration.html">Configuration</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/conventions.html">Cloudy Conventions</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/development.html">Development Tools</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/documenting.html">Documenting Code</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/error_handling.html">Exit Status</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/events.html">Events (Hooks)</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/installer.html">The Initialize API</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/lists.html">Lists</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/localize.html">Localization/Translation</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/logging.html">Logging to File</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/menus.html">Menus</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/options.html">The Script &quot;Options&quot;</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/packages.html">Cloudy Packages</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/tables.html">Tables (Tabular Output)</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/tempdir.html">Using a Temporary Directory</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/testing.html">Unit Testing</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/version.html">Script Version</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/yaml.html">YAML in BASH</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../trouble/empty_config.html">`$CLOUDY_CONFIG_JSON cannot be empty...`</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../trouble/autoloader.html">Composer autoloader not found</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../developers/upgrade_v2.html">Upgrade Path to Cloudy 2.0.0</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../developers/variable_scopes.html">Sourcing Scripts</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../developers/dev_configuration.html">Understanding Configuration</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../developers/relocating_cloudy.html">Relocating Cloudy</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;QUICK_START&quot;]" href="../quick_start/writing_scripts.html">Writing Your First Cloudy Script</a>
+                              </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="../../dist/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="../../dist/lunr.js"></script>
+  <script src="../../dist/knowledge.min.js"></script>
+
+</body>
+</html>

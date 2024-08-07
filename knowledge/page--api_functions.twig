@@ -1,0 +1,64 @@
+<h1>Cloudy API: BASH Functions</h1>
+<div class="function-index">
+  {% for function in api_functions %}
+    <a href="#{{ function.name }}">{{ function.name }}</a>
+  {% endfor %}
+</div>
+
+<div class="function-list">
+  {% for function in api_functions %}
+    <a name="{{ function.name }}"></a>
+    <h2>{{ function.name }}()</h2>
+    <p class="summary">{{ function.summary }}</p>
+    
+    {% if function.globals %}
+      Globals:
+      <ul class="function-list__globals">
+        {% for global in function.globals %}
+          <li><code>{{ global.name }}</code> <em>{{ global.type }}</em> {{
+            global.description }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% if function.parameters %}
+      Parameters:
+      <ul class="function-list__parameters">
+        {% for parameter in function.parameters %}
+          <li><code>{{ parameter.name }}</code> <em>{{ parameter.type }}</em> {{
+            parameter.description }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% if function.options %}
+      Options:
+      <ul class="function-list__options">
+        {% for option in function.options %}
+          <li><code>{{ option.name }}</code> {{ option
+            .description
+            }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% if function.echos %}
+      Echos:
+      <ul class="function-list__echos">
+        {% for echo in function.echos %}
+          <li>{{ echo.description }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% if function.returns %}
+      Returns:
+      <ul class="function-list__returns">
+        {% for return in function.returns %}
+          <li><code>{{ return.value }}</code> {{ return.description }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    
+    {% if function.description %}
+      <pre><code>{{ function.description }}</code></pre>
+    {% endif %}
+    <hr/>
+  {% endfor %}
+</div>

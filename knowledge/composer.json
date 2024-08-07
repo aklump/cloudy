@@ -1,0 +1,20 @@
+{
+  "require": {
+    "doctrine/lexer": "2.1.x-dev",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "AKlump\\CloudyDocumentation\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "AKlump\\CloudyDocumentation\\Tests\\Unit\\": "./tests_unit",
+      "AKlump\\Knowledge\\User\\": "./src"
+    }
+  }
+}

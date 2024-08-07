@@ -1,0 +1,58 @@
+page_order:
+  0: ''
+  about:
+    - readme
+    - lexicon
+    - globals
+    - filepaths
+    - cloudy_core_testing
+    - changelog
+    - cloudy_basepath
+  php:
+    - php_bash_side
+    - php_php_side
+    - php_envvars
+    - php_errors
+    - php_example
+    - php_version
+    - composer
+  bash:
+    - arrays
+    - strings
+  examples:
+    - functions
+    - menus_input
+    - plugins
+    - route_access
+  usage:
+    - app_root
+    - arguments
+    - command
+    - configuration
+    - conventions
+    - development
+    - documenting
+    - error_handling
+    - events
+    - installer
+    - lists
+    - localize
+    - logging
+    - menus
+    - options
+    - packages
+    - tables
+    - tempdir
+    - testing
+    - version
+    - yaml
+  trouble:
+    - empty_config
+    - autoloader
+  developers:
+    - upgrade_v2
+    - variable_scopes
+    - dev_configuration
+    - relocating_cloudy
+  quick_start:
+    - writing_scripts

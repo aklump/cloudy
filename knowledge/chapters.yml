@@ -1,0 +1,25 @@
+chapter_info:
+  -
+    id: about
+    title: About
+  -
+    id: bash
+    title: BASH
+  -
+    id: examples
+    title: 'Code Examples'
+  -
+    id: quick_start
+    title: 'Quick Start'
+  -
+    id: usage
+    title: Usage
+  -
+    id: trouble
+    title: Troubleshooting
+  -
+    id: developers
+    title: Developers
+  -
+    id: php
+    title: 'PHP in Cloudy'

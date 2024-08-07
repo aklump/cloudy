@@ -1,0 +1,14 @@
+-
+  format: markdown
+  output: ../
+  special:
+    - copy images
+  pages:
+    - '**/README.md'
+    - '**/CHANGELOG.md'
+-
+  format: website
+  output: ../docs
+  css:
+    - style.css
+

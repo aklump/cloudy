@@ -1,0 +1,2861 @@
+<!doctype html>
+<html lang="en" data-knowledge-id="c5ab2da9-a1c7-4eeb-9bd1-bf3a085fc27f">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="../../dist/node_modules/bootstrap/dist/css/bootstrap.css">
+      <link rel="stylesheet" href="../../dist/bootstrap_theme.css">
+      <link rel="stylesheet" href="../../dist/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+      <link rel="stylesheet" href="../../dist/style.css">
+    <title>Cloudy API: BASH Functions | Cloudy BASH Framework</title>
+</head>
+<body class="my-5">
+
+<header class="header bg-light fixed-top p-2 pt-1">
+  <div class="container-md">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="header__breadcrumbs flex-shrink-0 flex-grow-1 me-3">
+        <nav aria-label="breadcrumb">
+  <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item">
+      <a class="fw-bold" href="../../index.html">Cloudy BASH Framework</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a class="fw-bold" href="#" data-bs-toggle="offcanvas"
+         data-bs-target="#table-of-contents"
+         aria-controls="table-of-contents">TOC</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a href="readme.html">About</a></li>
+  </ol>
+</nav>
+
+      </div>
+      <div class="header__tags me-3">  </div>
+      <div class="header__page-numbers flex-shrink-1">8
+        / 51</div>
+    </div>
+  </div>
+</header>
+
+<main class="container-md flex-column">
+  <div class="row mb-5 pt-5">
+    <article class="col">
+      <h1 class="mb-4 text-primary">Cloudy API: BASH Functions</h1>
+      <div class="function-index">
+      <a href="#array_csv">array_csv</a>
+      <a href="#array_dedupe">array_dedupe</a>
+      <a href="#array_has_value">array_has_value</a>
+      <a href="#array_join">array_join</a>
+      <a href="#array_map__callback ">array_map__callback </a>
+      <a href="#array_sort">array_sort</a>
+      <a href="#array_sort_by_item_length">array_sort_by_item_length</a>
+      <a href="#choose">choose</a>
+      <a href="#clear_task">clear_task</a>
+      <a href="#confirm">confirm</a>
+      <a href="#create_uuid">create_uuid</a>
+      <a href="#date8601">date8601</a>
+      <a href="#debug">debug</a>
+      <a href="#dir_has_files">dir_has_files</a>
+      <a href="#echo_blue">echo_blue</a>
+      <a href="#echo_blue_list">echo_blue_list</a>
+      <a href="#echo_elapsed">echo_elapsed</a>
+      <a href="#echo_error">echo_error</a>
+      <a href="#echo_fail">echo_fail</a>
+      <a href="#echo_green">echo_green</a>
+      <a href="#echo_green_highlight">echo_green_highlight</a>
+      <a href="#echo_green_list">echo_green_list</a>
+      <a href="#echo_heading">echo_heading</a>
+      <a href="#echo_key_value">echo_key_value</a>
+      <a href="#echo_list">echo_list</a>
+      <a href="#echo_pass">echo_pass</a>
+      <a href="#echo_red">echo_red</a>
+      <a href="#echo_red_highlight">echo_red_highlight</a>
+      <a href="#echo_red_list">echo_red_list</a>
+      <a href="#echo_scream">echo_scream</a>
+      <a href="#echo_see_log">echo_see_log</a>
+      <a href="#echo_slim_table">echo_slim_table</a>
+      <a href="#echo_table">echo_table</a>
+      <a href="#echo_task">echo_task</a>
+      <a href="#echo_task_completed">echo_task_completed</a>
+      <a href="#echo_task_failed">echo_task_failed</a>
+      <a href="#echo_title">echo_title</a>
+      <a href="#echo_warning">echo_warning</a>
+      <a href="#echo_white">echo_white</a>
+      <a href="#echo_yellow">echo_yellow</a>
+      <a href="#echo_yellow_highlight">echo_yellow_highlight</a>
+      <a href="#echo_yellow_list">echo_yellow_list</a>
+      <a href="#event_dispatch">event_dispatch</a>
+      <a href="#event_listen">event_listen</a>
+      <a href="#exit_with_cache_clear">exit_with_cache_clear</a>
+      <a href="#exit_with_failure">exit_with_failure</a>
+      <a href="#exit_with_failure_code_only">exit_with_failure_code_only</a>
+      <a href="#exit_with_failure_if_config_is_not_path">exit_with_failure_if_config_is_not_path</a>
+      <a href="#exit_with_failure_if_empty_config">exit_with_failure_if_empty_config</a>
+      <a href="#exit_with_help">exit_with_help</a>
+      <a href="#exit_with_init">exit_with_init</a>
+      <a href="#exit_with_success">exit_with_success</a>
+      <a href="#exit_with_success_code_only">exit_with_success_code_only</a>
+      <a href="#exit_with_success_elapsed">exit_with_success_elapsed</a>
+      <a href="#fail">fail</a>
+      <a href="#fail_because">fail_because</a>
+      <a href="#function_exists">function_exists</a>
+      <a href="#get_command">get_command</a>
+      <a href="#get_command_arg">get_command_arg</a>
+      <a href="#get_command_args">get_command_args</a>
+      <a href="#get_config">get_config</a>
+      <a href="#get_config_as">get_config_as</a>
+      <a href="#get_config_keys">get_config_keys</a>
+      <a href="#get_config_keys_as">get_config_keys_as</a>
+      <a href="#get_config_path">get_config_path</a>
+      <a href="#get_config_path_as">get_config_path_as</a>
+      <a href="#get_installed">get_installed</a>
+      <a href="#get_option">get_option</a>
+      <a href="#get_title">get_title</a>
+      <a href="#get_version">get_version</a>
+      <a href="#handle_init">handle_init</a>
+      <a href="#has_command">has_command</a>
+      <a href="#has_command_args">has_command_args</a>
+      <a href="#has_failed">has_failed</a>
+      <a href="#has_option">has_option</a>
+      <a href="#has_options">has_options</a>
+      <a href="#implement_cloudy_basic">implement_cloudy_basic</a>
+      <a href="#is_installed">is_installed</a>
+      <a href="#json_get">json_get</a>
+      <a href="#json_get_value">json_get_value</a>
+      <a href="#json_load_file">json_load_file</a>
+      <a href="#json_set">json_set</a>
+      <a href="#list_add_item">list_add_item</a>
+      <a href="#list_clear">list_clear</a>
+      <a href="#list_has_items">list_has_items</a>
+      <a href="#ltrim">ltrim</a>
+      <a href="#md5_string">md5_string</a>
+      <a href="#parse_args">parse_args</a>
+      <a href="#path_extension">path_extension</a>
+      <a href="#path_filename">path_filename</a>
+      <a href="#path_filesize">path_filesize</a>
+      <a href="#path_is_absolute">path_is_absolute</a>
+      <a href="#path_is_yaml">path_is_yaml</a>
+      <a href="#path_make_absolute">path_make_absolute</a>
+      <a href="#path_make_canonical">path_make_canonical</a>
+      <a href="#path_make_pretty">path_make_pretty</a>
+      <a href="#path_make_relative">path_make_relative</a>
+      <a href="#path_mtime">path_mtime</a>
+      <a href="#rtrim">rtrim</a>
+      <a href="#string_lower">string_lower</a>
+      <a href="#string_repeat">string_repeat</a>
+      <a href="#string_split">string_split</a>
+      <a href="#string_ucfirst">string_ucfirst</a>
+      <a href="#string_upper">string_upper</a>
+      <a href="#succeed_because">succeed_because</a>
+      <a href="#table_add_row">table_add_row</a>
+      <a href="#table_clear">table_clear</a>
+      <a href="#table_has_rows">table_has_rows</a>
+      <a href="#table_set_column_widths">table_set_column_widths</a>
+      <a href="#table_set_header">table_set_header</a>
+      <a href="#tempdir">tempdir</a>
+      <a href="#throw">throw</a>
+      <a href="#time_local">time_local</a>
+      <a href="#timestamp">timestamp</a>
+      <a href="#translate">translate</a>
+      <a href="#trim_quotes">trim_quotes</a>
+      <a href="#url_add_cache_buster">url_add_cache_buster</a>
+      <a href="#url_host">url_host</a>
+      <a href="#validate_input">validate_input</a>
+      <a href="#wait_for_any_key">wait_for_any_key</a>
+      <a href="#warn_because">warn_because</a>
+      <a href="#write_log">write_log</a>
+      <a href="#write_log_alert">write_log_alert</a>
+      <a href="#write_log_critical">write_log_critical</a>
+      <a href="#write_log_debug">write_log_debug</a>
+      <a href="#write_log_dev_warning">write_log_dev_warning</a>
+      <a href="#write_log_emergency">write_log_emergency</a>
+      <a href="#write_log_error">write_log_error</a>
+      <a href="#write_log_info">write_log_info</a>
+      <a href="#write_log_notice">write_log_notice</a>
+      <a href="#write_log_warning">write_log_warning</a>
+      <a href="#yaml_add_line">yaml_add_line</a>
+      <a href="#yaml_clear">yaml_clear</a>
+      <a href="#yaml_get">yaml_get</a>
+      <a href="#yaml_get_json">yaml_get_json</a>
+      <a href="#yaml_set">yaml_set</a>
+  </div>
+
+<div class="function-list">
+      <a name="array_csv"></a>
+    <h2>array_csv()</h2>
+    <p class="summary">Echo $array_csv__array as CSV</p>
+    
+          Globals:
+      <ul class="function-list__globals">
+                  <li><code>$array_csv__array</code> <em>array</em> </li>
+              </ul>
+                  Options:
+      <ul class="function-list__options">
+                  <li><code>--prose</code> Use comma+space and then the word &quot;all&quot; as the final separator</li>
+                  <li><code>--quotes</code> Wrap each item with double quotes.</li>
+                  <li><code>--single-quotes</code> Wrap each item with single quotes.</li>
+              </ul>
+              Echos:
+      <ul class="function-list__echos">
+                  <li>The CSV string</li>
+              </ul>
+            
+          <pre><code>as when writing English prose, e.g. &quot;do, re and mi&quot;.
+
+@code
+  array_csv__array=(&#039;foo bar&#039; &#039;baz&#039; zulu)
+  csv=$(array_csv)
+@endcode</code></pre>
+        <hr/>
+      <a name="array_dedupe"></a>
+    <h2>array_dedupe()</h2>
+    <p class="summary">Remove duplicate values from an array.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The VARIABLE NAME of the defined array.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+          <pre><code>Beware the order of the array will most likely be altered.
+
+@code
+  declare -a duplicated=(&quot;blue&quot; &quot;red&quot; &quot;blue&quot; &quot;yellow&quot;);
+  eval $(array_dedupe duplicated)
+@endcode</code></pre>
+        <hr/>
+      <a name="array_has_value"></a>
+    <h2>array_has_value()</h2>
+    <p class="summary">Search $array_has_value__array for a value.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The value to search for in array.</li>
+              </ul>
+                    
+          <pre><code>array_has_value__array You must provide your array as $array_has_value__array like so:
+
+@code
+  array_has_value__array=(&quot;${some_array_to_search[@]}&quot;)
+  array_has_value &quot;tree&quot; &amp;&amp; echo &quot;found tree&quot;
+@endcode</code></pre>
+        <hr/>
+      <a name="array_join"></a>
+    <h2>array_join()</h2>
+    <p class="summary">Echo a string, which is an array joined by a substring.</p>
+    
+          Globals:
+      <ul class="function-list__globals">
+                  <li><code></code> <em>array</em> array_join__array</li>
+              </ul>
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The string to use to glue the pieces together with.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if all goes well.</li>
+                  <li><code>1</code> on failure.</li>
+              </ul>
+        
+        <hr/>
+      <a name="array_map__callback "></a>
+    <h2>array_map__callback ()</h2>
+    <p class="summary">Apply a callback to every item in an array and echo new array eval statement.</p>
+    
+                        
+          <pre><code>array_map__callback The array_map__callback has to be re-defined for each call of array_map and receives the value of an array item as it&#039;s argument.  The example here expects that user_patterns is an array, already defined.  The array user_patterns is mutated by the eval statement at the end.
+
+@code
+  </code></pre>
+        <hr/>
+      <a name="array_sort"></a>
+    <h2>array_sort()</h2>
+    <p class="summary">Mutate an array sorting alphabetically.</p>
+    
+          Globals:
+      <ul class="function-list__globals">
+                  <li><code></code> <em>array</em> array_sort__array</li>
+              </ul>
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="array_sort_by_item_length"></a>
+    <h2>array_sort_by_item_length()</h2>
+    <p class="summary">Mutate an array sorting by the length of each item, short ot long</p>
+    
+          Globals:
+      <ul class="function-list__globals">
+                  <li><code></code> <em>array</em> array_sort__array</li>
+              </ul>
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if assertion is true.</li>
+                  <li><code>1</code> if assertion failure.</li>
+              </ul>
+        
+          <pre><code>@code
+ array_sort_by_item_length__array=(&quot;september&quot; &quot;five&quot; &quot;three&quot; &quot;on&quot;)
+ array_sort_by_item_length
+@endcode</code></pre>
+        <hr/>
+      <a name="choose"></a>
+    <h2>choose()</h2>
+    <p class="summary">Present a multiple choice selection list to the user.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The message to display</li>
+                  <li><code></code> <em>string</em> Optional.  Alter the option to display for cancel.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> and echos the choice if one was selected; returns 1 if cancelled.</li>
+              </ul>
+        
+          <pre><code>The choices should be defined in the variable: choose__array before calling. You may pass another array which is the labels to appear in the menu if you want, it must have the same number of elements as choose__array and the indexes must correspond label/value. Here is an example of a menu to choose a file in a directory:
+
+@code
+ choose__array=($(ls &quot;$CONFIG_DIR&quot;/processors/))
+ processor=$(choose &quot;Which processor?&quot;)
+[ $? -ne 0 ] &amp;&amp; exit_with_success
+@endcode</code></pre>
+        <hr/>
+      <a name="clear_task"></a>
+    <h2>clear_task()</h2>
+    <p class="summary">Call this to erase the last &quot;echo_task&quot;.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+          <pre><code>You may want to do this if the task was aborted and neight completed nor failed.  It will erase the task instead of marking a result.</code></pre>
+        <hr/>
+      <a name="confirm"></a>
+    <h2>confirm()</h2>
+    <p class="summary">Prompt for a Y or N confirmation.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The confirmation message</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if the user answers Y; 1 if not.</li>
+              </ul>
+        
+          <pre><code>--caution - Use when answering Y requires caution.--danger - Use when answering Y is a dangerous thing.</code></pre>
+        <hr/>
+      <a name="create_uuid"></a>
+    <h2>create_uuid()</h2>
+    <p class="summary">Get a new UUID</p>
+    
+                      Echos:
+      <ul class="function-list__echos">
+                  <li>A new UUID</li>
+              </ul>
+            
+        <hr/>
+      <a name="date8601"></a>
+    <h2>date8601()</h2>
+    <p class="summary">Return the current datatime in ISO8601 in UTC.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+          <pre><code>options -  -c - Remove hyphens and colons for use in a filename</code></pre>
+        <hr/>
+      <a name="debug"></a>
+    <h2>debug()</h2>
+    <p class="summary">Development</p>
+    
+                        
+          <pre><code>Echo the arguments sent to this is an eye-catching manner. Call as in the example below for better tracing.
+
+@code
+  debug &quot;Some message to show|$0|$FUNCNAME|$LINENO&quot;
+@endcode</code></pre>
+        <hr/>
+      <a name="dir_has_files"></a>
+    <h2>dir_has_files()</h2>
+    <p class="summary">Determine if a given directory has any non-hidden files or directories.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The path to a directory to check</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if the path contains non-hidden files directories; 1 if not.</li>
+              </ul>
+        
+        <hr/>
+      <a name="echo_blue"></a>
+    <h2>echo_blue()</h2>
+    <p class="summary">Echo a string with blue text.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The string to echo.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="echo_blue_list"></a>
+    <h2>echo_blue_list()</h2>
+    <p class="summary"></p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> $echo_list__array</li>
+              </ul>
+                  Echos:
+      <ul class="function-list__echos">
+                  <li>The list in blue.</li>
+              </ul>
+            
+        <hr/>
+      <a name="echo_elapsed"></a>
+    <h2>echo_elapsed()</h2>
+    <p class="summary">Echo the elapsed time since the beginning of the script.</p>
+    
+          Globals:
+      <ul class="function-list__globals">
+                  <li><code>$SECONDS</code> <em>int</em> </li>
+              </ul>
+                      Echos:
+      <ul class="function-list__echos">
+                  <li>The elapsed time.</li>
+              </ul>
+              Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="echo_error"></a>
+    <h2>echo_error()</h2>
+    <p class="summary">Echo an error message</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The error message.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="echo_fail"></a>
+    <h2>echo_fail()</h2>
+    <p class="summary">Echo a message indicating a failed test result.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The message to print</li>
+              </ul>
+                    
+        <hr/>
+      <a name="echo_green"></a>
+    <h2>echo_green()</h2>
+    <p class="summary">Echo a string with green text.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The string to echo.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="echo_green_highlight"></a>
+    <h2>echo_green_highlight()</h2>
+    <p class="summary">Echo a string with a green background.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The string to echo.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="echo_green_list"></a>
+    <h2>echo_green_list()</h2>
+    <p class="summary"></p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> $echo_list__array</li>
+              </ul>
+                  Echos:
+      <ul class="function-list__echos">
+                  <li>The list in green.</li>
+              </ul>
+            
+        <hr/>
+      <a name="echo_heading"></a>
+    <h2>echo_heading()</h2>
+    <p class="summary">Echo a heading string.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The heading string.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="echo_key_value"></a>
+    <h2>echo_key_value()</h2>
+    <p class="summary">$DESCRIPTION</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> $PARAM$</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if $END$.</li>
+              </ul>
+        
+        <hr/>
+      <a name="echo_list"></a>
+    <h2>echo_list()</h2>
+    <p class="summary">Echo an array as a bulleted list (does not clear list)</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> $echo_list__array</li>
+              </ul>
+                  Echos:
+      <ul class="function-list__echos">
+                  <li>The list</li>
+              </ul>
+            
+          <pre><code>You must add items to your list first:
+
+@code
+  list_add_item &quot;List item&quot;
+  echo_list
+  list_clear
+@endcode@see echo_list__array=(&quot;${some_array_to_echo[@]}&quot;)</code></pre>
+        <hr/>
+      <a name="echo_pass"></a>
+    <h2>echo_pass()</h2>
+    <p class="summary">Echo a message indicating a passed test result.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The message to print</li>
+              </ul>
+                    
+        <hr/>
+      <a name="echo_red"></a>
+    <h2>echo_red()</h2>
+    <p class="summary">Echo a string with red text.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The string to echo.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="echo_red_highlight"></a>
+    <h2>echo_red_highlight()</h2>
+    <p class="summary">Echo a string with a red background.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The string to echo.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="echo_red_list"></a>
+    <h2>echo_red_list()</h2>
+    <p class="summary"></p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> $echo_list__array</li>
+              </ul>
+                  Echos:
+      <ul class="function-list__echos">
+                  <li>The list in red.</li>
+              </ul>
+            
+        <hr/>
+      <a name="echo_scream"></a>
+    <h2>echo_scream()</h2>
+    <p class="summary">Echo a string with really, really loudly.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The string to echo.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="echo_see_log"></a>
+    <h2>echo_see_log()</h2>
+    <p class="summary">Echo a message to the user to either enable and repeat, or view log for info.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> Path to the logfile; usually you send $CLOUDY_LOG, which is the global path.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+          <pre><code>@code
+ fail_because &quot;$(echo_see_log $CLOUDY_LOG)&quot;
+@endcode</code></pre>
+        <hr/>
+      <a name="echo_slim_table"></a>
+    <h2>echo_slim_table()</h2>
+    <p class="summary">Echo a slim version of the table as it&#039;s been defined.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="echo_table"></a>
+    <h2>echo_table()</h2>
+    <p class="summary">Echo the table as it&#039;s been defined.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="echo_task"></a>
+    <h2>echo_task()</h2>
+    <p class="summary">Echo a task has started, a.k.a, pending.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The imperative, e.g., &quot;Download all files&quot;</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+          <pre><code>This should be followed by echo_task_completed or echo_task_failed.@see echo_task_completed@see echo_task_failed</code></pre>
+        <hr/>
+      <a name="echo_task_completed"></a>
+    <h2>echo_task_completed()</h2>
+    <p class="summary">Replace the task pending with success.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+          <pre><code>@see echo_task@see echo_task_failed</code></pre>
+        <hr/>
+      <a name="echo_task_failed"></a>
+    <h2>echo_task_failed()</h2>
+    <p class="summary">Replace the task pending with failure.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+          <pre><code>@see echo_task@see echo_task_completed</code></pre>
+        <hr/>
+      <a name="echo_title"></a>
+    <h2>echo_title()</h2>
+    <p class="summary">Echo a title string.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The title string.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="echo_warning"></a>
+    <h2>echo_warning()</h2>
+    <p class="summary">Echo a warning message</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The warning message.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="echo_white"></a>
+    <h2>echo_white()</h2>
+    <p class="summary">Echo a string with white text.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The string to echo.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="echo_yellow"></a>
+    <h2>echo_yellow()</h2>
+    <p class="summary">Echo a string with yellow text.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The string to echo.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="echo_yellow_highlight"></a>
+    <h2>echo_yellow_highlight()</h2>
+    <p class="summary">Echo a string with a yellow background.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The string to echo.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="echo_yellow_list"></a>
+    <h2>echo_yellow_list()</h2>
+    <p class="summary"></p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> $echo_list__array</li>
+              </ul>
+                  Echos:
+      <ul class="function-list__echos">
+                  <li>The list in yellow.</li>
+              </ul>
+            
+        <hr/>
+      <a name="event_dispatch"></a>
+    <h2>event_dispatch()</h2>
+    <p class="summary">Dispatch that an event has occurred to all listeners.</p>
+    
+                        
+          <pre><code>Additional arguments beyond $1 are passed on to the listeners.</code></pre>
+        <hr/>
+      <a name="event_listen"></a>
+    <h2>event_listen()</h2>
+    <p class="summary">Register an event listener.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The event id, e.g. &quot;boot&quot;</li>
+                  <li><code></code> <em>string</em> The function name to call on the event.</li>
+              </ul>
+                    
+        <hr/>
+      <a name="exit_with_cache_clear"></a>
+    <h2>exit_with_cache_clear()</h2>
+    <p class="summary">Empties caches in $CLOUDY_CORE_DIR (or other directory if provided) and exits.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="exit_with_failure"></a>
+    <h2>exit_with_failure()</h2>
+    <p class="summary"></p>
+    
+                  Options:
+      <ul class="function-list__options">
+                  <li><code>--status</code> Optional, set the exit status, a number &gt; 0</li>
+              </ul>
+                
+        <hr/>
+      <a name="exit_with_failure_code_only"></a>
+    <h2>exit_with_failure_code_only()</h2>
+    <p class="summary">Exit without echoing anything with a non-success code.</p>
+    
+                  Options:
+      <ul class="function-list__options">
+                  <li><code>--status</code> Optional, set the exit status, a number &gt; 0</li>
+              </ul>
+                  Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="exit_with_failure_if_config_is_not_path"></a>
+    <h2>exit_with_failure_if_config_is_not_path()</h2>
+    <p class="summary">Checks if a variable has been evaluated into memory and points to an existing path.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The alias.  Or if not aliased, the config path used by `get_config`.</li>
+                  <li><code></code> <em>string</em> (Optional) The config path, if aliased.</li>
+              </ul>
+              Options:
+      <ul class="function-list__options">
+                  <li><code></code> </li>
+              </ul>
+                  Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if the variable exists and points to a file; exits otherwise with 1.</li>
+              </ul>
+        
+          <pre><code>Both of these aliase examples are the same, though the --as is an older syntax that has been deprecated.
+
+@code
+  exit_with_failure_if_empty_config &#039;database.host&#039;
+  ## Using an alias...
+  exit_with_failure_if_empty_config &#039;host&#039; &#039;database.host&#039;
+  ## Aliased, deprecated syntax.
+  exit_with_failure_if_empty_config &#039;database.host&#039; --as=host
+@endcode</code></pre>
+        <hr/>
+      <a name="exit_with_failure_if_empty_config"></a>
+    <h2>exit_with_failure_if_empty_config()</h2>
+    <p class="summary">Checks if a variable has been evaluated into memory yet or exits with failure.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The alias.  Or if not aliased, the config path used by `get_config`.</li>
+                  <li><code></code> <em>string</em> (Optional) The config path, if aliased.</li>
+              </ul>
+              Options:
+      <ul class="function-list__options">
+                  <li><code></code> </li>
+              </ul>
+                  Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if the variable is in memory.</li>
+              </ul>
+        
+          <pre><code>Both of these aliase examples are the same, though the --as is an older syntax that has been deprecated.
+
+@code
+  exit_with_failure_if_empty_config &#039;database.host&#039;
+  ## Using an alias...
+  exit_with_failure_if_empty_config &#039;host&#039; &#039;database.host&#039;
+  ## Aliased, deprecated syntax.
+  exit_with_failure_if_empty_config &#039;database.host&#039; --as=host
+@endcode</code></pre>
+        <hr/>
+      <a name="exit_with_help"></a>
+    <h2>exit_with_help()</h2>
+    <p class="summary">Echo the help screen and exit.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> on success</li>
+                  <li><code>1</code> otherwise.</li>
+              </ul>
+        
+        <hr/>
+      <a name="exit_with_init"></a>
+    <h2>exit_with_init()</h2>
+    <p class="summary">Performs an initialization (setup default config, etc.) and exits.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+          <pre><code>You must set up an init command in your core config file.[[ &quot;$(get_command)&quot; == &quot;init&quot; ]] &amp;&amp; exit_with_init The translation service is not yet bootstrapped in on_pre_config, so if you want to alter the strings printed you can do something like this:
+
+@code
+ if [[ &quot;$(get_command)&quot; == &quot;init&quot; ]]; then
+    CLOUDY_FAILED=&quot;Initialization failed.&quot;
+    CLOUDY_SUCCESS=&quot;Initialization complete.&quot;
+    exit_with_init
+ fi
+@endcode</code></pre>
+        <hr/>
+      <a name="exit_with_success"></a>
+    <h2>exit_with_success()</h2>
+    <p class="summary">Echo a success message plus success reasons and exit</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The success message to use.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> 0.</li>
+              </ul>
+        
+        <hr/>
+      <a name="exit_with_success_code_only"></a>
+    <h2>exit_with_success_code_only()</h2>
+    <p class="summary">Exit without echoing anything with a 0 status code.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="exit_with_success_elapsed"></a>
+    <h2>exit_with_success_elapsed()</h2>
+    <p class="summary">Echo a success message (with elapsed time) plus success reasons and exit</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The success message to use.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> 0.</li>
+              </ul>
+        
+        <hr/>
+      <a name="fail"></a>
+    <h2>fail()</h2>
+    <p class="summary">Set the exit status to fail with no message.  Does not stop execution.</p>
+    
+                  Options:
+      <ul class="function-list__options">
+                  <li><code>--status</code> Optional, set the exit status, a number &gt; 0</li>
+              </ul>
+                
+          <pre><code>Try not to use this because it gives no indication as to why@see exit_with_failure</code></pre>
+        <hr/>
+      <a name="fail_because"></a>
+    <h2>fail_because()</h2>
+    <p class="summary">Add a failure message to be shown on exit.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The reason for the failure.</li>
+                  <li><code></code> <em>string</em> A default value if $1 is empty.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>1</code> if both $message and $default are empty. 0 otherwise.</li>
+              </ul>
+        
+          <pre><code>@code
+  fail_because &quot;$message&quot; &quot;Some default if \$message is empty&quot;
+@endcode</code></pre>
+        <hr/>
+      <a name="function_exists"></a>
+    <h2>function_exists()</h2>
+    <p class="summary"></p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The name of the function to check.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if defined; 1 otherwise.</li>
+              </ul>
+        
+        <hr/>
+      <a name="get_command"></a>
+    <h2>get_command()</h2>
+    <p class="summary">Echo the command that was used to call the script.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if a valid command, 1 otherwise.</li>
+              </ul>
+        
+        <hr/>
+      <a name="get_command_arg"></a>
+    <h2>get_command_arg()</h2>
+    <p class="summary">Return a operation argument by zero-based index key.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>int</em>  The index of the argument</li>
+                  <li><code></code> <em>mixed</em> Optional, default value.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if found</li>
+                  <li><code>2</code> if using the default.</li>
+              </ul>
+        
+          <pre><code>As an example see the following code:
+
+@code
+  ./script.sh action blue apple
+  get_command --&gt; &quot;action&quot;
+  get_command_arg 0 --&gt; &quot;blue&quot;
+  get_command_arg 1 --&gt; &quot;apple&quot;
+@endcode</code></pre>
+        <hr/>
+      <a name="get_command_args"></a>
+    <h2>get_command_args()</h2>
+    <p class="summary">Echo all command arguments</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> 0</li>
+              </ul>
+        
+          <pre><code>If options are mixed in they will be stripped out, that is to say, if the echo &quot;do re mi&quot;</code></pre>
+        <hr/>
+      <a name="get_config"></a>
+    <h2>get_config()</h2>
+    <p class="summary">Get a config path assignment.</p>
+    
+                        
+          <pre><code>You should probably use get_config_as() instead as it&#039;s less brittle.
+
+@code
+  eval $(get_config &#039;path.to.config&#039;)
+
+
+@code
+ When requesting an array you must pass -a as the first argument if there&#039;s
+ any chance that the return value will be empty.
+
+
+@code
+  eval $(get_config &#039;path.to.string&#039; &#039;default_value&#039;)
+  eval $(get_config -a &#039;path.to.array&#039; &#039;default_value&#039;)
+
+
+@code
+@deprecated Since version 2.0.0, Use get_config_as() instead.
+</code></pre>
+        <hr/>
+      <a name="get_config_as"></a>
+    <h2>get_config_as()</h2>
+    <p class="summary">Get config path but assign it&#039;s value to a custom variable.</p>
+    
+                        
+          <pre><code>@code
+  eval $(get_config_as &#039;title&#039; &#039;path.to.some.title&#039; &#039;default&#039;)
+  eval $(get_config_as &#039;title&#039; -a &#039;path.to.some.array&#039; )
+
+
+@code
+</code></pre>
+        <hr/>
+      <a name="get_config_keys"></a>
+    <h2>get_config_keys()</h2>
+    <p class="summary">Echos eval code for the keys of a configuration associative array.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The path to the config item, e.g. &quot;files.private&quot;</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> on success.</li>
+              </ul>
+        
+          <pre><code>@deprecated Since version 2.0.0, Use get_config_keys_as() instead.</code></pre>
+        <hr/>
+      <a name="get_config_keys_as"></a>
+    <h2>get_config_keys_as()</h2>
+    <p class="summary">Echo eval code for keys of a configuration associative array using custom var.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The path to the config item, e.g. &quot;files.private&quot;</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> on success.</li>
+              </ul>
+        
+        <hr/>
+      <a name="get_config_path"></a>
+    <h2>get_config_path()</h2>
+    <p class="summary">Echo eval code for paths of a configuration item.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The path to the config item, e.g. &quot;files.private&quot;</li>
+              </ul>
+              Options:
+      <ul class="function-list__options">
+                  <li><code>---a</code> If you are expecting an array</li>
+              </ul>
+                  Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> on success.</li>
+              </ul>
+        
+          <pre><code>Relative paths are made absolute using $CLOUDY_BASEPATH.@deprecated Since version 2.0.0, Use get_config_path_as() instead.</code></pre>
+        <hr/>
+      <a name="get_config_path_as"></a>
+    <h2>get_config_path_as()</h2>
+    <p class="summary">Echo eval code for paths of a configuration item using custom var.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The variable name to assign the value to.</li>
+                  <li><code></code> <em>string</em> The path to the config item, e.g. &quot;files.private&quot;</li>
+              </ul>
+              Options:
+      <ul class="function-list__options">
+                  <li><code>---a</code> If you are expecting an array</li>
+              </ul>
+                  Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> on success.</li>
+              </ul>
+        
+          <pre><code>Relative paths are made absolute using $CLOUDY_BASEPATH.</code></pre>
+        <hr/>
+      <a name="get_installed"></a>
+    <h2>get_installed()</h2>
+    <p class="summary">Echo the path to an installed program.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The name of the program you need.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if .</li>
+              </ul>
+        
+        <hr/>
+      <a name="get_option"></a>
+    <h2>get_option()</h2>
+    <p class="summary">Echo the value of a script option, or a default.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The name of the option</li>
+                  <li><code></code> <em>string</em> A default value if the option was not used.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if the option was used; 2 if the default is echoed.</li>
+              </ul>
+        
+        <hr/>
+      <a name="get_title"></a>
+    <h2>get_title()</h2>
+    <p class="summary">Echo the title as defined in the configuration.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> A default value if no title is defined.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="get_version"></a>
+    <h2>get_version()</h2>
+    <p class="summary">Echos the version of the script.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="handle_init"></a>
+    <h2>handle_init()</h2>
+    <p class="summary">Performs an initialization (setup default config, etc.)</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> On success.</li>
+                  <li><code>1</code> if the init fails</li>
+              </ul>
+        
+          <pre><code>You must set up an init command in your core config file.
+
+@code
+[[ &quot;$(get_command)&quot; == &quot;init&quot; ]] &amp;&amp; handle_init
+...do your extra work here...
+ exit_with...
+@endcode your init step, where you don&#039;t want to exit.  If not, you should use exit_with_init, instead. The translation service is not yet bootstrapped in on_pre_config, so if you want to alter the strings printed you can do something like this:
+
+@code
+ if [[ &quot;$(get_command)&quot; == &quot;init&quot; ]]; then
+    CLOUDY_FAILED=&quot;Initialization failed.&quot;
+    CLOUDY_SUCCESS=&quot;Initialization complete.&quot;
+    exit_with_init
+ fi
+@endcode</code></pre>
+        <hr/>
+      <a name="has_command"></a>
+    <h2>has_command()</h2>
+    <p class="summary">Determine if the script was called with a command.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if a command was used.</li>
+              </ul>
+        
+        <hr/>
+      <a name="has_command_args"></a>
+    <h2>has_command_args()</h2>
+    <p class="summary">Determine if there are any arguments for the script &quot;command&quot;.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if the command has any arguments</li>
+                  <li><code>1</code> if not.</li>
+              </ul>
+        
+        <hr/>
+      <a name="has_failed"></a>
+    <h2>has_failed()</h2>
+    <p class="summary">Determine if any failure reasons have been defined yet.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if one or more failure messages are present; 1 if not.</li>
+              </ul>
+        
+        <hr/>
+      <a name="has_option"></a>
+    <h2>has_option()</h2>
+    <p class="summary">Determine if the script was called with a given option.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The option to check for.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if the option was used; 1 if not.</li>
+              </ul>
+        
+        <hr/>
+      <a name="has_options"></a>
+    <h2>has_options()</h2>
+    <p class="summary">Determine if any options were used when calling the script.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if at least one option was used; 1 otherwise.</li>
+              </ul>
+        
+        <hr/>
+      <a name="implement_cloudy_basic"></a>
+    <h2>implement_cloudy_basic()</h2>
+    <p class="summary">SECTION: Ending the script.</p>
+    
+                        
+          <pre><code>@link https://www.tldp.org/LDP/abs/html/exit-status.html Implement cloudy common commands and options. An optional set of commands for all scripts.  This is just the handlers, you must still set up the commands in the config file as usual.</code></pre>
+        <hr/>
+      <a name="is_installed"></a>
+    <h2>is_installed()</h2>
+    <p class="summary">Test if a program is installed on the system.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The name of the program to check for.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if installed; 1 otherwise.</li>
+              </ul>
+        
+        <hr/>
+      <a name="json_get"></a>
+    <h2>json_get()</h2>
+    <p class="summary">Get the set JSON</p>
+    
+                      Echos:
+      <ul class="function-list__echos">
+                  <li>The JSON string set by json_set</li>
+              </ul>
+            
+          <pre><code>@code
+  json=&quot;$(json_get)&quot;
+@endcode</code></pre>
+        <hr/>
+      <a name="json_get_value"></a>
+    <h2>json_get_value()</h2>
+    <p class="summary">Echo a value by dot-path in the set/loaded JSON.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The dot path, e.g. &#039;foo.bar&#039;</li>
+              </ul>
+                    
+          <pre><code>If the path is invalid, an empty string is echoed.  Be sure to wrap in double quotes to protect values that contain spaces.
+
+@code
+  json_set &#039;{&quot;foo&quot;:{&quot;bar&quot;:&quot;baz et al&quot;}}&#039;
+  value=&quot;$(json_get_value foo.bar)&quot;
+@endcode</code></pre>
+        <hr/>
+      <a name="json_load_file"></a>
+    <h2>json_load_file()</h2>
+    <p class="summary">Load a JSON file to be read by json_get_value.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> Path to a valid JSON file</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if JSON is valid. 1 if not.</li>
+              </ul>
+        
+        <hr/>
+      <a name="json_set"></a>
+    <h2>json_set()</h2>
+    <p class="summary">Set a JSON string to be later read by json_get_value().</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> A JSON string, wrapped by single quotes.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if the JSON is valid; 1 otherwise.</li>
+              </ul>
+        
+          <pre><code>Call this once to put your json string into memory, then make unlimited calls to json_get_value as necessary.  You may check the return code to ensure JSON syntax is valid.  If your string contains single quotes, you will need to escape them.
+
+@code
+  json_set &#039;{&quot;foo&quot;:{&quot;bar&quot;:&quot;baz et al&quot;}}&#039;
+@endcode</code></pre>
+        <hr/>
+      <a name="list_add_item"></a>
+    <h2>list_add_item()</h2>
+    <p class="summary">Add an item to the list.</p>
+    
+          Globals:
+      <ul class="function-list__globals">
+                  <li><code></code> <em>array</em> echo_list__array</li>
+              </ul>
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The string to add as a list item.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="list_clear"></a>
+    <h2>list_clear()</h2>
+    <p class="summary">Remove all items from the list.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing</li>
+              </ul>
+        
+        <hr/>
+      <a name="list_has_items"></a>
+    <h2>list_has_items()</h2>
+    <p class="summary">Detect if the list has any items.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if the list has at least one item.</li>
+              </ul>
+        
+        <hr/>
+      <a name="ltrim"></a>
+    <h2>ltrim()</h2>
+    <p class="summary">Remove leading whitespace from string.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> string</li>
+              </ul>
+                  Echos:
+      <ul class="function-list__echos">
+                  <li>The left trimmed string</li>
+              </ul>
+            
+        <hr/>
+      <a name="md5_string"></a>
+    <h2>md5_string()</h2>
+    <p class="summary">Echo the md5 hash of a string.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if the string was able to be hashed.</li>
+              </ul>
+        
+          <pre><code>$1 = string The string to hash</code></pre>
+        <hr/>
+      <a name="parse_args"></a>
+    <h2>parse_args()</h2>
+    <p class="summary">Parses arguments into options, args and option values.</p>
+    
+                        
+          <pre><code>Use this in your my_func function: parse_args &quot;$@&quot; The following variables are generated for:
+
+@code
+  my_func -ab --tree=life do re
+@endcode- parse_args__args=(do re)- parse_args__options=(a b tree)- parse_args__options__a=true- parse_args__options__b=true- parse_args__options__tree=life- parse_args__options_passthru=&quot;-a -b -tree=life&quot;</code></pre>
+        <hr/>
+      <a name="path_extension"></a>
+    <h2>path_extension()</h2>
+    <p class="summary">Return the extension of a file.</p>
+    
+                        
+        <hr/>
+      <a name="path_filename"></a>
+    <h2>path_filename()</h2>
+    <p class="summary">Return the basename less the extension.</p>
+    
+                        
+        <hr/>
+      <a name="path_filesize"></a>
+    <h2>path_filesize()</h2>
+    <p class="summary">Echo the size of a file.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The path to the file.</li>
+              </ul>
+                    
+        <hr/>
+      <a name="path_is_absolute"></a>
+    <h2>path_is_absolute()</h2>
+    <p class="summary">Filepaths</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The filepath to check</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if absolute; 1 otherwise.</li>
+              </ul>
+        
+          <pre><code>Determine if a path is absolute (begins with /) or not.</code></pre>
+        <hr/>
+      <a name="path_is_yaml"></a>
+    <h2>path_is_yaml()</h2>
+    <p class="summary">Check if a filepath is a YAML file.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> Path to file in question.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> If it is.</li>
+                  <li><code>1</code> If it is not a YAML file.</li>
+              </ul>
+        
+        <hr/>
+      <a name="path_make_absolute"></a>
+    <h2>path_make_absolute()</h2>
+    <p class="summary">Take an relative path and make it absolute to a parent.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The relative path.</li>
+                  <li><code></code> <em>string</em> The absolute PARENT path.</li>
+              </ul>
+                  Echos:
+      <ul class="function-list__echos">
+                  <li>The absolute path if it worked, otherwise nothing.</li>
+              </ul>
+              Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> If the path could be make absolute.</li>
+                  <li><code>1</code> If $1 is not relative.</li>
+                  <li><code>2</code> If $2 is not absolute.</li>
+                  <li><code>3</code> If $1 is empty</li>
+              </ul>
+        
+          <pre><code>@code
+# Use this pattern to only change path if it was able to be made absolute.
+ a=$(path_make_absolute &quot;$path&quot; &quot;$absolute_prefix&quot;) &amp;&amp; path=&quot;$a&quot;
+@endcode</code></pre>
+        <hr/>
+      <a name="path_make_canonical"></a>
+    <h2>path_make_canonical()</h2>
+    <p class="summary">Remove all symbolic links from an absolute existing path.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The absolute path to make canonical.</li>
+              </ul>
+                  Echos:
+      <ul class="function-list__echos">
+                  <li>The canonical path with symbolic links removed.</li>
+              </ul>
+              Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> If all is well</li>
+                  <li><code>1</code> If $1 does not exist.</li>
+                  <li><code>2</code> If $1 is empty.</li>
+                  <li><code>3</code> If $1 is not absolute.</li>
+              </ul>
+        
+        <hr/>
+      <a name="path_make_pretty"></a>
+    <h2>path_make_pretty()</h2>
+    <p class="summary">Make a path output without leading $PWD if possible.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The path to possible shorten.</li>
+              </ul>
+                  Echos:
+      <ul class="function-list__echos">
+                  <li>The original path or the relative to $PWD if possible</li>
+              </ul>
+              Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> 0</li>
+              </ul>
+        
+          <pre><code>relative to the current working directory, shortening them, making them&quot;pretty&quot;.</code></pre>
+        <hr/>
+      <a name="path_make_relative"></a>
+    <h2>path_make_relative()</h2>
+    <p class="summary">Take an absolute path and make it relative to a parent path if possible.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The absolute path.</li>
+                  <li><code></code> <em>string</em> The absolute PARENT path.</li>
+              </ul>
+                  Echos:
+      <ul class="function-list__echos">
+                  <li>The relative path if it worked; the original relative path if it didn&#039;t.</li>
+              </ul>
+              Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> If the path could be make relative.</li>
+                  <li><code>1</code> If there was a problem creating a relative path.</li>
+              </ul>
+        
+          <pre><code>@code
+ result=&quot;$(path_make_relative &#039;/some/great/path/bush.md&#039; &#039;/some/great&#039;)&quot;
+[ $? -eq 0 ] &amp;&amp; made_relative=true || made_relative=false
+@endcode</code></pre>
+        <hr/>
+      <a name="path_mtime"></a>
+    <h2>path_mtime()</h2>
+    <p class="summary">Echo the last modified time of a file.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The path to the the file.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>1</code> if the time cannot be determined.</li>
+              </ul>
+        
+        <hr/>
+      <a name="rtrim"></a>
+    <h2>rtrim()</h2>
+    <p class="summary">Remove trailing whitespace from string.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> string</li>
+              </ul>
+                  Echos:
+      <ul class="function-list__echos">
+                  <li>The right trimmed string</li>
+              </ul>
+            
+        <hr/>
+      <a name="string_lower"></a>
+    <h2>string_lower()</h2>
+    <p class="summary">Echo the lowercase version of a string.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The string to convert to lowercase.</li>
+              </ul>
+                  Echos:
+      <ul class="function-list__echos">
+                  <li>The lowercased string</li>
+              </ul>
+              Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="string_repeat"></a>
+    <h2>string_repeat()</h2>
+    <p class="summary">Repeat a string N times.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The string to repeat.</li>
+                  <li><code></code> <em>int</em> The number of repetitions.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="string_split"></a>
+    <h2>string_split()</h2>
+    <p class="summary">Split a string by a delimiter.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The delimiter string.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if .</li>
+              </ul>
+        
+          <pre><code>string_split__string string_split__array
+
+@code
+ string_split__string=&quot;do&lt;br /&gt;re&lt;br /&gt;mi&quot;
+ string_split &#039;&lt;br /&gt;&#039; &amp;&amp; local words=(&quot;${string_split__array[@]}&quot;)
+@endcode</code></pre>
+        <hr/>
+      <a name="string_ucfirst"></a>
+    <h2>string_ucfirst()</h2>
+    <p class="summary">Echo the string with it&#039;s first letter in uppercase.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The string to convert</li>
+              </ul>
+                  Echos:
+      <ul class="function-list__echos">
+                  <li>The string with upper case first letter</li>
+              </ul>
+              Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="string_upper"></a>
+    <h2>string_upper()</h2>
+    <p class="summary">Echo the uppercase version of a string.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The string to convert to uppercase.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="succeed_because"></a>
+    <h2>succeed_because()</h2>
+    <p class="summary">Add a success reason to be shown on exit.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The reason for the success.</li>
+                  <li><code></code> <em>string</em> A default value if $1 is empty.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>1</code> if both $message and $default are empty; 0 if successful.</li>
+              </ul>
+        
+          <pre><code>@code
+  succeed_because &quot;$reason&quot; &quot;Some default if $reason is empty&quot;
+@endcode</code></pre>
+        <hr/>
+      <a name="table_add_row"></a>
+    <h2>table_add_row()</h2>
+    <p class="summary">Send any number of arguments, each is a column value for a single row.</p>
+    
+                        
+        <hr/>
+      <a name="table_clear"></a>
+    <h2>table_clear()</h2>
+    <p class="summary">Clear all rows from the table definition.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="table_has_rows"></a>
+    <h2>table_has_rows()</h2>
+    <p class="summary">Determine if the table definition has any rows.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if one or more rows in the definition; 1 if table is empty.</li>
+              </ul>
+        
+        <hr/>
+      <a name="table_set_column_widths"></a>
+    <h2>table_set_column_widths()</h2>
+    <p class="summary">Manually set the column widths</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+          <pre><code>A number for each column.  You should call this after adding all rows.</code></pre>
+        <hr/>
+      <a name="table_set_header"></a>
+    <h2>table_set_header()</h2>
+    <p class="summary">Set the column headers for a table.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+          <pre><code>$@ - Each argument is the column header value.</code></pre>
+        <hr/>
+      <a name="tempdir"></a>
+    <h2>tempdir()</h2>
+    <p class="summary">Echo a temporary directory filepath.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> An optional directory name to use.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if successful</li>
+              </ul>
+        
+          <pre><code>If you do not provide $1 then a new temporary directory is created each time you call tempdir.  If you do provide $1 and call tempdir more than once with the same value for $1, the same directory will be returned each time--a shared directory within the system&#039;s temporary filesystem with the name passed as $1. It is a common pattern to pass $CLOUDY_NAME as the argument as this will create a folder based on the name of your script.</code></pre>
+        <hr/>
+      <a name="throw"></a>
+    <h2>throw()</h2>
+    <p class="summary">Echo an exception message and exit.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> 3.</li>
+              </ul>
+        
+        <hr/>
+      <a name="time_local"></a>
+    <h2>time_local()</h2>
+    <p class="summary">Echo the current local time as hours/minutes with optional seconds.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+          <pre><code>options -  -s - Include the seconds</code></pre>
+        <hr/>
+      <a name="timestamp"></a>
+    <h2>timestamp()</h2>
+    <p class="summary">Echo the current unix timestamp.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing.</li>
+              </ul>
+        
+        <hr/>
+      <a name="translate"></a>
+    <h2>translate()</h2>
+    <p class="summary">Echo the translation of a message id into $CLOUDY_LANGUAGE.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The untranslated message.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if translated</li>
+                  <li><code>2</code> if not translated.</li>
+              </ul>
+        
+        <hr/>
+      <a name="trim_quotes"></a>
+    <h2>trim_quotes()</h2>
+    <p class="summary">Echo a string after removing leading and trailing quotes, as per YAML string.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> string</li>
+              </ul>
+                  Echos:
+      <ul class="function-list__echos">
+                  <li>The string with the first and last single/double quote(s) removed.</li>
+              </ul>
+            
+        <hr/>
+      <a name="url_add_cache_buster"></a>
+    <h2>url_add_cache_buster()</h2>
+    <p class="summary">Add a cache-busting timestamp to an URL and echo the new url.</p>
+    
+                        
+        <hr/>
+      <a name="url_host"></a>
+    <h2>url_host()</h2>
+    <p class="summary">Echo the host portion an URL.</p>
+    
+                        
+        <hr/>
+      <a name="validate_input"></a>
+    <h2>validate_input()</h2>
+    <p class="summary">Validate the CLI input arguments and options.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> if all input is valid; 1 otherwise.</li>
+              </ul>
+        
+        <hr/>
+      <a name="wait_for_any_key"></a>
+    <h2>wait_for_any_key()</h2>
+    <p class="summary">Prompt the user to read a message and press any key to continue.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The message to show the user.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> nothing</li>
+              </ul>
+        
+        <hr/>
+      <a name="warn_because"></a>
+    <h2>warn_because()</h2>
+    <p class="summary">Add a warning message to be shown on success exit; not shown on failure exits.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The warning message.</li>
+                  <li><code></code> <em>string</em> A default value if $1 is empty.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>1</code> if both $message and $default are empty; 0 if successful.</li>
+              </ul>
+        
+          <pre><code>@code
+  warn_because &quot;$reason&quot; &quot;Some default if $reason is empty&quot;
+@endcode@todo Should this show if a failure exit?</code></pre>
+        <hr/>
+      <a name="write_log"></a>
+    <h2>write_log()</h2>
+    <p class="summary">You may include 1 or two arguments; when 2, the first is a log label</p>
+    
+                        
+        <hr/>
+      <a name="write_log_alert"></a>
+    <h2>write_log_alert()</h2>
+    <p class="summary">Writes a log message using the alert level.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> on success or 1 if the log cannot be written to.</li>
+              </ul>
+        
+          <pre><code>$@ - Any number of strings to write to the log.</code></pre>
+        <hr/>
+      <a name="write_log_critical"></a>
+    <h2>write_log_critical()</h2>
+    <p class="summary">Write to the log with level critical.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The message to write.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> on success.</li>
+              </ul>
+        
+        <hr/>
+      <a name="write_log_debug"></a>
+    <h2>write_log_debug()</h2>
+    <p class="summary">Write to the log with level debug.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The message to write.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> on success.</li>
+              </ul>
+        
+        <hr/>
+      <a name="write_log_dev_warning"></a>
+    <h2>write_log_dev_warning()</h2>
+    <p class="summary">Log states that should only be thus during development or debugging.</p>
+    
+                        
+          <pre><code>Adds a &quot;... in dev only message to your warning&quot;</code></pre>
+        <hr/>
+      <a name="write_log_emergency"></a>
+    <h2>write_log_emergency()</h2>
+    <p class="summary">@link https://www.php-fig.org/psr/psr-3/</p>
+    
+                        
+        <hr/>
+      <a name="write_log_error"></a>
+    <h2>write_log_error()</h2>
+    <p class="summary">Write to the log with level error.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The message to write.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> on success.</li>
+              </ul>
+        
+        <hr/>
+      <a name="write_log_info"></a>
+    <h2>write_log_info()</h2>
+    <p class="summary">Write to the log with level info.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The message to write.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> on success.</li>
+              </ul>
+        
+        <hr/>
+      <a name="write_log_notice"></a>
+    <h2>write_log_notice()</h2>
+    <p class="summary">Write to the log with level notice.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The message to write.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> on success.</li>
+              </ul>
+        
+        <hr/>
+      <a name="write_log_warning"></a>
+    <h2>write_log_warning()</h2>
+    <p class="summary">Write to the log with level warning.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The message to write.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> on success.</li>
+              </ul>
+        
+        <hr/>
+      <a name="yaml_add_line"></a>
+    <h2>yaml_add_line()</h2>
+    <p class="summary">Add a line to our YAML data.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> A complete line with proper indents.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> 0.</li>
+              </ul>
+        
+        <hr/>
+      <a name="yaml_clear"></a>
+    <h2>yaml_clear()</h2>
+    <p class="summary">Empties the YAML string from earlier builds, making ready anew.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> 0.</li>
+              </ul>
+        
+        <hr/>
+      <a name="yaml_get"></a>
+    <h2>yaml_get()</h2>
+    <p class="summary">Echos the YAML string as YAML.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> 0</li>
+              </ul>
+        
+        <hr/>
+      <a name="yaml_get_json"></a>
+    <h2>yaml_get_json()</h2>
+    <p class="summary">Echos the YAML string as JSON.</p>
+    
+                          Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> 0</li>
+              </ul>
+        
+        <hr/>
+      <a name="yaml_set"></a>
+    <h2>yaml_set()</h2>
+    <p class="summary">Sets the value of the YAML string.</p>
+    
+              Parameters:
+      <ul class="function-list__parameters">
+                  <li><code></code> <em>string</em> The YAML value to set.</li>
+              </ul>
+                      Returns:
+      <ul class="function-list__returns">
+                  <li><code>0</code> 0</li>
+              </ul>
+        
+          <pre><code>You can use this to convert YAML to JSON:  yaml_set &quot;$yaml&quot;  json=$(yaml_get_json)</code></pre>
+        <hr/>
+  </div>
+    </article>
+  </div>
+</main>
+
+  <footer class="footer d-flex justify-content-center">
+    <div class="flex-column justify-content-center">
+            Last Update: <strong>8/7/2024</strong>
+    </div>
+  </footer>
+
+
+<nav class="nav d-flex justify-content-center align-items-center
+  fixed-bottom">
+  <div class="btn-group flex-fill">
+              <a href="readme.html" class="btn nav__prev-chapter btn-secondary"><i class="bi
+      bi-caret-left-fill"></i> Cloudy</a>
+  
+    
+              <a href="cloudy_basepath.html" class="btn nav__prev-page js-nav__prev-page
+    btn-primary"><i class="bi
+      bi-caret-left-fill"></i></a>
+  
+    
+    <a class="nav__toc btn btn-light" href="#"
+       data-bs-toggle="offcanvas"
+       data-bs-target="#table-of-contents"
+       aria-controls="table-of-contents"><i class="bi
+           bi-list-ol"></i></a>
+    
+              <a href="test_functions.html" class="btn nav__next-page js-nav__next-page
+    btn-primary"><i class="bi bi-file-earmark"></i> Cloudy API: BASH Test Functions <i class="bi
+       bi-caret-right-fill"></i></a>
+  
+    
+              <span class="btn nav__next-chapter btn-secondary "></span>
+  
+  </div>
+</nav>
+
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="table-of-contents"
+     aria-labelledby="table-of-contents__title" data-bs-keyboard="true">
+  <div class="offcanvas-header">
+    <h1 class="h6 offcanvas-title js-chapter-list-title"
+        id="table-of-contents__title">All
+      Chapters
+      &amp; Pages</h1>
+    <h1 class="d-none h6 offcanvas-title js-search-results-title"
+        id="table-of-contents__title">Search Results</h1>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+          <input class="js-search form-control mb-4" type="search"
+             placeholder="Search docs..."
+             aria-label="Search">
+      <div class="js-search-results d-none">
+        <h2 class="h4 mt-4">Matched Pages</h2>
+        <ol class="list-unstyled">
+                                              <li data-page="readme" value="1">
+      <a class="js-page-link" href="readme.html">Cloudy<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="lexicon" value="2">
+      <a class="js-page-link" href="lexicon.html">Cloudy Lexicon<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="globals" value="3">
+      <a class="js-page-link" href="globals.html">Global Variables<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="filepaths" value="4">
+      <a class="js-page-link" href="filepaths.html">Filepaths<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="cloudy_core_testing" value="5">
+      <a class="js-page-link" href="cloudy_core_testing.html">Cloudy Core Testing<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="changelog" value="6">
+      <a class="js-page-link" href="changelog.html">Cloudy Changelog<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="cloudy_basepath" value="7">
+      <a class="js-page-link" href="cloudy_basepath.html">Cloudy Basepath<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="api_functions" value="8">
+      <a class="js-page-link" href="api_functions.html">Cloudy API: BASH Functions<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="test_functions" value="9">
+      <a class="js-page-link" href="test_functions.html">Cloudy API: BASH Test Functions<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="api_functions_php" value="10">
+      <a class="js-page-link" href="api_functions_php.html">Cloudy API: PHP Functions<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                                          <li data-page="php_bash_side" value="11">
+      <a class="js-page-link" href="../php/php_bash_side.html">Writing Cloudy PHP: BASH Perspective<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="php_php_side" value="12">
+      <a class="js-page-link" href="../php/php_php_side.html">Writing Cloudy PHP: PHP Perspective<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="php_envvars" value="13">
+      <a class="js-page-link" href="../php/php_envvars.html">Sharing Data Between BASH and PHP<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="php_errors" value="14">
+      <a class="js-page-link" href="../php/php_errors.html">Error Handling in Cloudy PHP<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="php_example" value="15">
+      <a class="js-page-link" href="../php/php_example.html">Writing Cloudy PHP (Complete Example)<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="php_version" value="16">
+      <a class="js-page-link" href="../php/php_version.html">Setting the PHP Version Used by Cloudy<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="composer" value="17">
+      <a class="js-page-link" href="../php/composer.html">Building a Cloudy-based App w/ Composer<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                                          <li data-page="arrays" value="18">
+      <a class="js-page-link" href="../bash/arrays.html">Arrays<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="strings" value="19">
+      <a class="js-page-link" href="../bash/strings.html">String Manipulation<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                                          <li data-page="functions" value="20">
+      <a class="js-page-link" href="../examples/functions.html">Functions<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="menus_input" value="21">
+      <a class="js-page-link" href="../examples/menus_input.html">User Input and Menus<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="plugins" value="22">
+      <a class="js-page-link" href="../examples/plugins.html">Single File Plugins Pattern<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="route_access" value="23">
+      <a class="js-page-link" href="../examples/route_access.html">Command Access<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                                          <li data-page="app_root" value="24">
+      <a class="js-page-link" href="../usage/app_root.html">Application Root<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="arguments" value="25">
+      <a class="js-page-link" href="../usage/arguments.html">This script "arguments"<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="command" value="26">
+      <a class="js-page-link" href="../usage/command.html">The Script "Command"<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="configuration" value="27">
+      <a class="js-page-link" href="../usage/configuration.html">Configuration<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="conventions" value="28">
+      <a class="js-page-link" href="../usage/conventions.html">Cloudy Conventions<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="development" value="29">
+      <a class="js-page-link" href="../usage/development.html">Development Tools<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="documenting" value="30">
+      <a class="js-page-link" href="../usage/documenting.html">Documenting Code<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="error_handling" value="31">
+      <a class="js-page-link" href="../usage/error_handling.html">Exit Status<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="events" value="32">
+      <a class="js-page-link" href="../usage/events.html">Events (Hooks)<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="installer" value="33">
+      <a class="js-page-link" href="../usage/installer.html">The Initialize API<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="lists" value="34">
+      <a class="js-page-link" href="../usage/lists.html">Lists<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="localize" value="35">
+      <a class="js-page-link" href="../usage/localize.html">Localization/Translation<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="logging" value="36">
+      <a class="js-page-link" href="../usage/logging.html">Logging to File<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="menus" value="37">
+      <a class="js-page-link" href="../usage/menus.html">Menus<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="options" value="38">
+      <a class="js-page-link" href="../usage/options.html">The Script "Options"<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="packages" value="39">
+      <a class="js-page-link" href="../usage/packages.html">Cloudy Packages<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="tables" value="40">
+      <a class="js-page-link" href="../usage/tables.html">Tables (Tabular Output)<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="tempdir" value="41">
+      <a class="js-page-link" href="../usage/tempdir.html">Using a Temporary Directory<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="testing" value="42">
+      <a class="js-page-link" href="../usage/testing.html">Unit Testing<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="version" value="43">
+      <a class="js-page-link" href="../usage/version.html">Script Version<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="yaml" value="44">
+      <a class="js-page-link" href="../usage/yaml.html">YAML in BASH<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                                          <li data-page="empty_config" value="45">
+      <a class="js-page-link" href="../trouble/empty_config.html">`$CLOUDY_CONFIG_JSON cannot be empty...`<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="autoloader" value="46">
+      <a class="js-page-link" href="../trouble/autoloader.html">Composer autoloader not found<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                                          <li data-page="upgrade_v2" value="47">
+      <a class="js-page-link" href="../developers/upgrade_v2.html">Upgrade Path to Cloudy 2.0.0<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="variable_scopes" value="48">
+      <a class="js-page-link" href="../developers/variable_scopes.html">Sourcing Scripts<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="dev_configuration" value="49">
+      <a class="js-page-link" href="../developers/dev_configuration.html">Understanding Configuration<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                    <li data-page="relocating_cloudy" value="50">
+      <a class="js-page-link" href="../developers/relocating_cloudy.html">Relocating Cloudy<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                                                          <li data-page="writing_scripts" value="51">
+      <a class="js-page-link" href="../quick_start/writing_scripts.html">Writing Your First Cloudy Script<span
+              class="js-search-score
+              badge
+              bg-info rounded-pill badge-sm"></span></a>
+    </li>
+  
+                              </ol>
+      </div>
+        
+    <div class="js-chapter-list">
+              <h2 class="h4 mt-4">About</h2>
+        <ol>
+                                <li data-page="readme" value="1">
+      <a class="js-page-link" href="readme.html">Cloudy</a>
+    </li>
+  
+                                <li data-page="lexicon" value="2">
+      <a class="js-page-link" href="lexicon.html">Cloudy Lexicon</a>
+    </li>
+  
+                                <li data-page="globals" value="3">
+      <a class="js-page-link" href="globals.html">Global Variables</a>
+    </li>
+  
+                                <li data-page="filepaths" value="4">
+      <a class="js-page-link" href="filepaths.html">Filepaths</a>
+    </li>
+  
+                                <li data-page="cloudy_core_testing" value="5">
+      <a class="js-page-link" href="cloudy_core_testing.html">Cloudy Core Testing</a>
+    </li>
+  
+                                <li data-page="changelog" value="6">
+      <a class="js-page-link" href="changelog.html">Cloudy Changelog</a>
+    </li>
+  
+                                <li data-page="cloudy_basepath" value="7">
+      <a class="js-page-link" href="cloudy_basepath.html">Cloudy Basepath</a>
+    </li>
+  
+                                <li data-page="api_functions" value="8">
+      <a class="js-page-link" href="api_functions.html">Cloudy API: BASH Functions</a>
+    </li>
+  
+                                <li data-page="test_functions" value="9">
+      <a class="js-page-link" href="test_functions.html">Cloudy API: BASH Test Functions</a>
+    </li>
+  
+                                <li data-page="api_functions_php" value="10">
+      <a class="js-page-link" href="api_functions_php.html">Cloudy API: PHP Functions</a>
+    </li>
+  
+                  </ol>
+              <h2 class="h4 mt-4">PHP in Cloudy</h2>
+        <ol>
+                                <li data-page="php_bash_side" value="11">
+      <a class="js-page-link" href="../php/php_bash_side.html">Writing Cloudy PHP: BASH Perspective</a>
+    </li>
+  
+                                <li data-page="php_php_side" value="12">
+      <a class="js-page-link" href="../php/php_php_side.html">Writing Cloudy PHP: PHP Perspective</a>
+    </li>
+  
+                                <li data-page="php_envvars" value="13">
+      <a class="js-page-link" href="../php/php_envvars.html">Sharing Data Between BASH and PHP</a>
+    </li>
+  
+                                <li data-page="php_errors" value="14">
+      <a class="js-page-link" href="../php/php_errors.html">Error Handling in Cloudy PHP</a>
+    </li>
+  
+                                <li data-page="php_example" value="15">
+      <a class="js-page-link" href="../php/php_example.html">Writing Cloudy PHP (Complete Example)</a>
+    </li>
+  
+                                <li data-page="php_version" value="16">
+      <a class="js-page-link" href="../php/php_version.html">Setting the PHP Version Used by Cloudy</a>
+    </li>
+  
+                                <li data-page="composer" value="17">
+      <a class="js-page-link" href="../php/composer.html">Building a Cloudy-based App w/ Composer</a>
+    </li>
+  
+                  </ol>
+              <h2 class="h4 mt-4">BASH</h2>
+        <ol>
+                                <li data-page="arrays" value="18">
+      <a class="js-page-link" href="../bash/arrays.html">Arrays</a>
+    </li>
+  
+                                <li data-page="strings" value="19">
+      <a class="js-page-link" href="../bash/strings.html">String Manipulation</a>
+    </li>
+  
+                  </ol>
+              <h2 class="h4 mt-4">Code Examples</h2>
+        <ol>
+                                <li data-page="functions" value="20">
+      <a class="js-page-link" href="../examples/functions.html">Functions</a>
+    </li>
+  
+                                <li data-page="menus_input" value="21">
+      <a class="js-page-link" href="../examples/menus_input.html">User Input and Menus</a>
+    </li>
+  
+                                <li data-page="plugins" value="22">
+      <a class="js-page-link" href="../examples/plugins.html">Single File Plugins Pattern</a>
+    </li>
+  
+                                <li data-page="route_access" value="23">
+      <a class="js-page-link" href="../examples/route_access.html">Command Access</a>
+    </li>
+  
+                  </ol>
+              <h2 class="h4 mt-4">Usage</h2>
+        <ol>
+                                <li data-page="app_root" value="24">
+      <a class="js-page-link" href="../usage/app_root.html">Application Root</a>
+    </li>
+  
+                                <li data-page="arguments" value="25">
+      <a class="js-page-link" href="../usage/arguments.html">This script "arguments"</a>
+    </li>
+  
+                                <li data-page="command" value="26">
+      <a class="js-page-link" href="../usage/command.html">The Script "Command"</a>
+    </li>
+  
+                                <li data-page="configuration" value="27">
+      <a class="js-page-link" href="../usage/configuration.html">Configuration</a>
+    </li>
+  
+                                <li data-page="conventions" value="28">
+      <a class="js-page-link" href="../usage/conventions.html">Cloudy Conventions</a>
+    </li>
+  
+                                <li data-page="development" value="29">
+      <a class="js-page-link" href="../usage/development.html">Development Tools</a>
+    </li>
+  
+                                <li data-page="documenting" value="30">
+      <a class="js-page-link" href="../usage/documenting.html">Documenting Code</a>
+    </li>
+  
+                                <li data-page="error_handling" value="31">
+      <a class="js-page-link" href="../usage/error_handling.html">Exit Status</a>
+    </li>
+  
+                                <li data-page="events" value="32">
+      <a class="js-page-link" href="../usage/events.html">Events (Hooks)</a>
+    </li>
+  
+                                <li data-page="installer" value="33">
+      <a class="js-page-link" href="../usage/installer.html">The Initialize API</a>
+    </li>
+  
+                                <li data-page="lists" value="34">
+      <a class="js-page-link" href="../usage/lists.html">Lists</a>
+    </li>
+  
+                                <li data-page="localize" value="35">
+      <a class="js-page-link" href="../usage/localize.html">Localization/Translation</a>
+    </li>
+  
+                                <li data-page="logging" value="36">
+      <a class="js-page-link" href="../usage/logging.html">Logging to File</a>
+    </li>
+  
+                                <li data-page="menus" value="37">
+      <a class="js-page-link" href="../usage/menus.html">Menus</a>
+    </li>
+  
+                                <li data-page="options" value="38">
+      <a class="js-page-link" href="../usage/options.html">The Script "Options"</a>
+    </li>
+  
+                                <li data-page="packages" value="39">
+      <a class="js-page-link" href="../usage/packages.html">Cloudy Packages</a>
+    </li>
+  
+                                <li data-page="tables" value="40">
+      <a class="js-page-link" href="../usage/tables.html">Tables (Tabular Output)</a>
+    </li>
+  
+                                <li data-page="tempdir" value="41">
+      <a class="js-page-link" href="../usage/tempdir.html">Using a Temporary Directory</a>
+    </li>
+  
+                                <li data-page="testing" value="42">
+      <a class="js-page-link" href="../usage/testing.html">Unit Testing</a>
+    </li>
+  
+                                <li data-page="version" value="43">
+      <a class="js-page-link" href="../usage/version.html">Script Version</a>
+    </li>
+  
+                                <li data-page="yaml" value="44">
+      <a class="js-page-link" href="../usage/yaml.html">YAML in BASH</a>
+    </li>
+  
+                  </ol>
+              <h2 class="h4 mt-4">Troubleshooting</h2>
+        <ol>
+                                <li data-page="empty_config" value="45">
+      <a class="js-page-link" href="../trouble/empty_config.html">`$CLOUDY_CONFIG_JSON cannot be empty...`</a>
+    </li>
+  
+                                <li data-page="autoloader" value="46">
+      <a class="js-page-link" href="../trouble/autoloader.html">Composer autoloader not found</a>
+    </li>
+  
+                  </ol>
+              <h2 class="h4 mt-4">Developers</h2>
+        <ol>
+                                <li data-page="upgrade_v2" value="47">
+      <a class="js-page-link" href="../developers/upgrade_v2.html">Upgrade Path to Cloudy 2.0.0</a>
+    </li>
+  
+                                <li data-page="variable_scopes" value="48">
+      <a class="js-page-link" href="../developers/variable_scopes.html">Sourcing Scripts</a>
+    </li>
+  
+                                <li data-page="dev_configuration" value="49">
+      <a class="js-page-link" href="../developers/dev_configuration.html">Understanding Configuration</a>
+    </li>
+  
+                                <li data-page="relocating_cloudy" value="50">
+      <a class="js-page-link" href="../developers/relocating_cloudy.html">Relocating Cloudy</a>
+    </li>
+  
+                  </ol>
+              <h2 class="h4 mt-4">Quick Start</h2>
+        <ol>
+                                <li data-page="writing_scripts" value="51">
+      <a class="js-page-link" href="../quick_start/writing_scripts.html">Writing Your First Cloudy Script</a>
+    </li>
+  
+                  </ol>
+          </div>
+  </div>
+</div>
+<div class="modal fade" id="modal" tabindex="-1"
+     aria-labelledby="modal-title" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="js-modal-title modal-title" id="modal-title"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="mt-1 mb-4">
+                                  <span type="button" class="js-tag-filter badge rounded-pill" data-tag="ABOUT" aria-pressed="false">ABOUT</span>
+                                  <span type="button" class="js-tag-filter badge rounded-pill" data-tag="BASH" aria-pressed="false">BASH</span>
+                                  <span type="button" class="js-tag-filter badge rounded-pill" data-tag="COMPOSER" aria-pressed="false">COMPOSER</span>
+                                  <span type="button" class="js-tag-filter badge rounded-pill" data-tag="CONFIG" aria-pressed="false">CONFIG</span>
+                                  <span type="button" class="js-tag-filter badge rounded-pill" data-tag="DEPENDENCIES" aria-pressed="false">DEPENDENCIES</span>
+                                  <span type="button" class="js-tag-filter badge rounded-pill" data-tag="EXAMPLES" aria-pressed="false">EXAMPLES</span>
+                                  <span type="button" class="js-tag-filter badge rounded-pill" data-tag="INSTALLATION" aria-pressed="false">INSTALLATION</span>
+                                  <span type="button" class="js-tag-filter badge rounded-pill" data-tag="PHP" aria-pressed="false">PHP</span>
+                                  <span type="button" class="js-tag-filter badge rounded-pill" data-tag="QUICK_START" aria-pressed="false">QUICK_START</span>
+                                  <span type="button" class="js-tag-filter badge rounded-pill" data-tag="USAGE" aria-pressed="false">USAGE</span>
+                  </p>
+        
+                
+        <ul class="list-group list-group-flush">
+                                    <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;ABOUT&quot;]" href="readme.html">Cloudy</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="lexicon.html">Cloudy Lexicon</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;CONFIG&quot;,&quot;INSTALLATION&quot;]" href="globals.html">Global Variables</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="filepaths.html">Filepaths</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="cloudy_core_testing.html">Cloudy Core Testing</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;ABOUT&quot;]" href="changelog.html">Cloudy Changelog</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="cloudy_basepath.html">Cloudy Basepath</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="api_functions.html">Cloudy API: BASH Functions</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="test_functions.html">Cloudy API: BASH Test Functions</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="api_functions_php.html">Cloudy API: PHP Functions</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../php/php_bash_side.html">Writing Cloudy PHP: BASH Perspective</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../php/php_php_side.html">Writing Cloudy PHP: PHP Perspective</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../php/php_envvars.html">Sharing Data Between BASH and PHP</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../php/php_errors.html">Error Handling in Cloudy PHP</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../php/php_example.html">Writing Cloudy PHP (Complete Example)</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../php/php_version.html">Setting the PHP Version Used by Cloudy</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;COMPOSER&quot;,&quot;DEPENDENCIES&quot;,&quot;PHP&quot;,&quot;USAGE&quot;]" href="../php/composer.html">Building a Cloudy-based App w/ Composer</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;BASH&quot;]" href="../bash/arrays.html">Arrays</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;BASH&quot;]" href="../bash/strings.html">String Manipulation</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;EXAMPLES&quot;]" href="../examples/functions.html">Functions</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;EXAMPLES&quot;]" href="../examples/menus_input.html">User Input and Menus</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;EXAMPLES&quot;]" href="../examples/plugins.html">Single File Plugins Pattern</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;EXAMPLES&quot;]" href="../examples/route_access.html">Command Access</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/app_root.html">Application Root</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/arguments.html">This script &quot;arguments&quot;</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/command.html">The Script &quot;Command&quot;</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/configuration.html">Configuration</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/conventions.html">Cloudy Conventions</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/development.html">Development Tools</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/documenting.html">Documenting Code</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/error_handling.html">Exit Status</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/events.html">Events (Hooks)</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/installer.html">The Initialize API</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/lists.html">Lists</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/localize.html">Localization/Translation</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/logging.html">Logging to File</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/menus.html">Menus</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/options.html">The Script &quot;Options&quot;</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/packages.html">Cloudy Packages</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/tables.html">Tables (Tabular Output)</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/tempdir.html">Using a Temporary Directory</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/testing.html">Unit Testing</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/version.html">Script Version</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;USAGE&quot;]" href="../usage/yaml.html">YAML in BASH</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../trouble/empty_config.html">`$CLOUDY_CONFIG_JSON cannot be empty...`</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../trouble/autoloader.html">Composer autoloader not found</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../developers/upgrade_v2.html">Upgrade Path to Cloudy 2.0.0</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../developers/variable_scopes.html">Sourcing Scripts</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../developers/dev_configuration.html">Understanding Configuration</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[]" href="../developers/relocating_cloudy.html">Relocating Cloudy</a>
+                                                <a class="list-group-item list-group-item-action"
+                 data-tags="[&quot;QUICK_START&quot;]" href="../quick_start/writing_scripts.html">Writing Your First Cloudy Script</a>
+                              </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="../../dist/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="../../dist/lunr.js"></script>
+  <script src="../../dist/knowledge.min.js"></script>
+
+</body>
+</html>

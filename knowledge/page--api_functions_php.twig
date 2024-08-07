@@ -1,0 +1,17 @@
+<h1>Cloudy API: PHP Functions</h1>
+
+These mirror the BASH like-named functions for use in PHP.
+
+Watch for certain differences based on language conventions, such as:
+
+* return a string, rather than echo a string.
+* passing $exit_status by reference rather than using a return integar value.
+
+---
+
+<div class="function-index">
+  {% for function in api_functions %}
+    <a>{{ function.name }}</a>
+    {#    <a href="#{{ function.name }}">{{ function.name }}</a> #}
+  {% endfor %}
+</div>
