@@ -6,7 +6,7 @@
 #
 
 CLOUDY_PACKAGE_CONFIG="cloudy_runtime.yml";
-CLOUDY_COMPOSER_VENDOR="../../dist/vendor"
+CLOUDY_COMPOSER_VENDOR="../../vendor"
 
 # This has to be enabled so it prints to the variable output.
 #CLOUDY_LOG="cloudy_runtime.log"

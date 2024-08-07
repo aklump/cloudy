@@ -2,4 +2,3 @@
 #  width: 1000
 composer:
   config_path: ../dist/composer.json
-  repository_url: https://github.com/aklump/cloudy/dist

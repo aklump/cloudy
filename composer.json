@@ -1,6 +1,6 @@
 {
   "name": "aklump/cloudy",
-  "description": "A BASH framework, which uses YAML or JSON for your script's configuration and provides a unit testing framework.",
+  "description": "A BASH Framework for PHP-Minded Developers.",
   "license": "BSD-3-Clause",
   "repositories": [
     {
@@ -22,12 +22,12 @@
   },
   "autoload": {
     "psr-4": {
-      "AKlump\\Cloudy\\": "./php/src/"
+      "AKlump\\Cloudy\\": "./dist/php/src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "AKlump\\Cloudy\\Tests\\": "../tests/"
+      "AKlump\\Cloudy\\Tests\\": "./tests/"
     }
   }
 }

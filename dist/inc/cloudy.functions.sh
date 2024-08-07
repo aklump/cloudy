@@ -118,7 +118,7 @@ function _cloudy_detect_composer_vendor_by_installation() {
     base="$(dirname "$CLOUDY_PACKAGE_CONTROLLER")"
     case "$installation_type" in
     "$CLOUDY_INSTALL_TYPE_SELF")
-      vendor="$base/cloudy/dist/vendor"
+      vendor="$base/cloudy/vendor"
       ;;
     "$CLOUDY_INSTALL_TYPE_SCRIPT")
       vendor="$base/cloudy/vendor"
