@@ -23,7 +23,7 @@
     ```json
     {
         "type": "github",
-        "url": "https://github.com/aklump/cloudy/dist"
+        "url": "https://github.com/aklump/cloudy"
     }
     ```
 1. Require this package:
@@ -33,7 +33,7 @@
     ```
 
 ```shell
-composer create-project aklump/cloudy:@dev --repository="{\"type\":\"github\",\"url\": \"https://github.com/aklump/cloudy/dist\"}"
+composer create-project aklump/cloudy:@dev --repository="{\"type\":\"github\",\"url\": \"https://github.com/aklump/cloudy\"}"
 ```
 
 ## Quick Start
