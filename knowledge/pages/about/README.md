@@ -21,6 +21,8 @@ tags: about
 
 {{ composer.install|raw }}
 
+{{ composer.create_project|raw }}
+
 ## Quick Start
 
 After installing Cloudy, to write a new script called _thunder.sh_ ...

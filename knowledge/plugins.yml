@@ -1,5 +1,5 @@
 #mermaid:
 #  width: 1000
 composer:
-  config: ../dist/composer.json
-  repository: https://github.com/aklump/cloudy/dist
+  config_path: ../dist/composer.json
+  repository_url: https://github.com/aklump/cloudy/dist
