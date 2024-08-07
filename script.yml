@@ -1,0 +1,22 @@
+title: ""
+additional_config:
+#  - '$CLOUDY_BASEPATH/.script/config.yml'
+#  - '$CLOUDY_BASEPATH/.script/config.local.yml'
+additional_bootstrap:
+default_command: help
+commands:
+  help:
+    help: Show this help screen.
+    options:
+      version:
+        help: "Display the current version"
+        type: boolean
+  clear-cache:
+    aliases: [clearcache, cc]
+    help: Clear all cached data.
+translate:
+  ids:
+    - Completed successfully.
+    - Failed.
+  strings:
+    en:

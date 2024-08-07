@@ -1,0 +1,7 @@
+title: CloudyPMInstalledCloudyPackage
+default_command: help
+commands:
+  help:
+    help: lorem ipsum dolar.
+additional_config:
+  - bin/config/user_config.yml

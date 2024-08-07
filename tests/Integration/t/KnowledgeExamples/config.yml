@@ -1,0 +1,9 @@
+title: Knowledge Example
+additional_bootstrap:
+default_command: json_decode
+commands:
+  json_decode:
+    aliases: [ json-decode, jsond ]
+    help: Decode a JSON string.
+
+

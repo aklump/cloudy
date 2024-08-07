@@ -1,0 +1,13 @@
+title: Install Type Core
+additional_config:
+  - config/*.yml
+  - config/glob/**.yml
+additional_bootstrap:
+default_command: help
+commands:
+  help:
+    help: Show this help screen.
+    options:
+      version:
+        help: "Display the current version"
+        type: boolean

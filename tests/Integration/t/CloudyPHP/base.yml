@@ -1,0 +1,11 @@
+title: Cloudy PHP In Config Test
+additional_config:
+  - '$CLOUDY_BASEPATH/config/local.yml'
+default_command: help
+commands:
+  help:
+    help: Show this help screen.
+    options:
+      version:
+        help: "Display the current version"
+        type: boolean

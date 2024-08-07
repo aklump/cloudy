@@ -1,0 +1,2 @@
+shell_commands:
+  php: /Applications/MAMP/bin/php/php8.0.24/bin/php
