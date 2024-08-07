@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# SPDX-License-Identifier: BSD-3-Clause
+
 source "$CLOUDY_CORE_DIR/inc/cloudy.define_variables.sh"
 
 ##

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# SPDX-License-Identifier: BSD-3-Clause
+
 declare -a SANDBOX_CLOUDY_FAILURES=()
 declare -a SANDBOX_CLOUDY_SUCCESSES=()
 SANDBOX_CLOUDY_EXIT_STATUS=0

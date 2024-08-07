@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# SPDX-License-Identifier: BSD-3-Clause
+
 # @file
 # Read PHP override in *.local.yml and set CLOUDY_PHP
 #

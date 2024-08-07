@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# SPDX-License-Identifier: BSD-3-Clause
+
+# SPDX-License-Identifier: BSD-3-Clause
+
 #
 # @file
 # Demonstrate how one might write a Cloudy script.

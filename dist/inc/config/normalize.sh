@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# SPDX-License-Identifier: BSD-3-Clause
+
 ##
  # @file Normalize, aggregate and cache all config files to CLOUDY_CONFIG_JSON
  #

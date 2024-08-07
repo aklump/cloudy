@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# SPDX-License-Identifier: BSD-3-Clause
+
 ##
  # Checks for outdated and legacy code, suggests upgrade steps, exits with failure.
  #

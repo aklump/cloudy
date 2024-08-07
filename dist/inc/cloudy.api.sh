@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# SPDX-License-Identifier: BSD-3-Clause
+
 # Set a JSON string to be later read by json_get_value().
 #
 # Call this once to put your json string into memory, then make unlimited calls

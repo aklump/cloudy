@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# SPDX-License-Identifier: BSD-3-Clause
+
 ##
  # @file Define all the variables used by Cloudy Core
  #
