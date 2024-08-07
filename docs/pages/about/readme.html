@@ -51,15 +51,30 @@
 </blockquote>
 <p><img class="img-fluid" src="../../images/screenshot.jpg" alt="cloudy" /></p>
 <h2>Summary</h2>
-<p>A BASH framework, which uses YAML for your script's configuration and provides a unit testing framework.</p>
-<p>Cloudy provides the following features:</p>
 <ul>
-<li>Clean and simple configuration options for your scripts</li>
-<li>A BASH Unit Testing framework inspired by <a href="https://phpunit.de">PHPUnit</a></li>
+<li>Clean and simple YAML configuration</li>
+<li>Easy integration with PHP  </li>
+<li>BASH Unit Testing framework inspired by <a href="https://phpunit.de">PHPUnit</a></li>
 <li>Auto-generated help output</li>
 <li>Support for multilingual localization</li>
 </ul>
 <p><strong>Visit <a href="https://aklump.github.io/cloudy">https://aklump.github.io/cloudy</a> for full documentation.</strong></p>
+<h2>Install with Composer</h2>
+<ol>
+<li><p>Because this is an unpublished package, you must define it's repository in
+your project's <em>composer.json</em> file. Add the following to <em>composer.json</em> in
+the <code>repositories</code> array:</p>
+<pre><code class="json"> {
+     "type": "github",
+     "url": "https://github.com/aklump/cloudy"
+ }
+</code></pre>
+</li>
+<li><p>Require this package:</p>
+<pre><code> composer require aklump/cloudy:@dev
+</code></pre>
+</li>
+</ol>
 <h2>Quick Start</h2>
 <p>After installing Cloudy, to write a new script called <em>thunder.sh</em> ...</p>
 <ol>

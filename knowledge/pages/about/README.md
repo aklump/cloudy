@@ -11,16 +11,15 @@ tags: about
 
 ## Summary
 
-A BASH framework, which uses YAML for your script's configuration and provides a unit testing framework.
-
-Cloudy provides the following features:
-
-* Clean and simple configuration options for your scripts
-* A BASH Unit Testing framework inspired by [PHPUnit](https://phpunit.de)
+* Clean and simple YAML configuration
+* Easy integration with PHP  
+* BASH Unit Testing framework inspired by [PHPUnit](https://phpunit.de)
 * Auto-generated help output
 * Support for multilingual localization
 
 **Visit <https://aklump.github.io/cloudy> for full documentation.**
+
+{{ composer.install|raw }}
 
 ## Quick Start
 

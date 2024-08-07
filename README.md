@@ -6,16 +6,31 @@
 
 ## Summary
 
-A BASH framework, which uses YAML for your script's configuration and provides a unit testing framework.
-
-Cloudy provides the following features:
-
-* Clean and simple configuration options for your scripts
-* A BASH Unit Testing framework inspired by [PHPUnit](https://phpunit.de)
+* Clean and simple YAML configuration
+* Easy integration with PHP  
+* BASH Unit Testing framework inspired by [PHPUnit](https://phpunit.de)
 * Auto-generated help output
 * Support for multilingual localization
 
 **Visit <https://aklump.github.io/cloudy> for full documentation.**
+
+## Install with Composer
+
+1. Because this is an unpublished package, you must define it's repository in
+   your project's _composer.json_ file. Add the following to _composer.json_ in
+   the `repositories` array:
+   
+    ```json
+    {
+        "type": "github",
+        "url": "https://github.com/aklump/cloudy"
+    }
+    ```
+1. Require this package:
+   
+    ```
+    composer require aklump/cloudy:@dev
+    ```
 
 ## Quick Start
 
