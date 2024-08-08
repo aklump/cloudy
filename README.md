@@ -2,7 +2,7 @@
 
 > A BASH Framework for PHP-Minded Developers
 
-![cloudy](images/screenshot.jpg)
+![cloudy](images/hero_image.jpg)
 
 ## Summary
 
@@ -23,13 +23,16 @@ Let's consider a project called _Thunder_:
 3. Install Cloudy using one of the methods described below.
 4. Copy and rename scaffold files:
    ```shell
-   cp cloudy/examples/__package_name.sh thunder.sh
-   cp cloudy/examples/__package_name.yml thunder.yml
+   cp cloudy/install/__package_name.sh thunder.sh
+   cp cloudy/install/__package_name.yml thunder.yml
    ```
 5. Open _thunder.sh_ and _thunder.yml_
 7. Replace `__package_name` with an appropriate value.
 6. In _thunder.sh_ change the assignment to `CLOUDY_PACKAGE_CONFIG="thunder.yml";`
 8. Execute your script using `./thunder.sh` to ensure things are working.
+   
+   ![All Good](images/thunder_installed.png)
+   
 9. Now write code referring to [the documentation](https://aklump.github.io/cloudy/README.html) for guidance.
 1. Also refer to _cloudy/examples/_ for more code examples.
 
