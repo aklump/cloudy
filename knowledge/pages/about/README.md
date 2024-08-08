@@ -19,41 +19,47 @@ tags: about
 
 **Visit <https://aklump.github.io/cloudy> for full documentation.**
 
+## Quick Start
+
+Let's consider a project called _Thunder_:
+
+1. Create a new directory to hold your project, e.g. _thunder/_
+2. Change into that directory.
+3. Install Cloudy using one of the methods described below.
+4. Copy and rename scaffold files:
+   ```shell
+   cp cloudy/examples/__package_name.sh thunder.sh
+   cp cloudy/examples/__package_name.yml thunder.yml
+   ```
+5. Open _thunder.sh_ and _thunder.yml_
+7. Replace `__package_name` with an appropriate value.
+6. In _thunder.sh_ change the assignment to `CLOUDY_PACKAGE_CONFIG="thunder.yml";`
+8. Execute your script using `./thunder.sh` to ensure things are working.
+9. Now write code referring to [the documentation](https://aklump.github.io/cloudy/README.html) for guidance.
+1. Also refer to _cloudy/examples/_ for more code examples.
+
 {{ composer.install|raw }}
 
 ## Install with Composer Create Project
 
-{{ composer.create_project|raw }}
+Use this method to create a _cloudy/_ folder in the root of your project.
 
-```bash
-rm cloudy/.gitignore
-cp cloudy/install/composer_create_project/gitignore cloudy/.gitignore
-```
+1. Change to the root of your project and execute:
 
-## Quick Start
+   {{ composer.create_project|raw }}
 
-After installing Cloudy, to write a new script called _thunder.sh_ ...
+2. Replace the _.gitignore file_:
 
-1. `cd` to the directory where you want the script to be created.
-1. Type `cloudy new thunder.sh` and the necessary files/directories will be created in the current directory.
-1. Open _thunder.sh_, enable logging, and write your code.
-1. Open _thunder.yml_ and add some configuration.
-1. To learn about the options to use with `new` type `cloudy help new`.
-1. Refer to [the documentation](https://aklump.github.io/cloudy/README.html) for to learn more.
-
-### Source Control
-
-1. You may omit the cloudy framework from your repository with something like the following, then use `cloudy install` to put the files in place when necessary.
-
-```gitignore
-cloudy/**
-!cloudy/version.sh
-```
+    ```bash
+    rm cloudy/.gitignore
+    cp cloudy/install/composer_create_project/gitignore cloudy/.gitignore
+    ```
 
 ## Requirements
 
-* Works with BASH 3
-* PHP (Used invisibly on the backend for configuration processing; no PHP knowledge is required to use Cloudy.)
+* BASH >=3
+* PHP
+* Composer
 
 ## Contributing
 

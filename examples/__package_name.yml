@@ -1,4 +1,4 @@
-title: ""
+title: "__package_name"
 additional_config:
 #  - '$CLOUDY_BASEPATH/.script/config.yml'
 #  - '$CLOUDY_BASEPATH/.script/config.local.yml'

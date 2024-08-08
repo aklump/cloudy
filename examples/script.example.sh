@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# SPDX-License-Identifier: BSD-3-Clause
-
-# SPDX-License-Identifier: BSD-3-Clause
-
 #
 # @file
 # Demonstrate how one might write a Cloudy script.
@@ -32,7 +28,7 @@ CLOUDY_PACKAGE_CONFIG="script.example.yml";
 # TODO: Event handlers and other functions go here or register one or more includes in "additional_bootstrap".
 
 # Begin Cloudy Bootstrap
-s="${BASH_SOURCE[0]}";while [ -h "$s" ];do dir="$(cd -P "$(dirname "$s")" && pwd)";s="$(readlink "$s")";[[ $s != /* ]] && s="$dir/$s";done;r="$(cd -P "$(dirname "$s")" && pwd)";CLOUDY_CORE_DIR="$r/cloudy";source "$CLOUDY_CORE_DIR/cloudy.sh"[[ "$ROOT" != "$r" ]] && echo "$(tput setaf 7)$(tput setab 1)Bootstrap failure, cannot load cloudy.sh$(tput sgr0)" && exit 1
+s="${BASH_SOURCE[0]}";while [ -h "$s" ];do dir="$(cd -P "$(dirname "$s")" && pwd)";s="$(readlink "$s")";[[ $s != /* ]] && s="$dir/$s";done;r="$(cd -P "$(dirname "$s")" && pwd)";CLOUDY_CORE_DIR="$r/cloudy/dist";source "$CLOUDY_CORE_DIR/cloudy.sh";[[ "$ROOT" != "$r" ]] && echo "$(tput setaf 7)$(tput setab 1)Bootstrap failure, cannot load cloudy.sh$(tput sgr0)" && exit 1
 # End Cloudy Bootstrap
 
 # Input validation.
@@ -43,12 +39,13 @@ validate_input
 # comments for more information.
 implement_cloudy_basic
 
+# Load one or more configuration into memory.
 eval $(get_config "some.thing")
 
-# This is a short way to validate your configuration before moving on.
+# Validate that some.thing has been configured or stop execution.
 exit_with_failure_if_empty_config "some.thing"
 
-# Handle other commands.
+# Handle all your custom commands.
 command=$(get_command)
 case $command in
 
