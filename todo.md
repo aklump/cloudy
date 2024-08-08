@@ -1,0 +1,3 @@
+- cloudy pmu seems to fail, we may need to rm cloudy/cloudy/composer.lock in the command; need more examination.
+- Look into why I have to manually edit opt/aklump/htaccess/htaccess.sh by setting `CLOUDY_COMPOSER_VENDOR="../../cloudy/cloudy/vendor"`, and why it doesn't happen automatically.  It should be automatic.
+- when cloudy pmi fails, it needs to remove the files that were partially installed, otherwise a repeat requires the user to manually do that.
