@@ -49,6 +49,28 @@ function _cloudy_resolve_path_tokens() {
   echo "$path"
 }
 
+declare -a _cloudy_test_paths__array=()
+##
+ # Test an array of paths.
+ #
+ # @global _cloudy_test_paths__array
+ #
+ # @return 0 If all paths exist
+ # @return 1 If one or more paths do not exist
+ #
+ # @code
+ # _cloudy_test_paths__array=("/foo/" "/foo/bar.txt")
+ # _cloudy_test_paths || exit_with_failure
+ # @endcode
+ ##
+function _cloudy_test_paths() {
+  local _path
+  for _path in ${_cloudy_test_paths__array[@]} ; do
+    [[ -e "$_path" ]] && continue
+    return 1
+  done
+}
+
 ##
  # Detect the type of Cloudy installation for a given directory.
  #
@@ -60,32 +82,25 @@ function _cloudy_resolve_path_tokens() {
 function _cloudy_detect_installation_type() {
   local base="$1"
 
-  local check_composer
-  local check_cloudy
   base=$(dirname "$base")
 
-  check_composer="$(path_make_canonical "$base/../../../composer.json")"
-  [ -f "$(path_make_canonical "$check_composer")" ] && echo $CLOUDY_INSTALL_TYPE_COMPOSER && return 0
+  _cloudy_test_paths__array=("$base/../../../composer.json")
+  _cloudy_test_paths && echo $CLOUDY_INSTALL_TYPE_COMPOSER && return 0
 
-  check_composer="$(path_make_canonical "$base/composer.json")"
-  check_cloudy="$(path_make_canonical "$base/cloudy/cloudy.sh")"
-  [ -f "$check_composer" ] && [ -f "$check_cloudy" ]  && echo $CLOUDY_INSTALL_TYPE_CORE && return 0
+  _cloudy_test_paths__array=("$base/composer.json" "$base/cloudy/cloudy.sh")
+  _cloudy_test_paths && echo $CLOUDY_INSTALL_TYPE_CORE && return 0
 
-  check_composer="$(path_make_canonical "$base/cloudy/composer.json")"
-  check_cloudy="$(path_make_canonical "$base/cloudy/cloudy.sh")"
-  [ -f "$check_composer" ] && [ -f "$check_cloudy" ]  && echo $CLOUDY_INSTALL_TYPE_SCRIPT && return 0
+  _cloudy_test_paths__array=("$base/cloudy/composer.json" "$base/cloudy/cloudy.sh")
+  _cloudy_test_paths && echo $CLOUDY_INSTALL_TYPE_SCRIPT && return 0
 
-  check_composer="$(path_make_canonical "$base/cloudy/dist/composer.json")"
-  check_cloudy="$(path_make_canonical "$base/cloudy/dist/cloudy.sh")"
-  [ -f "$check_composer" ] && [ -f "$check_cloudy" ]  && echo $CLOUDY_INSTALL_TYPE_SELF && return 0
+  _cloudy_test_paths__array=("$base/cloudy/dist/composer.json" "$base/cloudy/dist/cloudy.sh")
+  _cloudy_test_paths && echo $CLOUDY_INSTALL_TYPE_SELF && return 0
 
-  check_composer="$(path_make_canonical "$base/../../cloudy/cloudy/composer.json")"
-  check_cloudy="$(path_make_canonical "$base/../../../cloudypm.lock")"
-  [ -f "$check_composer" ] && [ -f "$check_cloudy" ] && echo $CLOUDY_INSTALL_TYPE_PM && return 0
+  _cloudy_test_paths__array=("$base/../../cloudy/cloudy/composer.json" "$base/../../../cloudypm.lock")
+  _cloudy_test_paths && echo $CLOUDY_INSTALL_TYPE_PM && return 0
 
-  check_composer="$(path_make_canonical "$base/composer.json")"
-  check_cloudy="$(path_make_canonical "$base/cloudy/dist/cloudy.sh")"
-  [ -f "$check_composer" ] && [ -f "$check_cloudy" ]  && echo $CLOUDY_INSTALL_TYPE_COMPOSER_CREATE_PROJECT && return 0
+  _cloudy_test_paths__array=("$base/cloudy/dist/cloudy.sh" "$base/cloudy/vendor" "$base/cloudy/composer.lock")
+  _cloudy_test_paths && echo $CLOUDY_INSTALL_TYPE_COMPOSER_CREATE_PROJECT && return 0
 
   # This is a fallback and means we can't figure it out.
   echo $CLOUDY_INSTALL_TYPE_CUSTOM && return 0
