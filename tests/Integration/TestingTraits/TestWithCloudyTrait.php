@@ -81,7 +81,12 @@ trait TestWithCloudyTrait {
   }
 
   protected function getCloudyCacheDir(): string {
-    return $this->getCloudyCoreDir() . '/cache';
+    $_cache_dir = sys_get_temp_dir();
+    if ($_cache_dir) {
+      return rtrim($_cache_dir, '/') . '/cloudy/cache';
+    }
+
+    return rtrim(getenv('HOME'), '/') . '/.cloudy/cache';
   }
 
   protected function getCloudyPackageController(): string {
@@ -146,12 +151,20 @@ trait TestWithCloudyTrait {
    *   The output from the execution.
    */
   public function execCloudy(string $test_script): string {
+    static $script_base;
+    if (empty($script_base)) {
+      $script_base = sys_get_temp_dir() . '/cloudy/tests';
+      if (!file_exists($script_base)) {
+        mkdir($script_base, 0755, TRUE);
+      }
+    }
+
     $this->cloudyOutput = [];
     $this->cloudyResultCode = NULL;
 
     if (!$this->pointsToFile($test_script)) {
       $data = $test_script . PHP_EOL;
-      $test_script = tempnam(sys_get_temp_dir(), time()) . '.sh';
+      $test_script = tempnam("$script_base", __FUNCTION__) . '.sh';
       file_put_contents($test_script, $data);
       $file_to_delete = $test_script;
     }
@@ -169,10 +182,13 @@ trait TestWithCloudyTrait {
     $exports .= sprintf('export CLOUDY_CORE_DIR="%s"', CLOUDY_CORE_DIR);
     $exports .= sprintf('export CLOUDY_LOG="%s"', $this->getCloudyLog());
     $command = sprintf($exports . ';' . __DIR__ . '/../cloudy_bridge/%s "%s" "%s"', $this->testRunner, $this->cloudyPackageConfig, $test_script);
-    exec($command, $this->cloudyOutput, $this->cloudyResultCode);
-
-    if (isset($file_to_delete)) {
-      unlink($file_to_delete);
+    try {
+      exec($command, $this->cloudyOutput, $this->cloudyResultCode);
+    }
+    finally {
+      if (isset($file_to_delete)) {
+        unlink($file_to_delete);
+      }
     }
 
     return $this->getCloudyOutput();

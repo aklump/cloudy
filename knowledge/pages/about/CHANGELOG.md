@@ -17,6 +17,7 @@ tags: about
 
 ### Changed
 
+- Moved cache directory to system temp dir with fallback in ~/.cloudy/cache.
 - Absolute paths can now be set on CONFIG; previously only relative paths worked.
 - In the bootstrap portion of the Cloudy Package Controller, replace `source "$r/cloudy/cloudy.sh"` with `CLOUDY_CORE_DIR="$r/cloudy";source "$CLOUDY_CORE_DIR/cloudy.sh"`; the path may be slightly different, e.g. `source "$r/../../cloudy/cloudy/cloudy.sh"` so ensure you maintain the correct path. The point here is to set the variable to the directory and then source _cloudy.sh_ using `$CLOUDY_CORE_DIR`.
 - Replace `path_relative_to_root` with `path_make_absolute`
