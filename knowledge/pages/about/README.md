@@ -32,7 +32,7 @@ Let's consider a project called _Thunder_:
    cp cloudy/install/__package_name.yml thunder.yml
    ```
 5. Open _thunder.sh_ and _thunder.yml_
-7. Replace `__package_name` with an appropriate value.
+7. Replace `__package_name` with appropriate values, e.g. `thunder`, `Thunder`, etc.
 8. Execute your script using `./thunder.sh` to ensure things are working.
 
    ![All Good](../../images/thunder_installed.png)
