@@ -30,9 +30,9 @@ Let's consider a project called _Thunder_:
 7. Replace `__package_name` with an appropriate value.
 6. In _thunder.sh_ change the assignment to `CLOUDY_PACKAGE_CONFIG="thunder.yml";`
 8. Execute your script using `./thunder.sh` to ensure things are working.
-   
+
    ![All Good](images/thunder_installed.png)
-   
+
 9. Now write code referring to [the documentation](https://aklump.github.io/cloudy/README.html) for guidance.
 1. Also refer to _cloudy/examples/_ for more code examples.
 
@@ -59,13 +59,10 @@ Let's consider a project called _Thunder_:
 Use this method to create a _cloudy/_ folder in the root of your project.
 
 1. Change to the root of your project and execute:
-
    ```shell
 composer create-project aklump/cloudy:^2.0 --repository="{\"type\":\"github\",\"url\": \"https://github.com/aklump/cloudy\"}"
 ```
-
 2. Replace the _.gitignore file_:
-
     ```bash
     rm cloudy/.gitignore
     cp cloudy/install/composer_create_project/gitignore cloudy/.gitignore
