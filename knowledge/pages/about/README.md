@@ -12,7 +12,7 @@ tags: about
 ## Summary
 
 * Clean and simple YAML configuration
-* Easy integration with PHP  
+* Easy integration with PHP
 * BASH Unit Testing framework inspired by [PHPUnit](https://phpunit.de)
 * Auto-generated help output
 * Support for multilingual localization
@@ -21,7 +21,14 @@ tags: about
 
 {{ composer.install|raw }}
 
+## Install with Composer Create Project
+
 {{ composer.create_project|raw }}
+
+```bash
+rm cloudy/.gitignore
+cp cloudy/install/composer_create_project/gitignore cloudy/.gitignore
+```
 
 ## Quick Start
 

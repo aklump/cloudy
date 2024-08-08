@@ -7,7 +7,7 @@
 ## Summary
 
 * Clean and simple YAML configuration
-* Easy integration with PHP  
+* Easy integration with PHP
 * BASH Unit Testing framework inspired by [PHPUnit](https://phpunit.de)
 * Auto-generated help output
 * Support for multilingual localization
@@ -29,11 +29,18 @@
 1. Require this package:
    
     ```
-    composer require aklump/cloudy:@dev
+    composer require aklump/cloudy:^2.0
     ```
 
+## Install with Composer Create Project
+
 ```shell
-composer create-project aklump/cloudy:@dev --repository="{\"type\":\"github\",\"url\": \"https://github.com/aklump/cloudy\"}"
+composer create-project aklump/cloudy:^2.0 --repository="{\"type\":\"github\",\"url\": \"https://github.com/aklump/cloudy\"}"
+```
+
+```bash
+rm cloudy/.gitignore
+cp cloudy/install/composer_create_project/gitignore cloudy/.gitignore
 ```
 
 ## Quick Start
