@@ -48,7 +48,9 @@ Let's consider a project called _Thunder_:
 Use this method to create a _cloudy/_ folder in the root of your project.
 
 1. Change to the root of your project and execute:
+   ```shell
    {{ composer.create_project|raw }}
+   ```   
 2. Replace the _.gitignore file_:
     ```bash
     rm cloudy/.gitignore
