@@ -33,7 +33,6 @@ Let's consider a project called _Thunder_:
    ```
 5. Open _thunder.sh_ and _thunder.yml_
 7. Replace `__package_name` with an appropriate value.
-6. In _thunder.sh_ change the assignment to `CLOUDY_PACKAGE_CONFIG="thunder.yml";`
 8. Execute your script using `./thunder.sh` to ensure things are working.
 
    ![All Good](../../images/thunder_installed.png)
