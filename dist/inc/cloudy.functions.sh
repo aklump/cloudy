@@ -102,6 +102,9 @@ function _cloudy_detect_installation_type() {
   _cloudy_test_paths__array=("$base/cloudy/dist/cloudy.sh" "$base/cloudy/vendor" "$base/cloudy/composer.lock")
   _cloudy_test_paths && echo $CLOUDY_INSTALL_TYPE_COMPOSER_CREATE_PROJECT && return 0
 
+  _cloudy_test_paths__array=("$base/vendor/aklump/cloudy/dist/cloudy.sh" "$base/vendor" "$base/composer.lock")
+  _cloudy_test_paths && echo $CLOUDY_INSTALL_TYPE_COMPOSER_REQUIRE && return 0
+
   # This is a fallback and means we can't figure it out.
   echo $CLOUDY_INSTALL_TYPE_CUSTOM && return 0
 }
@@ -147,6 +150,9 @@ function _cloudy_detect_composer_vendor_by_installation() {
       ;;
     "$CLOUDY_INSTALL_TYPE_COMPOSER_CREATE_PROJECT")
       vendor="$CLOUDY_CORE_DIR/../vendor"
+      ;;
+    "$CLOUDY_INSTALL_TYPE_COMPOSER_REQUIRE")
+      vendor="$base/vendor"
       ;;
     "$CLOUDY_INSTALL_TYPE_CORE")
       # Does the app have a vendor directory, which cloudy should leverage?

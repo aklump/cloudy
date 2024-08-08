@@ -65,10 +65,6 @@
 <li>Create a new directory to hold your project, e.g. <em>thunder/</em></li>
 <li>Change into that directory.</li>
 <li>Install Cloudy using one of the methods described below.</li>
-<li>Copy and rename scaffold files:<pre><code class="shell">cp cloudy/install/__package_name.sh thunder.sh
-cp cloudy/install/__package_name.yml thunder.yml
-</code></pre>
-</li>
 <li>Open <em>thunder.sh</em> and <em>thunder.yml</em></li>
 <li>Replace <code>__package_name</code> with appropriate values, e.g. <code>thunder</code>, <code>Thunder</code>, etc.</li>
 <li><p>Execute your script using <code>./thunder.sh</code> to ensure things are working.</p>
@@ -78,6 +74,12 @@ cp cloudy/install/__package_name.yml thunder.yml
 </li>
 <li>Also refer to <em>cloudy/examples/</em> for more code examples.</li>
 </ol>
+<h2>Install with Composer (pre-install)</h2>
+<pre><code class="json">{
+  "type": "github",
+  "url": "https://github.com/aklump/glob"
+}
+</code></pre>
 <h2>Install with Composer</h2>
 <ol>
 <li><p>Because this is an unpublished package, you must define it's repository in
@@ -93,6 +95,12 @@ the <code>repositories</code> array:</p>
 <pre><code> composer require aklump/cloudy:^2.0
 </code></pre>
 </li>
+<li><p>Copy and rename scaffold files:</p>
+<pre><code class="shell">cp vendor/aklump/cloudy/install/__package_name.sh thunder.sh
+cp vendor/aklump/cloudy/install/__package_name.yml thunder.yml
+</code></pre>
+</li>
+<li>Set the assignment in <em>thunder.sh</em> to  <code>CLOUDY_CORE_DIR="$r/vendor/aklump/cloudy/dist"</code></li>
 </ol>
 <h2>Install with Composer Create Project</h2>
 <p>Use this method to create a <em>cloudy/</em> folder in the root of your project.</p>
@@ -100,8 +108,14 @@ the <code>repositories</code> array:</p>
 <li>Change to the root of your project and execute:<pre><code class="shell">composer create-project aklump/cloudy:^2.0 --repository="{\"type\":\"github\",\"url\": \"https://github.com/aklump/cloudy\"}"
 </code></pre>
 </li>
-<li>Replace the <em>.gitignore file</em>:<pre><code class="bash"> rm cloudy/.gitignore
+<li><p>Replace the <em>.gitignore file</em>:</p>
+<pre><code class="bash"> rm cloudy/.gitignore
  cp cloudy/install/composer_create_project/gitignore cloudy/.gitignore
+</code></pre>
+</li>
+<li><p>Copy and rename scaffold files:</p>
+<pre><code class="shell">cp cloudy/install/__package_name.sh thunder.sh
+cp cloudy/install/__package_name.yml thunder.yml
 </code></pre>
 </li>
 </ol>

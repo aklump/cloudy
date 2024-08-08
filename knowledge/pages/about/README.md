@@ -26,11 +26,6 @@ Let's consider a project called _Thunder_:
 1. Create a new directory to hold your project, e.g. _thunder/_
 2. Change into that directory.
 3. Install Cloudy using one of the methods described below.
-4. Copy and rename scaffold files:
-   ```shell
-   cp cloudy/install/__package_name.sh thunder.sh
-   cp cloudy/install/__package_name.yml thunder.yml
-   ```
 5. Open _thunder.sh_ and _thunder.yml_
 7. Replace `__package_name` with appropriate values, e.g. `thunder`, `Thunder`, etc.
 8. Execute your script using `./thunder.sh` to ensure things are working.
@@ -40,7 +35,24 @@ Let's consider a project called _Thunder_:
 9. Now write code referring to [the documentation](https://aklump.github.io/cloudy/README.html) for guidance.
 1. Also refer to _cloudy/examples/_ for more code examples.
 
+## Install with Composer (pre-install)
+
+```json
+{
+  "type": "github",
+  "url": "https://github.com/aklump/glob"
+}
+```
+
 {{ composer.install|raw }}
+
+4. Copy and rename scaffold files:
+
+   ```shell
+   cp vendor/aklump/cloudy/install/__package_name.sh thunder.sh
+   cp vendor/aklump/cloudy/install/__package_name.yml thunder.yml
+   ```
+5. Set the assignment in _thunder.sh_ to  `CLOUDY_CORE_DIR="$r/vendor/aklump/cloudy/dist"`
 
 ## Install with Composer Create Project
 
@@ -51,10 +63,17 @@ Use this method to create a _cloudy/_ folder in the root of your project.
    {{ composer.create_project|raw }}
    ```   
 2. Replace the _.gitignore file_:
+
     ```bash
     rm cloudy/.gitignore
     cp cloudy/install/composer_create_project/gitignore cloudy/.gitignore
     ```
+4. Copy and rename scaffold files:
+
+   ```shell
+   cp cloudy/install/__package_name.sh thunder.sh
+   cp cloudy/install/__package_name.yml thunder.yml
+   ```
 
 ## Requirements
 
