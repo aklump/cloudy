@@ -1603,6 +1603,10 @@ function exit_with_failure() {
 
     echo && echo_error "🔥 $exit_message"
 
+    if [[ "$CLOUDY_LOG" ]]; then
+      CLOUDY_FAILURES=("${CLOUDY_FAILURES[@]}" "See log for more info: "$(path_make_pretty "$CLOUDY_LOG")"")
+    fi
+
     ## Write out the failure messages if any.
     if [ ${#CLOUDY_FAILURES[@]} -gt 0 ]; then
         echo_list__array=("${CLOUDY_FAILURES[@]}")
