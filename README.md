@@ -65,7 +65,7 @@ Use this method to create a _cloudy/_ folder in the root of your project.
 
 1. Change to the root of your project and execute:
    ```shell
-   composer create-project aklump/cloudy:^2.0 --repository="{\"type\":\"\",\"url\": \"https://github.com/aklump/cloudy\"}"
+   composer create-project aklump/cloudy:^2.0 --repository="{\"type\":\"github\",\"url\": \"https://github.com/aklump/cloudy\"}"
    ```   
 2. Replace the _.gitignore file_:
 
