@@ -86,8 +86,12 @@
 your project's <em>composer.json</em> file. Add the following to <em>composer.json</em> in
 the <code>repositories</code> array:</p>
 <pre><code class="json"> {
-     "type": "github",
-     "url": "https://github.com/aklump/cloudy"
+  "type": "github",
+  "url": "https://github.com/aklump/glob"
+ },
+ {
+  "type": "github",
+  "url": "https://github.com/aklump/cloudy"
  }
 </code></pre>
 </li>
@@ -105,7 +109,7 @@ cp vendor/aklump/cloudy/install/__package_name.yml thunder.yml
 <h2>Install with Composer Create Project</h2>
 <p>Use this method to create a <em>cloudy/</em> folder in the root of your project.</p>
 <ol>
-<li>Change to the root of your project and execute:<pre><code class="shell">composer create-project aklump/cloudy:^2.0 --repository="{\"type\":\"github\",\"url\": \"https://github.com/aklump/cloudy\"}"
+<li>Change to the root of your project and execute:<pre><code class="shell">composer create-project aklump/cloudy:^2.0 --repository="{\"type\":\"\",\"url\": \"https://github.com/aklump/cloudy\"}"
 </code></pre>
 </li>
 <li><p>Replace the <em>.gitignore file</em>:</p>

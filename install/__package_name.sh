@@ -8,8 +8,8 @@
 # Define the configuration file relative to this script.
 CLOUDY_PACKAGE_CONFIG="__package_name.yml";
 
-# Uncomment this line to enable file logging.
-#[[ ! "$CLOUDY_LOG" ]] && CLOUDY_LOG="__package_name.log"
+# Comment this next line to disable file logging.
+[[ ! "$CLOUDY_LOG" ]] && CLOUDY_LOG="__package_name.log"
 # Or, set for a terminal session using `export CLOUDY_LOG="__package_name.log"`.
 
 # TODO: Event handlers and other functions go here or register one or more includes in "additional_bootstrap".

@@ -47,8 +47,12 @@ Let's consider a project called _Thunder_:
    
     ```json
     {
-        "type": "github",
-        "url": "https://github.com/aklump/cloudy"
+     "type": "github",
+     "url": "https://github.com/aklump/glob"
+    },
+    {
+     "type": "github",
+     "url": "https://github.com/aklump/cloudy"
     }
     ```
 1. Require this package:
@@ -71,7 +75,7 @@ Use this method to create a _cloudy/_ folder in the root of your project.
 
 1. Change to the root of your project and execute:
    ```shell
-   composer create-project aklump/cloudy:^2.0 --repository="{\"type\":\"github\",\"url\": \"https://github.com/aklump/cloudy\"}"
+   composer create-project aklump/cloudy:^2.0 --repository="{\"type\":\"\",\"url\": \"https://github.com/aklump/cloudy\"}"
    ```   
 2. Replace the _.gitignore file_:
 
