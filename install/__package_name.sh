@@ -9,8 +9,7 @@
 CLOUDY_PACKAGE_CONFIG="__package_name.yml";
 
 # Comment this next line to disable file logging.
-[[ ! "$CLOUDY_LOG" ]] && CLOUDY_LOG="__package_name.log"
-# Or, set for a terminal session using `export CLOUDY_LOG="__package_name.log"`.
+[[ "$CLOUDY_LOG" ]] || controller_log="__package_name.log"
 
 # TODO: Event handlers and other functions go here or register one or more includes in "additional_bootstrap".
 

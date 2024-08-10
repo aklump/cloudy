@@ -23,8 +23,21 @@ if [[ "$CLOUDY_PACKAGE_CONFIG" ]] && [ -f "$CLOUDY_PACKAGE_CONFIG" ]; then
 fi
 declare -rx CLOUDY_PACKAGE_CONFIG="$CLOUDY_PACKAGE_CONFIG"
 
+# The log will be enabled one of two ways, either by the use in the shell that
+# initiates the controller, in which case relative paths should be made absolute
+# by $PWD.  Otherwise if $controller_log is set, the assumption is that was set
+# in the package controller, and relative paths should be made absolute to the
+# controller directory.
 if [[ "$CLOUDY_LOG" ]]; then
-  p="$(path_make_absolute "$CLOUDY_LOG" "$r")" && CLOUDY_LOG="$p"
+  p="$(path_make_absolute "$CLOUDY_LOG" "$PWD")" && CLOUDY_LOG="$p"
+elif [[ "$controller_log" ]]; then
+  p="$(path_make_absolute "$controller_log" "$r")" && controller_log="$p"
+  CLOUDY_LOG="$controller_log"
+fi
+unset controller_log
+
+# Ensure the log file parent directories exist so the log can be written.
+if [[ "$CLOUDY_LOG" ]]; then
   log_dir="$(dirname "$CLOUDY_LOG")"
   if ! mkdir -p "$log_dir"; then
     fail_because "Please manually create \"$log_dir\" and ensure it is writeable."

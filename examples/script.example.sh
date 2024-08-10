@@ -21,9 +21,8 @@ CLOUDY_PACKAGE_CONFIG="script.example.yml";
 # are not allowed.
 #CLOUDY_BASEPATH=""
 
-# Uncomment this line to enable file logging.
-#[[ ! "$CLOUDY_LOG" ]] && CLOUDY_LOG="script.example.log"
-# Or, set for a terminal session using `export CLOUDY_LOG="script.example.log"`.
+# Comment this next line to disable file logging.
+[[ "$CLOUDY_LOG" ]] || controller_log="script.example.log"
 
 # TODO: Event handlers and other functions go here or register one or more includes in "additional_bootstrap".
 

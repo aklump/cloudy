@@ -120,24 +120,22 @@ trait TestWithCloudyTrait {
    *
    * @return void
    */
-  protected function execCloudyTools(string $cli_command) {
-    preg_match_all('/\S+|".*?"/', $cli_command, $matches);
-
-    // Remove double quotes from matched elements
-    $args = array_map(function ($element) {
-      return trim($element, '"');
-    }, $matches[0]);
-    $command = array_shift($args);
-
-    if ('cloudy' !== $command) {
-      throw new InvalidArgumentException(sprintf('%s only supports `cloudy...`', __FUNCTION__));
-    }
-    $replacement = realpath(__DIR__ . '/../cloudy_bridge/test_runner.cli.sh');
-
+  protected function execCloudyTools(string $cli_command): string {
     $this->bootCloudy(__DIR__ . '/../t/CLI/cloudy_tools.yml');
+    $replacement = '';
+    $replacement .= realpath(__DIR__ . '/../cloudy_bridge/test_runner.cli.sh');
     $replacement .= ' "' . $this->getCloudyPackageConfig() . '" ';
-    $command = preg_replace("#^$command\s+#", $replacement, $cli_command);
+
+    $command = $cli_command;
+    $command = preg_replace('#^cloudy #', $replacement, $command, 1);
+    $command = preg_replace('#;cloudy #', ';' . $replacement, $command, 1);
+
+    if ($command === $cli_command) {
+      throw new InvalidArgumentException(sprintf('Incorrect syntax: %s', $cli_command));
+    }
     exec($command, $this->cloudyOutput, $this->cloudyResultCode);
+
+    return $this->getCloudyOutput();
   }
 
   /**
@@ -145,7 +143,8 @@ trait TestWithCloudyTrait {
    *
    * @param string $test_script Path to the bash test file to execute; it must
    * be relative to the dirname of the $cloudy_package_config.
-   * @param... Additional arguments sent to test script file.
+   * @param... Additional arguments sent to test script file; be aware that they
+   * appear in the controller as $3, $4, etc. (not $1, $2 as you might expect).
    *
    * @return string
    *   The output from the execution.
@@ -162,6 +161,9 @@ trait TestWithCloudyTrait {
     $this->cloudyOutput = [];
     $this->cloudyResultCode = NULL;
 
+    $test_script_args = func_get_args();
+    $test_script = array_shift($test_script_args);
+
     if (!$this->pointsToFile($test_script)) {
       $data = $test_script . PHP_EOL;
       $test_script = tempnam("$script_base", __FUNCTION__) . '.sh';
@@ -176,12 +178,19 @@ trait TestWithCloudyTrait {
       throw new InvalidArgumentException(sprintf('%s does not exist.', $test_script));
     }
 
-    $exports = '';
+    $exports = [];
+    $exports[] = sprintf('export CLOUDY_CORE_DIR="%s"', CLOUDY_CORE_DIR);
+    $exports[] = sprintf('export CLOUDY_LOG="%s"', $this->getCloudyLog());
 
-    // Enable logging for all test runners.
-    $exports .= sprintf('export CLOUDY_CORE_DIR="%s"', CLOUDY_CORE_DIR);
-    $exports .= sprintf('export CLOUDY_LOG="%s"', $this->getCloudyLog());
-    $command = sprintf($exports . ';' . __DIR__ . '/../cloudy_bridge/%s "%s" "%s"', $this->testRunner, $this->cloudyPackageConfig, $test_script);
+    $command = sprintf(__DIR__ . '/../cloudy_bridge/%s "%s"', $this->testRunner, $this->cloudyPackageConfig);
+    $test_script_args = array_merge([$test_script], $test_script_args);
+    $command .= $this->quoteArgumentsArray($test_script_args);
+
+    $command = [$command];
+    if ($exports) {
+      $command = array_merge($exports, $command);
+    }
+    $command = implode(';', $command);
     try {
       exec($command, $this->cloudyOutput, $this->cloudyResultCode);
     }
@@ -192,6 +201,12 @@ trait TestWithCloudyTrait {
     }
 
     return $this->getCloudyOutput();
+  }
+
+  private function quoteArgumentsArray(array $arguments): string {
+    return array_reduce($arguments, function ($carry, $arg) {
+      return "$carry \"$arg\"";
+    });
   }
 
   public function getCloudyExitStatus(): int {
