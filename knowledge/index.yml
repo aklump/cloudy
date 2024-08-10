@@ -8,6 +8,7 @@ page_order:
     - cloudy_core_testing
     - changelog
     - cloudy_basepath
+    - troubleshooting
   php:
     - php_bash_side
     - php_php_side
@@ -54,5 +55,6 @@ page_order:
     - variable_scopes
     - dev_configuration
     - relocating_cloudy
+    - legacy_installations
   quick_start:
     - writing_scripts

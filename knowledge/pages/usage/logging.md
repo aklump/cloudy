@@ -39,23 +39,16 @@ You may also call it like this:
 
     write_log "No custom label"
 
-## Enabling Logging
+## Logs While Developing {#dev}
 
-### Hardcoding Into Your Controller
-
-First you must declare the filename of the log file; this enables logging. This is relative to your script's directory and should be placed at the top of your script before the bootstrap.
+Add the following (adjusting as appropriate) to the package controller before the bootstrap code.  **Pay attention to relative paths: ** `$CLOUDY_LOG` will be resolved to `$PWD`, and `$controller_log` will be resolved to the directory of the package controller.
 
 ```shell
-[[ ! "$CLOUDY_LOG" ]] && CLOUDY_LOG="script.example.log"
+[[ "$CLOUDY_LOG" ]] || controller_log="thunder.log"
 
 # Begin Cloudy Bootstrap
 s="${BASH_SOURCE[0]}";while ...
 ```
 
-### Enabling on the CLI
+See also [Troubleshooting](@troubleshooting#logging)
 
-Export the `CLOUDY_LOG` variable with a path to the logfile and then run your app.
-
-```shell
-export CLOUDY_LOG=/path/to/file.log
-```

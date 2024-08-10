@@ -2,12 +2,6 @@
   "name": "aklump/cloudy",
   "description": "A BASH Framework for PHP-Minded Developers.",
   "license": "BSD-3-Clause",
-  "repositories": [
-    {
-      "type": "github",
-      "url": "https://github.com/aklump/glob"
-    }
-  ],
   "require": {
     "symfony/yaml": "^3.4 || ^4 || ^5 || ^6",
     "justinrainbow/json-schema": "^5.2",
