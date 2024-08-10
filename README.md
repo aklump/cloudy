@@ -38,10 +38,6 @@ Let's consider a project called _Thunder_:
     ```json
     {
      "type": "github",
-     "url": "https://github.com/aklump/glob"
-    },
-    {
-     "type": "github",
      "url": "https://github.com/aklump/cloudy"
     }
     ```

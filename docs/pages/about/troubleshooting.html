@@ -8,7 +8,7 @@
       <link rel="stylesheet" href="../../dist/bootstrap_theme.css">
       <link rel="stylesheet" href="../../dist/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
       <link rel="stylesheet" href="../../dist/style.css">
-    <title>User Input and Menus | Cloudy BASH Framework</title>
+    <title>Troubleshooting | Cloudy BASH Framework</title>
 </head>
 <body class="my-5">
 
@@ -27,17 +27,13 @@
          aria-controls="table-of-contents">TOC</a>
     </li>
     <li class="breadcrumb-item">
-      <a href="functions.html">Code Examples</a></li>
+      <a href="readme.html">About</a></li>
   </ol>
 </nav>
 
       </div>
-      <div class="header__tags me-3">      <span data-bs-toggle="modal" data-bs-target="#modal"
-          type="button" class="badge
-        rounded-pill
-        bg-primary">EXAMPLES</span>
-  </div>
-      <div class="header__page-numbers flex-shrink-1">22
+      <div class="header__tags me-3">  </div>
+      <div class="header__page-numbers flex-shrink-1">8
         / 53</div>
     </div>
   </div>
@@ -46,31 +42,12 @@
 <main class="container-md flex-column">
   <div class="row mb-5 pt-5">
     <article class="col">
-      <h1 class="mb-4 text-primary">User Input and Menus</h1>
-      <h2>Any Keypress</h2>
-<pre><code class="bash">wait_for_any_key
+      <h1 class="mb-4 text-primary">Troubleshooting</h1>
+      <h2 id="logging">Start by Enabling the Log</h2>
+<p>In the same shell where you are running commands, set the <code>CLOUDY_LOG</code> filepath, which can be relative (to <code>$PWD</code>) or absolute.</p>
+<pre><code class="shell">export CLOUDY_LOG="thunder.log"
 </code></pre>
-<h2>Yes or No</h2>
-<pre><code class="bash">prompt "Export the database first?" --caution
-</code></pre>
-<h2>Multiple Choice</h2>
-<ul>
-<li>In this example <code>$search</code> can be user input, substring of a filename to look for.</li>
-<li>The options will be relative paths</li>
-<li>The <code>filepath=</code> assignment converts the selection to an absolute path.</li>
-</ul>
-<pre><code class="bash">choose__array=()
-for i in *$search*.sql*; do
-  [[ -f "$i" ]] &amp;&amp; choose__array=("${choose__array[@]}" "$i")
-done
-for i in "${export_dir%/}"/*$search*.sql*; do
-  [[ -f "$i" ]] &amp;&amp; choose__array=("${choose__array[@]}" "$(path_make_relative "$i" "$PWD")")
-done
-! shortpath=$(choose "Choose a database export by number") &amp;&amp; fail_because "Cancelled." &amp;&amp; exit_with_failure
-filepath=${PWD%/}/${shortpath#/}
-
-echo "Your choice was: $filepath"
-</code></pre>
+<p>See also <a href="../usage/logging.html#dev">Logging During Development</a></p>
     </article>
   </div>
 </main>
@@ -88,11 +65,11 @@ echo "Your choice was: $filepath"
 <nav class="nav d-flex justify-content-center align-items-center
   fixed-bottom">
   <div class="btn-group flex-fill">
-              <a href="functions.html" class="btn nav__prev-chapter btn-secondary"><i class="bi
-      bi-caret-left-fill"></i> Functions</a>
+              <a href="readme.html" class="btn nav__prev-chapter btn-secondary"><i class="bi
+      bi-caret-left-fill"></i> Cloudy</a>
   
     
-              <a href="functions.html" class="btn nav__prev-page js-nav__prev-page
+              <a href="cloudy_basepath.html" class="btn nav__prev-page js-nav__prev-page
     btn-primary"><i class="bi
       bi-caret-left-fill"></i></a>
   
@@ -103,8 +80,8 @@ echo "Your choice was: $filepath"
        aria-controls="table-of-contents"><i class="bi
            bi-list-ol"></i></a>
     
-              <a href="plugins.html" class="btn nav__next-page js-nav__next-page
-    btn-primary"><i class="bi bi-file-earmark"></i> Single File Plugins Pattern <i class="bi
+              <a href="api_functions.html" class="btn nav__next-page js-nav__next-page
+    btn-primary"><i class="bi bi-file-earmark"></i> Cloudy API: BASH Functions <i class="bi
        bi-caret-right-fill"></i></a>
   
     
@@ -133,77 +110,77 @@ echo "Your choice was: $filepath"
         <h2 class="h4 mt-4">Matched Pages</h2>
         <ol class="list-unstyled">
                                               <li data-page="readme" value="1">
-      <a class="js-page-link" href="../about/readme.html">Cloudy<span
+      <a class="js-page-link" href="readme.html">Cloudy<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
     </li>
   
                                     <li data-page="lexicon" value="2">
-      <a class="js-page-link" href="../about/lexicon.html">Cloudy Lexicon<span
+      <a class="js-page-link" href="lexicon.html">Cloudy Lexicon<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
     </li>
   
                                     <li data-page="globals" value="3">
-      <a class="js-page-link" href="../about/globals.html">Global Variables<span
+      <a class="js-page-link" href="globals.html">Global Variables<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
     </li>
   
                                     <li data-page="filepaths" value="4">
-      <a class="js-page-link" href="../about/filepaths.html">Filepaths<span
+      <a class="js-page-link" href="filepaths.html">Filepaths<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
     </li>
   
                                     <li data-page="cloudy_core_testing" value="5">
-      <a class="js-page-link" href="../about/cloudy_core_testing.html">Cloudy Core Testing<span
+      <a class="js-page-link" href="cloudy_core_testing.html">Cloudy Core Testing<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
     </li>
   
                                     <li data-page="changelog" value="6">
-      <a class="js-page-link" href="../about/changelog.html">Cloudy Changelog<span
+      <a class="js-page-link" href="changelog.html">Cloudy Changelog<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
     </li>
   
                                     <li data-page="cloudy_basepath" value="7">
-      <a class="js-page-link" href="../about/cloudy_basepath.html">Cloudy Basepath<span
+      <a class="js-page-link" href="cloudy_basepath.html">Cloudy Basepath<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
     </li>
   
                                     <li data-page="troubleshooting" value="8">
-      <a class="js-page-link" href="../about/troubleshooting.html">Troubleshooting<span
+      <a class="js-page-link" href="troubleshooting.html">Troubleshooting<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
     </li>
   
                                     <li data-page="api_functions" value="9">
-      <a class="js-page-link" href="../about/api_functions.html">Cloudy API: BASH Functions<span
+      <a class="js-page-link" href="api_functions.html">Cloudy API: BASH Functions<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
     </li>
   
                                     <li data-page="test_functions" value="10">
-      <a class="js-page-link" href="../about/test_functions.html">Cloudy API: BASH Test Functions<span
+      <a class="js-page-link" href="test_functions.html">Cloudy API: BASH Test Functions<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
     </li>
   
                                     <li data-page="api_functions_php" value="11">
-      <a class="js-page-link" href="../about/api_functions_php.html">Cloudy API: PHP Functions<span
+      <a class="js-page-link" href="api_functions_php.html">Cloudy API: PHP Functions<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
@@ -273,28 +250,28 @@ echo "Your choice was: $filepath"
     </li>
   
                                                           <li data-page="functions" value="21">
-      <a class="js-page-link" href="functions.html">Functions<span
+      <a class="js-page-link" href="../examples/functions.html">Functions<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
     </li>
   
                                     <li data-page="menus_input" value="22">
-      <a class="js-page-link" href="menus_input.html">User Input and Menus<span
+      <a class="js-page-link" href="../examples/menus_input.html">User Input and Menus<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
     </li>
   
                                     <li data-page="plugins" value="23">
-      <a class="js-page-link" href="plugins.html">Single File Plugins Pattern<span
+      <a class="js-page-link" href="../examples/plugins.html">Single File Plugins Pattern<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
     </li>
   
                                     <li data-page="route_access" value="24">
-      <a class="js-page-link" href="route_access.html">Command Access<span
+      <a class="js-page-link" href="../examples/route_access.html">Command Access<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
@@ -510,47 +487,47 @@ echo "Your choice was: $filepath"
               <h2 class="h4 mt-4">About</h2>
         <ol>
                                 <li data-page="readme" value="1">
-      <a class="js-page-link" href="../about/readme.html">Cloudy</a>
+      <a class="js-page-link" href="readme.html">Cloudy</a>
     </li>
   
                                 <li data-page="lexicon" value="2">
-      <a class="js-page-link" href="../about/lexicon.html">Cloudy Lexicon</a>
+      <a class="js-page-link" href="lexicon.html">Cloudy Lexicon</a>
     </li>
   
                                 <li data-page="globals" value="3">
-      <a class="js-page-link" href="../about/globals.html">Global Variables</a>
+      <a class="js-page-link" href="globals.html">Global Variables</a>
     </li>
   
                                 <li data-page="filepaths" value="4">
-      <a class="js-page-link" href="../about/filepaths.html">Filepaths</a>
+      <a class="js-page-link" href="filepaths.html">Filepaths</a>
     </li>
   
                                 <li data-page="cloudy_core_testing" value="5">
-      <a class="js-page-link" href="../about/cloudy_core_testing.html">Cloudy Core Testing</a>
+      <a class="js-page-link" href="cloudy_core_testing.html">Cloudy Core Testing</a>
     </li>
   
                                 <li data-page="changelog" value="6">
-      <a class="js-page-link" href="../about/changelog.html">Cloudy Changelog</a>
+      <a class="js-page-link" href="changelog.html">Cloudy Changelog</a>
     </li>
   
                                 <li data-page="cloudy_basepath" value="7">
-      <a class="js-page-link" href="../about/cloudy_basepath.html">Cloudy Basepath</a>
+      <a class="js-page-link" href="cloudy_basepath.html">Cloudy Basepath</a>
     </li>
   
                                 <li data-page="troubleshooting" value="8">
-      <a class="js-page-link" href="../about/troubleshooting.html">Troubleshooting</a>
+      <a class="js-page-link" href="troubleshooting.html">Troubleshooting</a>
     </li>
   
                                 <li data-page="api_functions" value="9">
-      <a class="js-page-link" href="../about/api_functions.html">Cloudy API: BASH Functions</a>
+      <a class="js-page-link" href="api_functions.html">Cloudy API: BASH Functions</a>
     </li>
   
                                 <li data-page="test_functions" value="10">
-      <a class="js-page-link" href="../about/test_functions.html">Cloudy API: BASH Test Functions</a>
+      <a class="js-page-link" href="test_functions.html">Cloudy API: BASH Test Functions</a>
     </li>
   
                                 <li data-page="api_functions_php" value="11">
-      <a class="js-page-link" href="../about/api_functions_php.html">Cloudy API: PHP Functions</a>
+      <a class="js-page-link" href="api_functions_php.html">Cloudy API: PHP Functions</a>
     </li>
   
                   </ol>
@@ -599,19 +576,19 @@ echo "Your choice was: $filepath"
               <h2 class="h4 mt-4">Code Examples</h2>
         <ol>
                                 <li data-page="functions" value="21">
-      <a class="js-page-link" href="functions.html">Functions</a>
+      <a class="js-page-link" href="../examples/functions.html">Functions</a>
     </li>
   
                                 <li data-page="menus_input" value="22">
-      <a class="js-page-link" href="menus_input.html">User Input and Menus</a>
+      <a class="js-page-link" href="../examples/menus_input.html">User Input and Menus</a>
     </li>
   
                                 <li data-page="plugins" value="23">
-      <a class="js-page-link" href="plugins.html">Single File Plugins Pattern</a>
+      <a class="js-page-link" href="../examples/plugins.html">Single File Plugins Pattern</a>
     </li>
   
                                 <li data-page="route_access" value="24">
-      <a class="js-page-link" href="route_access.html">Command Access</a>
+      <a class="js-page-link" href="../examples/route_access.html">Command Access</a>
     </li>
   
                   </ol>
@@ -771,27 +748,27 @@ echo "Your choice was: $filepath"
                 
         <ul class="list-group list-group-flush">
                                     <a class="list-group-item list-group-item-action"
-                 data-tags="[&quot;ABOUT&quot;]" href="../about/readme.html">Cloudy</a>
+                 data-tags="[&quot;ABOUT&quot;]" href="readme.html">Cloudy</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[]" href="../about/lexicon.html">Cloudy Lexicon</a>
+                 data-tags="[]" href="lexicon.html">Cloudy Lexicon</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[&quot;CONFIG&quot;,&quot;INSTALLATION&quot;]" href="../about/globals.html">Global Variables</a>
+                 data-tags="[&quot;CONFIG&quot;,&quot;INSTALLATION&quot;]" href="globals.html">Global Variables</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[]" href="../about/filepaths.html">Filepaths</a>
+                 data-tags="[]" href="filepaths.html">Filepaths</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[]" href="../about/cloudy_core_testing.html">Cloudy Core Testing</a>
+                 data-tags="[]" href="cloudy_core_testing.html">Cloudy Core Testing</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[&quot;ABOUT&quot;]" href="../about/changelog.html">Cloudy Changelog</a>
+                 data-tags="[&quot;ABOUT&quot;]" href="changelog.html">Cloudy Changelog</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[]" href="../about/cloudy_basepath.html">Cloudy Basepath</a>
+                 data-tags="[]" href="cloudy_basepath.html">Cloudy Basepath</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[]" href="../about/troubleshooting.html">Troubleshooting</a>
+                 data-tags="[]" href="troubleshooting.html">Troubleshooting</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[]" href="../about/api_functions.html">Cloudy API: BASH Functions</a>
+                 data-tags="[]" href="api_functions.html">Cloudy API: BASH Functions</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[]" href="../about/test_functions.html">Cloudy API: BASH Test Functions</a>
+                 data-tags="[]" href="test_functions.html">Cloudy API: BASH Test Functions</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[]" href="../about/api_functions_php.html">Cloudy API: PHP Functions</a>
+                 data-tags="[]" href="api_functions_php.html">Cloudy API: PHP Functions</a>
                                                 <a class="list-group-item list-group-item-action"
                  data-tags="[]" href="../php/php_bash_side.html">Writing Cloudy PHP: BASH Perspective</a>
                                                 <a class="list-group-item list-group-item-action"
@@ -811,13 +788,13 @@ echo "Your choice was: $filepath"
                                                 <a class="list-group-item list-group-item-action"
                  data-tags="[&quot;BASH&quot;]" href="../bash/strings.html">String Manipulation</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[&quot;EXAMPLES&quot;]" href="functions.html">Functions</a>
+                 data-tags="[&quot;EXAMPLES&quot;]" href="../examples/functions.html">Functions</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[&quot;EXAMPLES&quot;]" href="menus_input.html">User Input and Menus</a>
+                 data-tags="[&quot;EXAMPLES&quot;]" href="../examples/menus_input.html">User Input and Menus</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[&quot;EXAMPLES&quot;]" href="plugins.html">Single File Plugins Pattern</a>
+                 data-tags="[&quot;EXAMPLES&quot;]" href="../examples/plugins.html">Single File Plugins Pattern</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[&quot;EXAMPLES&quot;]" href="route_access.html">Command Access</a>
+                 data-tags="[&quot;EXAMPLES&quot;]" href="../examples/route_access.html">Command Access</a>
                                                 <a class="list-group-item list-group-item-action"
                  data-tags="[&quot;USAGE&quot;]" href="../usage/app_root.html">Application Root</a>
                                                 <a class="list-group-item list-group-item-action"

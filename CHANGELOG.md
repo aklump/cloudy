@@ -41,7 +41,7 @@
 
   ```shell
   path_unresolve "$absolute_prefix" "$path"
-  a=$(path_make_relative "$path" "$absolute_prefix") && path="$a"
+  r=$(path_make_relative "$path" "$absolute_prefix") && path="$r"
   ```
 
 ### Deprecated
@@ -58,7 +58,7 @@
 - JSON configuration files; all configuration must now be written in YAML.
 - APP_ROOT Use CLOUDY_BASEPATH instead.
 - The token `${config_path_base}` has been replaced by `$CLOUDY_BASEPATH` for consistency. It can no longer be used in cloudypm.files_map.txt. Replace with `$CLOUDY_BASEPATH` in all cloudy pm packages.
-- `CLOUDY_NAME`; Add the following snippet to your package controller if you want to continue using this according to the legacy value: `export CLOUDY_NAME="$(path_filename $SCRIPT)"`
+- `CLOUDY_NAME`; Add the following snippet to your package controller if you want to continue using this according to the legacy value: `export CLOUDY_NAME="$(path_filename $CLOUDY_PACKAGE_CONTROLLER)"`
 - `path_relative_to_config_base`
 
 ### Fixed

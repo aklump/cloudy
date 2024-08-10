@@ -8,7 +8,7 @@
       <link rel="stylesheet" href="../../dist/bootstrap_theme.css">
       <link rel="stylesheet" href="../../dist/node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
       <link rel="stylesheet" href="../../dist/style.css">
-    <title>User Input and Menus | Cloudy BASH Framework</title>
+    <title>Legacy Installations | Cloudy BASH Framework</title>
 </head>
 <body class="my-5">
 
@@ -27,17 +27,13 @@
          aria-controls="table-of-contents">TOC</a>
     </li>
     <li class="breadcrumb-item">
-      <a href="functions.html">Code Examples</a></li>
+      <a href="upgrade_v2.html">Developers</a></li>
   </ol>
 </nav>
 
       </div>
-      <div class="header__tags me-3">      <span data-bs-toggle="modal" data-bs-target="#modal"
-          type="button" class="badge
-        rounded-pill
-        bg-primary">EXAMPLES</span>
-  </div>
-      <div class="header__page-numbers flex-shrink-1">22
+      <div class="header__tags me-3">  </div>
+      <div class="header__page-numbers flex-shrink-1">52
         / 53</div>
     </div>
   </div>
@@ -46,31 +42,16 @@
 <main class="container-md flex-column">
   <div class="row mb-5 pt-5">
     <article class="col">
-      <h1 class="mb-4 text-primary">User Input and Menus</h1>
-      <h2>Any Keypress</h2>
-<pre><code class="bash">wait_for_any_key
+      <h1 class="mb-4 text-primary">Legacy Installations</h1>
+      <h2>Cloudy Core</h2>
+<ol>
+<li>Install using composer create-project<pre><code class="shell">mv cloudy _cloudy
+mv _cloudy/dist cloudy
 </code></pre>
-<h2>Yes or No</h2>
-<pre><code class="bash">prompt "Export the database first?" --caution
-</code></pre>
-<h2>Multiple Choice</h2>
-<ul>
-<li>In this example <code>$search</code> can be user input, substring of a filename to look for.</li>
-<li>The options will be relative paths</li>
-<li>The <code>filepath=</code> assignment converts the selection to an absolute path.</li>
-</ul>
-<pre><code class="bash">choose__array=()
-for i in *$search*.sql*; do
-  [[ -f "$i" ]] &amp;&amp; choose__array=("${choose__array[@]}" "$i")
-done
-for i in "${export_dir%/}"/*$search*.sql*; do
-  [[ -f "$i" ]] &amp;&amp; choose__array=("${choose__array[@]}" "$(path_make_relative "$i" "$PWD")")
-done
-! shortpath=$(choose "Choose a database export by number") &amp;&amp; fail_because "Cancelled." &amp;&amp; exit_with_failure
-filepath=${PWD%/}/${shortpath#/}
-
-echo "Your choice was: $filepath"
-</code></pre>
+</li>
+<li>Add <code>autoload.psr-4</code> from _cloudy/composer.json to composer.json, replacing <code>dist</code> with <code>cloudy</code></li>
+<li>Copy repositories section from <em>cloudy/composer.json</em> to composer.json.</li>
+</ol>
     </article>
   </div>
 </main>
@@ -88,11 +69,11 @@ echo "Your choice was: $filepath"
 <nav class="nav d-flex justify-content-center align-items-center
   fixed-bottom">
   <div class="btn-group flex-fill">
-              <a href="functions.html" class="btn nav__prev-chapter btn-secondary"><i class="bi
-      bi-caret-left-fill"></i> Functions</a>
+              <a href="upgrade_v2.html" class="btn nav__prev-chapter btn-secondary"><i class="bi
+      bi-caret-left-fill"></i> Upgrade Path to Cloudy 2.0.0</a>
   
     
-              <a href="functions.html" class="btn nav__prev-page js-nav__prev-page
+              <a href="relocating_cloudy.html" class="btn nav__prev-page js-nav__prev-page
     btn-primary"><i class="bi
       bi-caret-left-fill"></i></a>
   
@@ -103,8 +84,8 @@ echo "Your choice was: $filepath"
        aria-controls="table-of-contents"><i class="bi
            bi-list-ol"></i></a>
     
-              <a href="plugins.html" class="btn nav__next-page js-nav__next-page
-    btn-primary"><i class="bi bi-file-earmark"></i> Single File Plugins Pattern <i class="bi
+              <a href="../quick_start/writing_scripts.html" class="btn nav__next-page js-nav__next-page
+    btn-primary"><i class="bi bi-file-earmark"></i> Writing Your First Cloudy Script <i class="bi
        bi-caret-right-fill"></i></a>
   
     
@@ -273,28 +254,28 @@ echo "Your choice was: $filepath"
     </li>
   
                                                           <li data-page="functions" value="21">
-      <a class="js-page-link" href="functions.html">Functions<span
+      <a class="js-page-link" href="../examples/functions.html">Functions<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
     </li>
   
                                     <li data-page="menus_input" value="22">
-      <a class="js-page-link" href="menus_input.html">User Input and Menus<span
+      <a class="js-page-link" href="../examples/menus_input.html">User Input and Menus<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
     </li>
   
                                     <li data-page="plugins" value="23">
-      <a class="js-page-link" href="plugins.html">Single File Plugins Pattern<span
+      <a class="js-page-link" href="../examples/plugins.html">Single File Plugins Pattern<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
     </li>
   
                                     <li data-page="route_access" value="24">
-      <a class="js-page-link" href="route_access.html">Command Access<span
+      <a class="js-page-link" href="../examples/route_access.html">Command Access<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
@@ -462,35 +443,35 @@ echo "Your choice was: $filepath"
     </li>
   
                                                           <li data-page="upgrade_v2" value="48">
-      <a class="js-page-link" href="../developers/upgrade_v2.html">Upgrade Path to Cloudy 2.0.0<span
+      <a class="js-page-link" href="upgrade_v2.html">Upgrade Path to Cloudy 2.0.0<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
     </li>
   
                                     <li data-page="variable_scopes" value="49">
-      <a class="js-page-link" href="../developers/variable_scopes.html">Sourcing Scripts<span
+      <a class="js-page-link" href="variable_scopes.html">Sourcing Scripts<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
     </li>
   
                                     <li data-page="dev_configuration" value="50">
-      <a class="js-page-link" href="../developers/dev_configuration.html">Understanding Configuration<span
+      <a class="js-page-link" href="dev_configuration.html">Understanding Configuration<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
     </li>
   
                                     <li data-page="relocating_cloudy" value="51">
-      <a class="js-page-link" href="../developers/relocating_cloudy.html">Relocating Cloudy<span
+      <a class="js-page-link" href="relocating_cloudy.html">Relocating Cloudy<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
     </li>
   
                                     <li data-page="legacy_installations" value="52">
-      <a class="js-page-link" href="../developers/legacy_installations.html">Legacy Installations<span
+      <a class="js-page-link" href="legacy_installations.html">Legacy Installations<span
               class="js-search-score
               badge
               bg-info rounded-pill badge-sm"></span></a>
@@ -599,19 +580,19 @@ echo "Your choice was: $filepath"
               <h2 class="h4 mt-4">Code Examples</h2>
         <ol>
                                 <li data-page="functions" value="21">
-      <a class="js-page-link" href="functions.html">Functions</a>
+      <a class="js-page-link" href="../examples/functions.html">Functions</a>
     </li>
   
                                 <li data-page="menus_input" value="22">
-      <a class="js-page-link" href="menus_input.html">User Input and Menus</a>
+      <a class="js-page-link" href="../examples/menus_input.html">User Input and Menus</a>
     </li>
   
                                 <li data-page="plugins" value="23">
-      <a class="js-page-link" href="plugins.html">Single File Plugins Pattern</a>
+      <a class="js-page-link" href="../examples/plugins.html">Single File Plugins Pattern</a>
     </li>
   
                                 <li data-page="route_access" value="24">
-      <a class="js-page-link" href="route_access.html">Command Access</a>
+      <a class="js-page-link" href="../examples/route_access.html">Command Access</a>
     </li>
   
                   </ol>
@@ -716,23 +697,23 @@ echo "Your choice was: $filepath"
               <h2 class="h4 mt-4">Developers</h2>
         <ol>
                                 <li data-page="upgrade_v2" value="48">
-      <a class="js-page-link" href="../developers/upgrade_v2.html">Upgrade Path to Cloudy 2.0.0</a>
+      <a class="js-page-link" href="upgrade_v2.html">Upgrade Path to Cloudy 2.0.0</a>
     </li>
   
                                 <li data-page="variable_scopes" value="49">
-      <a class="js-page-link" href="../developers/variable_scopes.html">Sourcing Scripts</a>
+      <a class="js-page-link" href="variable_scopes.html">Sourcing Scripts</a>
     </li>
   
                                 <li data-page="dev_configuration" value="50">
-      <a class="js-page-link" href="../developers/dev_configuration.html">Understanding Configuration</a>
+      <a class="js-page-link" href="dev_configuration.html">Understanding Configuration</a>
     </li>
   
                                 <li data-page="relocating_cloudy" value="51">
-      <a class="js-page-link" href="../developers/relocating_cloudy.html">Relocating Cloudy</a>
+      <a class="js-page-link" href="relocating_cloudy.html">Relocating Cloudy</a>
     </li>
   
                                 <li data-page="legacy_installations" value="52">
-      <a class="js-page-link" href="../developers/legacy_installations.html">Legacy Installations</a>
+      <a class="js-page-link" href="legacy_installations.html">Legacy Installations</a>
     </li>
   
                   </ol>
@@ -811,13 +792,13 @@ echo "Your choice was: $filepath"
                                                 <a class="list-group-item list-group-item-action"
                  data-tags="[&quot;BASH&quot;]" href="../bash/strings.html">String Manipulation</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[&quot;EXAMPLES&quot;]" href="functions.html">Functions</a>
+                 data-tags="[&quot;EXAMPLES&quot;]" href="../examples/functions.html">Functions</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[&quot;EXAMPLES&quot;]" href="menus_input.html">User Input and Menus</a>
+                 data-tags="[&quot;EXAMPLES&quot;]" href="../examples/menus_input.html">User Input and Menus</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[&quot;EXAMPLES&quot;]" href="plugins.html">Single File Plugins Pattern</a>
+                 data-tags="[&quot;EXAMPLES&quot;]" href="../examples/plugins.html">Single File Plugins Pattern</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[&quot;EXAMPLES&quot;]" href="route_access.html">Command Access</a>
+                 data-tags="[&quot;EXAMPLES&quot;]" href="../examples/route_access.html">Command Access</a>
                                                 <a class="list-group-item list-group-item-action"
                  data-tags="[&quot;USAGE&quot;]" href="../usage/app_root.html">Application Root</a>
                                                 <a class="list-group-item list-group-item-action"
@@ -865,15 +846,15 @@ echo "Your choice was: $filepath"
                                                 <a class="list-group-item list-group-item-action"
                  data-tags="[]" href="../trouble/autoloader.html">Composer autoloader not found</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[]" href="../developers/upgrade_v2.html">Upgrade Path to Cloudy 2.0.0</a>
+                 data-tags="[]" href="upgrade_v2.html">Upgrade Path to Cloudy 2.0.0</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[]" href="../developers/variable_scopes.html">Sourcing Scripts</a>
+                 data-tags="[]" href="variable_scopes.html">Sourcing Scripts</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[]" href="../developers/dev_configuration.html">Understanding Configuration</a>
+                 data-tags="[]" href="dev_configuration.html">Understanding Configuration</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[]" href="../developers/relocating_cloudy.html">Relocating Cloudy</a>
+                 data-tags="[]" href="relocating_cloudy.html">Relocating Cloudy</a>
                                                 <a class="list-group-item list-group-item-action"
-                 data-tags="[]" href="../developers/legacy_installations.html">Legacy Installations</a>
+                 data-tags="[]" href="legacy_installations.html">Legacy Installations</a>
                                                 <a class="list-group-item list-group-item-action"
                  data-tags="[&quot;QUICK_START&quot;]" href="../quick_start/writing_scripts.html">Writing Your First Cloudy Script</a>
                               </ul>
