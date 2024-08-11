@@ -156,6 +156,7 @@ class PathFunctionsTest extends TestCase {
   public function testPathMakePretty() {
     $this->assertSame('/foo/bar/file.md', path_make_pretty('/foo/bar/file.md'));
     $this->assertSame('./file.md', path_make_pretty(getcwd() . '/file.md'));
+    $this->assertSame('.', path_make_pretty(getcwd()));
   }
 
 }

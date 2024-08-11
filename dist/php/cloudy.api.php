@@ -362,7 +362,10 @@ function path_make_relative(string $path, string $parent, &$exit_status = NULL):
 function path_make_pretty(string $path): string {
   $p = path_make_relative($path, getcwd());
   if ($p) {
-    return "./$p";
+    $path = $p;
+  }
+  if (!path_is_absolute($path) && '.' !== $path) {
+    $path = "./$path";
   }
 
   return $path;

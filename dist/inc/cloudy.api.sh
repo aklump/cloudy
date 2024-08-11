@@ -2350,7 +2350,9 @@ function path_make_absolute() {
  ##
 function path_make_pretty() {
   local path="$1"
-  p="./$(path_make_relative "$path" "$PWD")" && echo $p && return 0
+
+  p="$(path_make_relative "$path" "$PWD")" && path="$p"
+  ! path_is_absolute "$path" && [[ "$path" != "." ]] && path="./$path"
   echo $path
   return 0
 }
