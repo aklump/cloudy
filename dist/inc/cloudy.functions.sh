@@ -124,7 +124,7 @@ function _cloudy_detect_basepath() {
     basepath="$base/"
   fi
 
-  echo $(realpath "$basepath")
+  echo "$(path_make_canonical "$basepath")"
   return 0;
 }
 

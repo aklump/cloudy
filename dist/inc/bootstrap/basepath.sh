@@ -37,6 +37,6 @@ fi
 
 has_failed && return 1
 
-declare -rx CLOUDY_BASEPATH="$(realpath "$CLOUDY_BASEPATH")"
+declare -rx CLOUDY_BASEPATH="$(path_make_canonical "$CLOUDY_BASEPATH")"
 write_log_debug "\$CLOUDY_BASEPATH $mode \"$CLOUDY_BASEPATH\""
 return 0

@@ -2356,7 +2356,9 @@ function path_make_pretty() {
 }
 
 ##
- # Remove all symbolic links from an absolute existing path.
+ # Remove dots but not symlinks from a path.
+ #
+ # @see realpath if you want to resolve symlinks.
  #
  # @param string The absolute path to make canonical.
  #
@@ -2378,7 +2380,7 @@ function path_make_canonical() {
     _basename="$(basename "$path")"
     path="$(dirname "$path")"
   fi
-  path="$(cd "$path"; pwd -P)"
-  [[ "$_basename" ]] &&   path="${path%%/}/$_basename" ||   path="${path%%/}"
+  path="$(cd "$path"; pwd -L)"
+  [[ "$_basename" ]] &&  path="${path%%/}/$_basename" || path="${path%%/}"
   echo "$path"
 }

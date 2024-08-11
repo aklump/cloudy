@@ -19,7 +19,7 @@ if [[ "$CLOUDY_PACKAGE_CONFIG" ]] && ! path_is_absolute "$CLOUDY_PACKAGE_CONFIG"
   CLOUDY_PACKAGE_CONFIG="$(cd $(dirname "$r/$CLOUDY_PACKAGE_CONFIG") && pwd)/$(basename $CLOUDY_PACKAGE_CONFIG)"
 fi
 if [[ "$CLOUDY_PACKAGE_CONFIG" ]] && [ -f "$CLOUDY_PACKAGE_CONFIG" ]; then
-  CLOUDY_PACKAGE_CONFIG="$(realpath "$CLOUDY_PACKAGE_CONFIG")"
+  CLOUDY_PACKAGE_CONFIG="$(path_make_canonical "$CLOUDY_PACKAGE_CONFIG")"
 fi
 declare -rx CLOUDY_PACKAGE_CONFIG="$CLOUDY_PACKAGE_CONFIG"
 
@@ -46,7 +46,7 @@ if [[ "$CLOUDY_LOG" ]]; then
   declare -rx CLOUDY_LOG="$(cd "$log_dir" && pwd)/$(basename $CLOUDY_LOG)"
 fi
 
-declare -rx CLOUDY_PACKAGE_CONTROLLER="$(realpath "$CLOUDY_PACKAGE_CONTROLLER")"
+declare -rx CLOUDY_PACKAGE_CONTROLLER="$(path_make_canonical "$CLOUDY_PACKAGE_CONTROLLER")"
 
 # Detect installation type
 declare -rx CLOUDY_INSTALLED_AS=$(_cloudy_detect_installation_type "$CLOUDY_PACKAGE_CONTROLLER")
