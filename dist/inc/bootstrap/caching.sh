@@ -23,7 +23,7 @@ if [[ ! "$_cache_basedir" ]]; then
   _cache_subdir="/.cloudy/cache"
 fi
 declare -rx CLOUDY_CACHE_DIR="$_cache_basedir$_cache_subdir"
-write_log_debug "\$CLOUDY_CACHE_DIR set to \"$CLOUDY_CACHE_DIR\""
+write_log_debug "\$CLOUDY_CACHE_DIR is \"$CLOUDY_CACHE_DIR\""
 unset _cache_basedir
 unset _cache_subdir
 

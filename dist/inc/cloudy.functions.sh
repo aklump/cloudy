@@ -193,6 +193,7 @@ function _cloudy_bootstrap_translations() {
   # todo Document this and add to schema.
   eval $(get_config_as "lang" "language" "en")
   CLOUDY_LANGUAGE=$lang
+  write_log_debug "\$CLOUDY_LANGUAGE is $CLOUDY_LANGUAGE"
 
   # todo may not need to do these two?
   CLOUDY_SUCCESS=$(translate "Completed successfully.")

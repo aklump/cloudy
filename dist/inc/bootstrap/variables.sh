@@ -22,7 +22,7 @@ if [[ "$CLOUDY_PACKAGE_CONFIG" ]] && [ -f "$CLOUDY_PACKAGE_CONFIG" ]; then
   CLOUDY_PACKAGE_CONFIG="$(path_make_canonical "$CLOUDY_PACKAGE_CONFIG")"
 fi
 declare -rx CLOUDY_PACKAGE_CONFIG="$CLOUDY_PACKAGE_CONFIG"
-write_log_debug "\$CLOUDY_PACKAGE_CONFIG set to \"$CLOUDY_PACKAGE_CONFIG\""
+write_log_debug "\$CLOUDY_PACKAGE_CONFIG is \"$CLOUDY_PACKAGE_CONFIG\""
 
 # The log will be enabled one of two ways, either by the use in the shell that
 # initiates the controller, in which case relative paths should be made absolute
@@ -48,7 +48,7 @@ if [[ "$CLOUDY_LOG" ]]; then
 fi
 
 declare -rx CLOUDY_PACKAGE_CONTROLLER="$(path_make_canonical "$CLOUDY_PACKAGE_CONTROLLER")"
-write_log_debug "\$CLOUDY_PACKAGE_CONTROLLER set to \"$CLOUDY_PACKAGE_CONTROLLER\""
+write_log_debug "\$CLOUDY_PACKAGE_CONTROLLER is \"$CLOUDY_PACKAGE_CONTROLLER\""
 
 # Detect installation type
 declare -rx CLOUDY_INSTALLED_AS=$(_cloudy_detect_installation_type "$CLOUDY_PACKAGE_CONTROLLER")

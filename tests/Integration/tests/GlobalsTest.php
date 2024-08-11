@@ -41,6 +41,13 @@ class GlobalsTest extends TestCase {
     $this->assertSame($expected, $result, 'Assert expected path for $' . $var_name);
   }
 
+  public function testCloudyConfigHasChangedWorksAsExpected() {
+    $result = $this->execCloudy('echo $CLOUDY_CONFIG_HAS_CHANGED');
+    $this->assertSame('true', $result);
+    $result = $this->execCloudy('echo $CLOUDY_CONFIG_HAS_CHANGED');
+    $this->assertSame('false', $result);
+  }
+
   public function testCloudyLog() {
     $result = $this->execCloudy('echo $CLOUDY_LOG');
     $result = realpath($result);

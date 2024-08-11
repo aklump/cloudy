@@ -41,13 +41,11 @@ You may also call it like this:
 
 ## Logs While Developing {#dev}
 
-Add the following (adjusting as appropriate) to the package controller before the bootstrap code.  **Pay attention to relative paths: ** `$CLOUDY_LOG` will be resolved to `$PWD`, and `$controller_log` will be resolved to the directory of the package controller.
+Add the following (adjusting as appropriate) to the package controller before the bootstrap code (`# Begin Cloudy Bootstrap`).  **Pay attention to relative paths: ** `$CLOUDY_LOG` will be resolved to `$PWD`, and `$controller_log` will be resolved to the directory of the package controller. The assumption is that `$CLOUDY_LOG` will be exported in the shell running the controller, by the user.
 
 ```shell
+# Comment this next line to disable file logging.
 [[ "$CLOUDY_LOG" ]] || controller_log="thunder.log"
-
-# Begin Cloudy Bootstrap
-s="${BASH_SOURCE[0]}";while ...
 ```
 
 See also [Troubleshooting](@troubleshooting#logging)

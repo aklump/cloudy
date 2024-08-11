@@ -9,6 +9,7 @@ page_order:
     - changelog
     - cloudy_basepath
     - troubleshooting
+    - error_handling
   php:
     - php_bash_side
     - php_php_side
@@ -33,7 +34,6 @@ page_order:
     - conventions
     - development
     - documenting
-    - error_handling
     - events
     - installer
     - lists
