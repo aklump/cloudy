@@ -18,7 +18,7 @@ if [[ "$CLOUDY_BASEPATH" ]]; then
   fi
 else
   mode='autodetected as'
-  CLOUDY_BASEPATH="$(_cloudy_detect_basepath)"
+  CLOUDY_BASEPATH="$(_cloudy_detect_basepath "$CLOUDY_INSTALLED_AS")"
   if [[ $? -ne 0 ]]; then
     CLOUDY_BASEPATH=''
     write_log_error "Failed to detect/set \$CLOUDY_BASEPATH"

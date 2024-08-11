@@ -23,6 +23,7 @@ Developer's should follow these steps to upgrade Cloudy packages from 1.x to 2.x
 | source "$CLOUDY_ROOT/inc/cloudy.read_local_config.sh" | source "$CLOUDY_CORE_DIR/inc/config/early.sh" |
 | path_unresolve                                        | @see CHANGELOG.txt                            |
 | path_unresolve "$PWD" ...                             | path_make_pretty ...                          |
+| path_relative_to_pwd                                  | path_make_pretty ...                          |
 | $CLOUDY_PHP                                           | @see CHANGELOG.txt                            |
 
 7. Update the bootstrap in your controllers per changelog

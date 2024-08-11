@@ -19,7 +19,7 @@ trait TestWithCloudyTrait {
 
   private $cloudyResultCode;
 
-  private $testRunner;
+  private $packageController;
 
   /**
    * Load a cloudy config and set the directory for testing.
@@ -27,11 +27,12 @@ trait TestWithCloudyTrait {
    * @param string $cloudy_package_config A YAML file which defines the Cloudy app.  It's
    * parent directory -- CLOUDY_BASEPATH -- will be used to resolve the paths to be
    * tested, and should therefore contain them.
-   * @param string $test_runner
+   * @param string $cloudy_package_controller This may be absolute or relative.
+   * Relative paths will be assumed to be within the cloudy_bridge directory.
    *
    * @return void
    */
-  public function bootCloudy(string $cloudy_package_config, string $test_runner = 'test_runner.sh'): void {
+  public function bootCloudy(string $cloudy_package_config, string $cloudy_package_controller = 'test_runner.sh'): void {
     if (!is_file($cloudy_package_config)) {
       throw new TestFileNotFoundException($cloudy_package_config);
     }
@@ -40,7 +41,7 @@ trait TestWithCloudyTrait {
     }
     $this->cloudyPackageConfig = realpath($cloudy_package_config);
     $this->cloudyTestDir = dirname($cloudy_package_config);
-    $this->testRunner = $test_runner;
+    $this->setCloudyPackageController($cloudy_package_controller);
 
     if ($this->didBaseConfigChange($cloudy_package_config)) {
       $this->clearCache();
@@ -89,12 +90,18 @@ trait TestWithCloudyTrait {
     return rtrim(getenv('HOME'), '/') . '/.cloudy/cache';
   }
 
-  protected function getCloudyPackageController(): string {
-    if (empty($this->testRunner)) {
-      throw new RuntimeException('Missing \$this->testRunner');
+  private function setCloudyPackageController(string $package_controller): void {
+    if (substr($package_controller, 0, 1) !== '/') {
+      $package_controller = realpath(__DIR__ . '/../cloudy_bridge/' . $package_controller);
     }
+    $this->packageController = $package_controller;
+  }
 
-    return realpath(__DIR__ . '/../cloudy_bridge/' . $this->testRunner);
+  protected function getCloudyPackageController(): string {
+    if (empty($this->packageController)) {
+      throw new RuntimeException('Missing \$this->packageController');
+    }
+    return $this->packageController;
   }
 
   protected function getCloudyPackageConfig(): string {
@@ -182,7 +189,7 @@ trait TestWithCloudyTrait {
     $exports[] = sprintf('export CLOUDY_CORE_DIR="%s"', CLOUDY_CORE_DIR);
     $exports[] = sprintf('export CLOUDY_LOG="%s"', $this->getCloudyLog());
 
-    $command = sprintf(__DIR__ . '/../cloudy_bridge/%s "%s"', $this->testRunner, $this->cloudyPackageConfig);
+    $command = sprintf('%s "%s"', $this->getCloudyPackageController(), $this->cloudyPackageConfig);
     $test_script_args = array_merge([$test_script], $test_script_args);
     $command .= $this->quoteArgumentsArray($test_script_args);
 

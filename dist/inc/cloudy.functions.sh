@@ -110,18 +110,27 @@ function _cloudy_detect_installation_type() {
 }
 
 function _cloudy_detect_basepath() {
-  local app_root
-  local base
-  base="$(dirname "$CLOUDY_PACKAGE_CONFIG")";
+  local _installation_type="$1"
+
+  if [[ "$_installation_type" == "$CLOUDY_INSTALL_TYPE_CORE" ]]; then
+    # The controller is inside of a vendor directory, as if composer require, e.g.
+    # vendor/VENDOR_NAME/PACKAGE/CONTROLLER, and cloudy is installed.
+    test_basepath="$(dirname "$CLOUDY_PACKAGE_CONTROLLER")"
+    test_basepath="$(path_make_canonical "$test_basepath/../../..")"
+    _cloudy_test_paths__array=("$test_basepath" "$test_basepath/vendor" "$test_basepath/composer.json" "$test_basepath/composer.lock")
+    _cloudy_test_paths && echo $test_basepath && return 0
+  fi
+
+  local config_dir="$(dirname "$CLOUDY_PACKAGE_CONFIG")";
   regex=".*/([^/]*)/([^/]*)/([^/]*)$"
-  [[ "$base" =~ $regex ]]
+  [[ "$config_dir" =~ $regex ]]
   third_last_element="${BASH_REMATCH[1]}"
   if [[ 'opt' == "$third_last_element" ]]; then
-    basepath="$base/../../../"
+    basepath="$config_dir/../../../"
   elif [[ 'vendor' == "$third_last_element" ]]; then
-    basepath="$base/../../../"
+    basepath="$config_dir/../../../"
   else
-    basepath="$base/"
+    basepath="$config_dir/"
   fi
 
   echo "$(path_make_canonical "$basepath")"
