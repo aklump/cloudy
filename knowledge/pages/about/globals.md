@@ -17,7 +17,7 @@ An absolute path, which is used to resolve relative paths. This can be set autom
 
 ## $CLOUDY_CACHE_DIR
 
-Absolute path to Cloudy's cache directory.  This directory will be made read/write only the owner for security reasons.  It is more secure than $CLOUDY_TMPDIR.
+Absolute path leads to Cloudy's cache directory, configured with 0700 permissions. This makes it accessible only to the owner for read/write operations - a more secure approach than using $CLOUDY_TMPDIR. In the Unix system, directory permission of 0700 restricts anyone but the owner from reading, writing, or even traversing the directory. Consequently, even if files inside the directory are set with world-readable, writeable or executable (0777) permissions, other users are still unable to access those due to a lack of permission for directory traversal.
 
 ## $CLOUDY_START_DIR
 
