@@ -17,7 +17,7 @@ An absolute path, which is used to resolve relative paths. This can be set autom
 
 ## $CLOUDY_CACHE_DIR
 
-The absolute path the directory containing Cloudy Core
+Absolute path to Cloudy's cache directory.  This directory will be made read/write only the owner for security reasons.  It is more secure than $CLOUDY_TMPDIR.
 
 ## $CLOUDY_START_DIR
 
@@ -42,6 +42,10 @@ Absolute path to a log file, if enabled.
 ## $CLOUDY_RUNTIME_UUID
 
 This will change every time the controller is executed.
+
+## $CLOUDY_TMPDIR
+
+This is a subdirectory named by the package controller within the system temporary directory.
 
 ---
 

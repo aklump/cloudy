@@ -21,6 +21,8 @@ trait TestWithCloudyTrait {
 
   private $packageController;
 
+  private $cloudyBasepath;
+
   /**
    * Load a cloudy config and set the directory for testing.
    *
@@ -39,9 +41,23 @@ trait TestWithCloudyTrait {
     if (!file_exists($cloudy_package_config) || !is_file($cloudy_package_config)) {
       throw new TestFileNotFoundException($cloudy_package_config);
     }
-    $this->cloudyPackageConfig = realpath($cloudy_package_config);
+    $this->cloudyPackageConfig = $this->getCanonicalPath($cloudy_package_config);
     $this->cloudyTestDir = dirname($cloudy_package_config);
     $this->setCloudyPackageController($cloudy_package_controller);
+
+    // We are going to sniff out the basepath and cache in memory to speed up
+    // subsequent calls with the same runner/config combo.
+    $this->cloudyBasepath = NULL;
+    static $basepaths = [];
+    $cid = md5(json_encode(func_get_args()));
+    if (!isset($basepaths[$cid])) {
+      $basepaths[$cid] = $this->execCloudy('echo $CLOUDY_BASEPATH');
+      $this->resetExecutionResults();
+      if (!file_exists($basepaths[$cid])) {
+        $basepaths[$cid] = $this->getCanonicalPath(dirname($cloudy_package_config));
+      }
+    }
+    $this->cloudyBasepath = $basepaths[$cid];
 
     if ($this->didBaseConfigChange($cloudy_package_config)) {
       $this->clearCache();
@@ -50,6 +66,14 @@ trait TestWithCloudyTrait {
         file_put_contents($this->getCloudyLog(), '');
       }
     }
+  }
+
+  public function getCloudyBasepath(): string {
+    if (empty($this->cloudyBasepath)) {
+      throw new RuntimeException('You must call ::bootCloudy first.');
+    }
+
+    return $this->cloudyBasepath;
   }
 
   /**
@@ -82,12 +106,7 @@ trait TestWithCloudyTrait {
   }
 
   protected function getCloudyCacheDir(): string {
-    $_cache_dir = sys_get_temp_dir();
-    if ($_cache_dir) {
-      return rtrim($_cache_dir, '/') . '/cloudy/cache';
-    }
-
-    return rtrim(getenv('HOME'), '/') . '/.cloudy/cache';
+    return rtrim($this->getCloudyBasepath(), '/') . '/.' . pathinfo($this->getCloudyPackageController(), PATHINFO_FILENAME) . '/.cache';
   }
 
   private function setCloudyPackageController(string $package_controller): void {
@@ -101,6 +120,7 @@ trait TestWithCloudyTrait {
     if (empty($this->packageController)) {
       throw new RuntimeException('Missing \$this->packageController');
     }
+
     return $this->packageController;
   }
 
@@ -128,6 +148,7 @@ trait TestWithCloudyTrait {
    * @return void
    */
   protected function execCloudyTools(string $cli_command): string {
+    $this->resetExecutionResults();
     $this->bootCloudy(__DIR__ . '/../t/CLI/cloudy_tools.yml');
     $replacement = '';
     $replacement .= realpath(__DIR__ . '/../cloudy_bridge/test_runner.cli.sh');
@@ -145,6 +166,11 @@ trait TestWithCloudyTrait {
     return $this->getCloudyOutput();
   }
 
+  private function resetExecutionResults() {
+    $this->cloudyOutput = [];
+    $this->cloudyResultCode = NULL;
+  }
+
   /**
    * Execute a script in a fully booted cloudy environment.
    *
@@ -157,6 +183,7 @@ trait TestWithCloudyTrait {
    *   The output from the execution.
    */
   public function execCloudy(string $test_script): string {
+    $this->resetExecutionResults();
     static $script_base;
     if (empty($script_base)) {
       $script_base = sys_get_temp_dir() . '/cloudy/tests';
@@ -164,9 +191,6 @@ trait TestWithCloudyTrait {
         mkdir($script_base, 0755, TRUE);
       }
     }
-
-    $this->cloudyOutput = [];
-    $this->cloudyResultCode = NULL;
 
     $test_script_args = func_get_args();
     $test_script = array_shift($test_script_args);
@@ -240,6 +264,24 @@ trait TestWithCloudyTrait {
     }
 
     return FALSE;
+  }
+
+  public function getCanonicalPath(string $path): string {
+    $suffix = '';
+    if (!file_exists($path)) {
+      throw new \InvalidArgumentException(sprintf('$path does not exist: %s', $path));
+    }
+    if (is_file($path)) {
+      $suffix = basename($path);
+      $path = dirname($path);
+    }
+    $path = exec("cd \"$path\" && pwd -L");
+    $path = rtrim($path, DIRECTORY_SEPARATOR);
+    if (!empty($suffix)) {
+      $path = $path . DIRECTORY_SEPARATOR . $suffix;
+    }
+
+    return $path;
   }
 
 }

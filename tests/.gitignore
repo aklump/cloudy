@@ -2,3 +2,4 @@
 reports/
 test_files/
 *.log
+/Integration/t/InstallTypeCore/.test_runner/

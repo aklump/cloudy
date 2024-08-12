@@ -12,7 +12,11 @@ source "$CLOUDY_CORE_DIR/inc/cloudy.define_variables.sh"
  # @global string $CLOUDY_BASEPATH
  # @global string $CLOUDY_INSTALLED_AS
  # @global string $CLOUDY_LOG
+ # @global string $CLOUDY_TMPDIR
  ##
+
+declare -xr CLOUDY_TMPDIR="$(mktemp -d -t "$(path_filename "$CLOUDY_PACKAGE_CONTROLLER")")"
+write_log_debug "\$CLOUDY_TMPDIR is \"$CLOUDY_TMPDIR\""
 
 # Expand some vars from our controlling script.
 if [[ "$CLOUDY_PACKAGE_CONFIG" ]] && ! path_is_absolute "$CLOUDY_PACKAGE_CONFIG"; then

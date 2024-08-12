@@ -17,7 +17,6 @@ class GlobalsTest extends TestCase {
     $tests = [];
     $tests[] = ['CLOUDY_START_DIR', getcwd()];
     $tests[] = ['CLOUDY_CORE_DIR', $this->getCloudyCoreDir()];
-    $tests[] = ['CLOUDY_CACHE_DIR', $this->getCloudyCacheDir()];
     $tests[] = [
       'CLOUDY_PACKAGE_CONFIG',
       $integration_tests_dir . '/t/InstallTypeCore/config.yml',
@@ -53,6 +52,25 @@ class GlobalsTest extends TestCase {
     $result = realpath($result);
     $expected = $this->getCloudyLog();
     $this->assertSame($expected, $result, 'Assert expected path for $CLOUDY_LOG');
+  }
+
+  public function testCloudyTmpdir() {
+    $CLOUDY_TMPDIR = $this->execCloudy('echo $CLOUDY_TMPDIR');
+    $this->assertNotEmpty($CLOUDY_TMPDIR);
+    $this->assertDirectoryExists($CLOUDY_TMPDIR);
+    $this->assertMatchesRegularExpression("#^/.+/test_runner\.#", $CLOUDY_TMPDIR, 'Assert the package controller filename is in the directory path.');
+  }
+
+  public function testCloudyCacheDir() {
+    $CLOUDY_CACHE_DIR = $this->execCloudy('echo $CLOUDY_CACHE_DIR');
+    $this->assertNotEmpty($CLOUDY_CACHE_DIR);
+    $this->assertDirectoryExists($CLOUDY_CACHE_DIR);
+    $this->assertDirectoryIsReadable($CLOUDY_CACHE_DIR);
+    $this->assertDirectoryIsWritable($CLOUDY_CACHE_DIR);
+    $expected = $this->getCloudyCacheDir();
+    $this->assertSame($expected, $CLOUDY_CACHE_DIR);
+    $perms = substr(sprintf('%o', fileperms($CLOUDY_CACHE_DIR)), -4);
+    $this->assertSame('0700', $perms, 'Assert only the user can read/write.');
   }
 
   public function testRoot() {

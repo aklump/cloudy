@@ -15,22 +15,17 @@
  # @return 1 If failed; see fail messages.
  ##
 
-_cache_basedir="${TMPDIR%%/}"
-_cache_subdir="/cloudy/cache"
-if [[ ! "$_cache_basedir" ]]; then
-  _cache_basedir="${HOME%%/}"
-  [[ ! "$_cache_basedir" ]] && fail_because "Missing $HOME directory" && return 1
-  _cache_subdir="/.cloudy/cache"
+# Allow the developer to override the cache path
+if [[ ! "$CLOUDY_CACHE_DIR" ]]; then
+  declare -rx CLOUDY_CACHE_DIR="$CLOUDY_BASEPATH/.$(path_filename "$CLOUDY_PACKAGE_CONTROLLER")/.cache"
 fi
-declare -rx CLOUDY_CACHE_DIR="$_cache_basedir$_cache_subdir"
 write_log_debug "\$CLOUDY_CACHE_DIR is \"$CLOUDY_CACHE_DIR\""
-unset _cache_basedir
-unset _cache_subdir
 
 # Ensure the configuration cache environment is present and writeable.
 if [ ! -d "$CLOUDY_CACHE_DIR" ]; then
   mkdir -p "$CLOUDY_CACHE_DIR" || fail_because "Unable to create cache folder: $CLOUDY_CACHE_DIR"
 fi
+chmod go-wrx "$CLOUDY_CACHE_DIR" || fail_because "Cannot apply go-wrx to \$CLOUDY_CACHE_DIR"
 
 CACHED_CONFIG_FILEPATH="$CLOUDY_CACHE_DIR/_cached.$(path_filename $CLOUDY_PACKAGE_CONTROLLER).config.sh"
 CACHED_CONFIG_JSON_FILEPATH="$CLOUDY_CACHE_DIR/_cached.$(path_filename $CLOUDY_PACKAGE_CONTROLLER).config.json"
