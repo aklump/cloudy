@@ -102,7 +102,7 @@ class GlobalsTest extends TestCase {
     $this->assertNotEmpty($result);
     $data = json_decode($result, TRUE);
     $this->assertSame('test_runner', $data['CLOUDY_PACKAGE_ID'], 'Assert $CLOUDY_PACKAGE_ID in php_file_runner');
-    $this->assertSame(dirname($this->getCloudyPackageController()) . '/init_resources/cloudy_init_rules.yml', $data['CLOUDY_INIT_RESOURCES_DIR'], 'Assert $CLOUDY_INIT_RULES in php_file_runner');
+    $this->assertSame(dirname($this->getCloudyPackageController()) . '/init_resources/cloudy_init_rules.yml', $data['CLOUDY_INIT_RULES'], 'Assert $CLOUDY_INIT_RULES in php_file_runner');
     $this->assertSame($this->getCloudyCoreDir(), $data['CLOUDY_CORE_DIR'], 'Assert $CLOUDY_CORE_DIR in php_file_runner');
     $this->assertSame($this->getCloudyCacheDir(), $data['CLOUDY_CACHE_DIR'], 'Assert $CLOUDY_CACHE_DIR in php_file_runner');
     $this->assertSame($this->getCloudyPackageController(), $data['CLOUDY_PACKAGE_CONTROLLER'], 'Assert $CLOUDY_PACKAGE_CONTROLLER in php_file_runner');
