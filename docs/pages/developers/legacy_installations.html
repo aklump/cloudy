@@ -55,6 +55,22 @@ mv _cloudy/dist cloudy
 <li>Copy repositories section from <em>cloudy/composer.json</em> to composer.json.</li>
 <li>Delete <em>_cloudy</em> directory when finished.</li>
 </ol>
+<p>Can I do something like this? https://git.drupalcode.org/project/chosen/-/tree/4.0.x?ref_type=heads#installation-via-composer</p>
+<pre><code class="json">{
+    "type": "package",
+    "package": {
+        "name": "jjj/chosen",
+        "version": "2.2.1",
+        "type": "drupal-library",
+        "source": {
+            "url": "https://github.com/JJJ/chosen.git",
+            "type": "git",
+            "reference": "2.2.1"
+        }
+    }
+}
+
+</code></pre>
     </article>
   </div>
 </main>
@@ -62,7 +78,7 @@ mv _cloudy/dist cloudy
   <footer class="footer d-flex justify-content-center">
     <div class="flex-column justify-content-center">
               Version:
-        <strong>2.0.8</strong>
+        <strong>2.0.9</strong>
         &bull;
             Last Update: <strong>8/13/2024</strong>
     </div>
