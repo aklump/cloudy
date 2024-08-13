@@ -1,0 +1,2 @@
+copy_map:
+  - [ ./*, $CLOUDY_BASEPATH/.$CLOUDY_PACKAGE_ID/ ]

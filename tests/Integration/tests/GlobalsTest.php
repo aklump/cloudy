@@ -15,6 +15,7 @@ class GlobalsTest extends TestCase {
   public function dataFortestGlobalsProvider() {
     $integration_tests_dir = __DIR__ . '/../';
     $tests = [];
+    $tests[] = ['CLOUDY_PACKAGE_ID', 'test_runner'];
     $tests[] = ['CLOUDY_START_DIR', getcwd()];
     $tests[] = ['CLOUDY_CORE_DIR', $this->getCloudyCoreDir()];
     $tests[] = [
@@ -80,6 +81,11 @@ class GlobalsTest extends TestCase {
     $this->assertSame($expected, $result, 'Assert expected path for $ROOT');
   }
 
+  public function testCloudyInitRules() {
+    $result = $this->execCloudy('echo $CLOUDY_INIT_RULES');
+    $this->assertSame(dirname($this->getCloudyPackageController()) . '/init_resources/cloudy_init_rules.yml', $result, 'Assert expected path for $CLOUDY_INIT_RULES');
+  }
+
   public function testCloudyPackageController() {
     $result = $this->execCloudy('echo $CLOUDY_PACKAGE_CONTROLLER');
     $result = realpath($result);
@@ -95,6 +101,8 @@ class GlobalsTest extends TestCase {
     $result = $this->execCloudy(sprintf('. "$PHP_FILE_RUNNER" "%s"', __DIR__ . '/../t/InstallTypeCore/tests/variables.php'));
     $this->assertNotEmpty($result);
     $data = json_decode($result, TRUE);
+    $this->assertSame('test_runner', $data['CLOUDY_PACKAGE_ID'], 'Assert $CLOUDY_PACKAGE_ID in php_file_runner');
+    $this->assertSame(dirname($this->getCloudyPackageController()) . '/init_resources/cloudy_init_rules.yml', $data['CLOUDY_INIT_RESOURCES_DIR'], 'Assert $CLOUDY_INIT_RULES in php_file_runner');
     $this->assertSame($this->getCloudyCoreDir(), $data['CLOUDY_CORE_DIR'], 'Assert $CLOUDY_CORE_DIR in php_file_runner');
     $this->assertSame($this->getCloudyCacheDir(), $data['CLOUDY_CACHE_DIR'], 'Assert $CLOUDY_CACHE_DIR in php_file_runner');
     $this->assertSame($this->getCloudyPackageController(), $data['CLOUDY_PACKAGE_CONTROLLER'], 'Assert $CLOUDY_PACKAGE_CONTROLLER in php_file_runner');

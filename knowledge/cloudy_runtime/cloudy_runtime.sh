@@ -17,6 +17,10 @@ s="${BASH_SOURCE[0]}";while [ -h "$s" ];do dir="$(cd -P "$(dirname "$s")" && pwd
 
 command=$(get_command)
 case "$command" in
+evaluate)
+  code="$(get_command_arg 0)"
+  eval "$code"
+  ;;
 bash_variables)
     . $PHP_FILE_RUNNER "$ROOT/commands/bash_variables.php"
    ;;

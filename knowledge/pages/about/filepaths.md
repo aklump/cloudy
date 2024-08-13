@@ -29,7 +29,7 @@ The difference between these two is made apparent when you deal with a symlink. 
 * <s>All relative paths in configuration will resolve to CLOUDY_BASEPATH by default.</s>
 * For greater clarity, you may use path tokens instead of relative paths in your configuration.
 
-## Path Tokens
+## Path Tokens {#tokens}
 
 @todo Auto generate this in book.php
 

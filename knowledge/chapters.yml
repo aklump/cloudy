@@ -23,3 +23,6 @@ chapter_info:
   -
     id: php
     title: 'PHP in Cloudy'
+  -
+    id: bugs
+    title: Bugs

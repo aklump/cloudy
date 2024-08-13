@@ -4,6 +4,7 @@ namespace AKlump\Knowledge\User\CloudyDocumentation;
 
 use Doctrine\Common\Lexer\AbstractLexer;
 use ReflectionClass;
+use RuntimeException;
 
 class BashFunctionInfoLexer extends AbstractLexer {
 
@@ -168,6 +169,9 @@ class BashFunctionInfoLexer extends AbstractLexer {
         if (preg_match('#(\$\S+)(?:\s+([^\n]*))?#', $line, $matches)) {
           $name = $matches[1] ?? '';
           $line = $matches[2] ?? '';
+        }
+        if (!is_string($type)) {
+          throw new RuntimeException(sprintf('Missing variable type for %s', $name));
         }
         $value = new FunctionGlobal($name, $line, $type);
 

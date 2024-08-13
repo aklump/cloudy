@@ -159,4 +159,15 @@ class PathFunctionsTest extends TestCase {
     $this->assertSame('.', path_make_pretty(getcwd()));
   }
 
+  public function testPathResolveTokens() {
+    $this->assertSame(CLOUDY_BASEPATH . '/alpha', path_resolve_tokens('$CLOUDY_BASEPATH/alpha'));
+    $this->assertSame(CLOUDY_CORE_DIR . '/alpha', path_resolve_tokens('$CLOUDY_CORE_DIR/alpha'));
+    $this->assertSame('.' . CLOUDY_PACKAGE_ID . '/alpha', path_resolve_tokens('.$CLOUDY_PACKAGE_ID/alpha'));
+    $this->assertSame($_SERVER['HOME'] . '/alpha', path_resolve_tokens('~/alpha'));
+  }
+
+  public function testCloudyResolvePathMultipleTimes() {
+    $this->assertSame('.' . CLOUDY_PACKAGE_ID . '/' . CLOUDY_PACKAGE_ID . '.log', path_resolve_tokens('.$CLOUDY_PACKAGE_ID/$CLOUDY_PACKAGE_ID.log'));
+  }
+
 }

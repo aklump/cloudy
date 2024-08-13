@@ -8,8 +8,11 @@
 /** @var string $CLOUDY_COMPOSER_VENDOR */
 /** @var string $CLOUDY_CONFIG_JSON */
 /** @var string $CLOUDY_CORE_DIR */
+/** @var string $CLOUDY_INIT_RULES */
+/** @var string $CLOUDY_LOG */
 /** @var string $CLOUDY_PACKAGE_CONFIG */
 /** @var string $CLOUDY_PACKAGE_CONTROLLER */
+/** @var string $CLOUDY_PACKAGE_ID */
 /** @var string $CLOUDY_RUNTIME_ENV */
 /** @var string $CLOUDY_RUNTIME_UUID */
 /** @var string $CLOUDY_START_DIR */

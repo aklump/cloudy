@@ -5,6 +5,7 @@
 /** @var \Symfony\Component\EventDispatcher\EventDispatcher $dispatcher */
 
 use AKlump\CloudyDocumentation\PHP\GetPhpFunctions;
+use AKlump\CloudyDocumentation\Variables\EvaluateRuntimeCloudy;
 use AKlump\CloudyDocumentation\Variables\LoadCodeExampleFileAsVariable;
 use AKlump\Knowledge\Events\AssemblePages;
 use AKlump\Knowledge\Events\AssembleWebpageAssets;
@@ -131,5 +132,10 @@ $dispatcher->addListener(GetVariables::NAME, function (GetVariables $event) {
     }
     $event->setVariable($key, $output);
   }
+
+  $evaluator = (new EvaluateRuntimeCloudy($cloudy_runtime));
+
+  $eval = 'path="$(dirname "$CLOUDY_INIT_RULES")";echo $(path_make_relative "$path" "$CLOUDY_BASEPATH")';
+  $event->setVariable('cloudy_init_resources_dir', rtrim($evaluator($eval), '/') . '/');
 });
 
