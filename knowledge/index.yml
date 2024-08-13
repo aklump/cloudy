@@ -35,7 +35,6 @@ page_order:
     - development
     - documenting
     - events
-    - installer
     - lists
     - localize
     - logging
@@ -47,6 +46,7 @@ page_order:
     - testing
     - version
     - yaml
+    - initialization_api
   trouble:
     - empty_config
     - autoloader
@@ -58,3 +58,5 @@ page_order:
     - legacy_installations
   quick_start:
     - writing_scripts
+  bugs:
+    - php_failures_in_functions

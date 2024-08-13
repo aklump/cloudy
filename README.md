@@ -55,6 +55,16 @@ Let's consider a project called _Thunder_:
    ```
 5. Set the assignment in _thunder.sh_ to  `CLOUDY_CORE_DIR="$r/vendor/aklump/cloudy/dist"`
 
+## Choose a Scaffold
+
+```shell
+mkdir -p init_resources
+touch init_resource/cloudy_init_rules.yml
+mkdir -p inc/commands
+mkdir -p inc/snippets
+mkdir -p inc/bootstrap
+mkdir -p php/src
+```
 ## Install with Composer Create Project
 
 Use this method to create a _cloudy/_ folder in the root of your project.
