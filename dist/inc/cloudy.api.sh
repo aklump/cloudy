@@ -1283,8 +1283,8 @@ function exit_with_cache_clear() {
 
         [ $status -eq 0 ] || exit_with_failure "Could not remove all cached files in $CLOUDY_CACHE_DIR"
         file_list=($_clear)
-        for i in "${file_list[@]}"; do
-           succeed_because "$(echo_green "$(basename $i)")"
+        for filepath in "${file_list[@]}"; do
+           succeed_because "$(path_make_relative "$filepath" "$CLOUDY_CACHE_DIR")"
         done
         exit_with_success "Caches have been cleared."
     fi
